@@ -6,7 +6,7 @@
       v-for="(item, index) in items" :key="index"
       >
         <NuxtLink :to="item.link" aria-current="page"
-        class="py-3 px-5 text-gray-800 hover:border hover:bg-gray-50 hover:border-gray-100 hover:rounded-full hover:drop-shadow-md"
+        class="py-3 px-5 text-gray-800 hover:bg-gray-50 hover:ring-gray-100 hover:rounded-full hover:drop-shadow-md"
         >
             {{ item.item }}
         </NuxtLink>

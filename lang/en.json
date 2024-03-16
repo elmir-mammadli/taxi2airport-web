@@ -52,5 +52,8 @@
 		"step-4": "Booking",
 		"title": "Reserve within a minute"
 	},
+	"faq": {
+		
+	},
 	"tcpp": "Accept the <span class=\"text-white underline\"><a href=\"/terms-and-conditions\">Terms And Conditions</a></span> and the <span class=\"text-white underline\"><a href=\"/privacy-policy\">Privacy policy</a></span>"
 }

@@ -4,6 +4,11 @@ export type FormDataVariables = {
     [Key in FormDataAttributes]: string   
 } & {
     checked: boolean
+    coordinates: Coordinates
+}
+export type Coordinates = {
+    fromCoordinates: Array<number> | null
+    toCoordinates: Array<number> | null
 }
 
 export const FormData: FormDataVariables = {
@@ -19,5 +24,9 @@ export const FormData: FormDataVariables = {
     lastName: '',
     phoneNumber: '',
     flightNumber: '',
-    checked: false
+    checked: false,
+    coordinates: {
+        fromCoordinates: [],
+        toCoordinates: []
+    }
   }

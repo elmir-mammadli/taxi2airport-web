@@ -13,17 +13,6 @@
                 <p 
                 v-html="$t('hero.subtitle')"
                 class="mt-4 max-w-xl text-gray-700 font-normal text-[20px]"/>
-                <div 
-                class="flex gap-x-5">
-                    <button 
-                    @click="triggerShake" 
-                    class="bg-orange-500 text-white font-semibold text-[18px] px-9 py-3 rounded-xl mt-8 hover:bg-orange-600 transition .4s ease-all">
-                        {{ $t('button-2') }}
-                  </button>
-                <button class="bg-[#fff] hover:bg-gray-800 text-gray-900 hover:text-[#fff] outline outline-gray-800 font-medium text-[18px] px-9 py-3 rounded-xl mt-8 transition .4s ease-all">
-                    FAQ
-                </button>
-                </div>
             </div>
             <div>
                 <span 
@@ -48,19 +37,10 @@
 </template>
 <script setup lang="ts">
 import Form from './Form.vue';
-import axios from "axios";
 
 
 const shouldShake = ref(false);
-const query = ref('')
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiZWxtaXIyMTgiLCJhIjoiY2xxOGdzeW5zMThpNDJtcDFnMGxueWd1biJ9.QorxNQclJDKwh07MORcl4A'
-
-const triggerShake = () => {
-  shouldShake.value = !shouldShake.value; // Toggle the value to trigger the watcher in Form.vue
-};
-
-console.log('Sendgrid', process.env.SENDGRID_API_KEY);
 
 </script>
 

@@ -29,18 +29,18 @@
           type="text" 
           name="from" 
           class="w-full p-2 rounded-[8px]" 
-          @address-selected="address => formData.from = address.display_name"
+          @address-selected="returnSelectedAddressFrom($event.display_name, $event.coordinates)"
           />
           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
     </div>
-      <div class="mb-4">
+    <div class="mb-4">
       <label label for="to" class="block mb-2 text-sm font-medium text-white">{{ $t('form.to') }}</label>
       <AdressComplete 
       v-model="formData.to" 
       class="w-full p-2 rounded-[8px]" 
       type="text"
       name="to" 
-      @address-selected="address => formData.to = address.display_name"
+      @address-selected="returnSelectedAddressTo($event.display_name, $event.coordinates)"
       />
           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
     </div>
@@ -92,17 +92,16 @@
       </div>
     </div>
 </section>
+<!-- Chapter 2 -->
 <section v-if="chapter === 2">
   <div class="flex justify-between space-x-[24px]">
     <div class="bg-gray-100 rounded-lg flex flex-col max-w-[275px] w-full px-4 py-4">
       <span class="relative">
         <h1 class="text-left font-semibold">YOUR TRANSFER</h1>
-        <span class="absolute rounded-lg border border-black px-3 py-1 text-[10px] font-semibold right-0 top-0">
-          <a href="/">
-            EDIT
-          </a>
-        </span>
+        <span @click="chapter = 1" class="absolute rounded-lg cursor-pointer border border-black px-3 py-1 text-[10px] font-semibold right-0 top-0">
+          EDIT
       </span>
+      </span> 
         <div v-for="(item, index) in itemsSchedule" :key="index">
               <div class="flex flex-col mt-3">
             <p class="font-semibold">
@@ -115,7 +114,7 @@
 
     <div>
       <div class="space-y-[24px] w-full">
-        <CarModel @car-selected="updateSelectedCar" />
+        <CarModel :price="calculatePrice"  @car-selected="updateSelectedCar" />
       </div>
     </div>
   </div>
@@ -151,8 +150,9 @@
             <p class="text-white">{{ $t('form.child-seat-p') }}</p>
           </div>
       </div>
-    <div class="mb-4">
-        <Button label="Next" @click="chapter++" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
+    <div class="flex mb-4 gap-x-2">
+        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-white mt-7" />
+        <Button label="Next" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
       </div>
     </div>
   </section>
@@ -181,8 +181,9 @@
             <Checkbox v-model="isAgreed" :binary="true"/>
             <p v-html="$t('tcpp')" class="text-white" />
           </div>
-      <div class="mb-4 w-[400px]">
-        <Button label="Next" type="submit" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
+      <div class="flex gap-x-2 mb-4 w-[400px]">
+        <Button label="Back" @click="chapter--" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-white mt-7" />
+        <Button label="Finish booking" type="submit" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
       </div>
     </div>
   </section>
@@ -193,12 +194,12 @@
 import InputText from 'primevue/inputtext';
 import Button from "primevue/button/Button.vue";
 import AdressComplete from './AdressComplete.vue';
-import Calendar from 'primevue/calendar/Calendar.vue';
 import CarModel from './CarModel.vue';
 import Checkbox from 'primevue/checkbox/Checkbox.vue';
 import type { FormDataVariables } from './data/formData';
 import { FormData } from './data/formData';
 import axios from 'axios';
+import mapboxgl, { type Coordinate } from 'mapbox-gl';
 const { $t } = useLanguage()
 
 const formData = reactive<FormDataVariables>(FormData)
@@ -240,8 +241,6 @@ const pickupDate = ref(new Date())
 const pickupTime = ref(new Date())
 const checked = ref(false)
 const isAgreed = ref(false)
-const parentLat = 0
-const parentLon = 0
 const formattedDate = computed(() => {
   let day = String(pickupDate.value.getDate()).padStart(2, '0')
   let month = String(pickupDate.value.getMonth() + 1).padStart(2, '0')
@@ -249,9 +248,6 @@ const formattedDate = computed(() => {
 
   return `${day}.${month}.${year}`
 })
-
-console.log('Elmir',);
-
 
 const formatTime = computed(() => {
   let hours = String(pickupTime.value.getHours()).padStart(2, '0')
@@ -290,6 +286,10 @@ const bookingItems = computed(() => [
     value: formData.from
   },
   {
+    key: 'Distance',
+    value: `${haversineResult.value} km`
+  },
+  {
     key: $t('form.to').toUpperCase(),
     value: formData.to
   },
@@ -312,6 +312,9 @@ const bookingItems = computed(() => [
 ])
 
 const itemsSchedule = computed(() => [...bookingItems.value.slice(6, 12)])
+const fromTo = computed(() => [...bookingItems.value.slice(6, 8)])
+
+
 const chapter = ref(1)
 const config = useRuntimeConfig()
 
@@ -322,6 +325,9 @@ const updateSelectedCar = (carName: string) => {
 const chapterChange = () => {
     chapter.value += 1
   }
+  const chapterBack = () => {
+    chapter.value -= 1
+  }  
 const submitForm = async () => {
     try {
       const response = await axios.post(
@@ -337,7 +343,7 @@ const submitForm = async () => {
                 
               ],
               dynamic_template_data: {
-                nasadasdme: formData.firstName,
+                name: formData.firstName,
                 surname: formData.lastName,
                 from: formData.from,
                 to: formData.to,
@@ -358,74 +364,6 @@ const submitForm = async () => {
           ],
           template_id: 'd-f825ae80a73f4c988e0a289fdf6bef92',
           from: { email: 'booking@taxi2airport.cz' }
-  //         content: [
-  //           {
-  //             type: 'text/html',
-  //             value: `
-  //             <h1>Thank you for your reservation</h1>
-  //             <p>Dear ${formData.firstName} ${formData.lastName},</p>
-  //             <p>Thank you for your reservation. You can find your booking details below:</p>
-  //             <table class="border-collapse w-full border border-black bg-white">
-  //   <tr>
-  //     <th class="border border-black p-2">Name</th>
-  //     <th class="border border-black p-2">Value</th>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.name').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.firstName}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.surname').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.lastName}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.from').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.from}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.to').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.to}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.date').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.formattedDate}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.time').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.formatTime}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.luggage').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.luggage} pcs</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.selected-car').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.selectedCar}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.flight-number').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.flightNumber}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.number').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.phoneNumber}</td>
-  //   </tr>
-  //   <tr>
-  //     <td class="border border-black p-2">${$t('form.email').toUpperCase()}</td>
-  //     <td class="border border-black p-2">${formData.email}</td>
-  //   </tr>
-  // </table>
-
-
-  //             <p>We will contact you shortly to confirm your booking.</p>
-
-  //             <p>Thank you for choosing us</p>
-
-  //             <p>Kind regards,</p>
-  //             <p>Taxi2Airport</p>
-  //             `
-  //           }
-  //         ]
         },
         {
           headers: {
@@ -434,13 +372,106 @@ const submitForm = async () => {
           }
         }
       );
-      console.log(response.data);
       chapter.value++
     }
     catch (error) {
       console.error('Error submitting error', error);
     }
   }
+  // const returnSelectedAddress = (address: {display_name: string}, field: string, coordinates: Array<number>) => {
+  //   if (field === 'from') {
+  //     formData.from = address.display_name
+  //     formData.coordinates.fromCoordinates = coordinates
+      
+  //   } else if (field === 'to') {
+  //     formData.to = address.display_name
+  //     formData.coordinates.toCoordinates = coordinates
+  //   }
+  // }
+
+  const reactiveFromCoordinates = ref<number[]>([])
+  const reactiveToCoordinates = ref<number[]>([])
+  const returnSelectedAddressFrom = async (display_name: string, coordinates: number[]) => {
+  console.log('Received Coordinates:', coordinates);
+
+  formData.from = display_name;
+  formData.coordinates.fromCoordinates = coordinates;
+  reactiveFromCoordinates.value = coordinates;
+  console.log('Updated FormData From', formData.from, 'Coordinates:', formData.coordinates.fromCoordinates);
+
+  // Log formData after it has been updated
+  console.log('FormData output after updating from:', formData.coordinates.fromCoordinates[0]);
+  console.log('FormData output after updating from:', formData.coordinates.fromCoordinates[1]);
+
+  const fromCoordinates = new mapboxgl.LngLat(formData.coordinates.fromCoordinates[0], formData.coordinates.fromCoordinates[1]);
+  console.log('FromCoordinates:', fromCoordinates);
+}
+
+
+const returnSelectedAddressTo = async (display_name: string, coordinates: number[]) => {
+  console.log('Received Coordinates:', coordinates);
+
+  formData.to = display_name;
+  formData.coordinates.toCoordinates = coordinates;
+  reactiveToCoordinates.value = coordinates;
+  console.log('Updated FormData To', formData.to, 'Coordinates:', formData.coordinates.toCoordinates);
+
+  // Log formData after it has been updated
+  console.log('FormData output after updating to:', formData);
+
+  console.log('FormData output after updating from:', formData.coordinates.toCoordinates[0]);
+  console.log('FormData output after updating from:', formData.coordinates.toCoordinates[1]);
+}
+
+  function haversineDistance(fromLat: number, fromLng: number, toLat: number, toLng: number) {
+    const R = 6371; // Radius of the earth in km
+    const p1 = fromLat * (Math.PI / 180);
+    const p2 = toLat * (Math.PI / 180);
+
+    const deltaLon = toLng - fromLng;
+    const deltaLambda = (deltaLon * Math.PI) / 180;
+
+    const distance = Math.acos(Math.sin(p1) * Math.sin(p2) + Math.cos(p1) * Math.cos(p2) * Math.cos(deltaLambda)) * R;
+    return distance;
+  }
+
+  
+  const haversineResult = computed(() => {
+    return `${haversineDistance(reactiveFromCoordinates.value[0], reactiveFromCoordinates.value[1], reactiveToCoordinates.value[0], reactiveToCoordinates.value[1]).toFixed(0)}`
+  })
+
+  const calculatePrice = computed(() => {
+    const distance = Number(haversineResult.value);
+    if (distance > 20) {
+      return (distance - 20) * 34
+    } else {
+      return 0;
+    }
+  });
+
+    // const fromCoordinates = new mapboxgl.LngLat(formData.coordinates.fromCoordinates[0], formData.coordinates.fromCoordinates[1]);
+    // const toCoordinates = new mapboxgl.LngLat(formData.coordinates.toCoordinates[0], formData.coordinates.toCoordinates[1]);
+    // const distanceInKm = fromCoordinates.distanceTo(toCoordinates) / 1000; // Convert meters to kilometers
+    // const roundedDistance = distanceInKm.toFixed(0); // Round to the nearest whole number
+    // console.log('Distance:', roundedDistance, 'km');
+
+// Make sure both fromCoordinates and toCoordinates are set before calculating the distance
+// if (formData.coordinates.fromCoordinates !== null && formData.coordinates.fromCoordinates.length > 0 && formData.coordinates.toCoordinates !== null && formData.coordinates.toCoordinates.length > 0) {
+//   const fromLat = formData.coordinates.fromCoordinates[0];
+//   console.log('FromLAt', fromLat)
+//   const fromLng = formData.coordinates.fromCoordinates[1];
+//   console.log('fromLng', fromLng)
+//   const toLat = formData.coordinates.toCoordinates[0];
+//   console.log('toLat', toLat)
+//   const toLng = formData.coordinates.toCoordinates[1];
+//   console.log('toLng', toLng)
+
+//   console.log('Distance:', haversineDistance(fromLat, fromLng, toLat, toLng), 'km');
+// } else {
+//   console.log("Cannot calculate distance. Both 'fromCoordinates' and 'toCoordinates' must be set.");
+// }
+
+
 </script>
 
 <style scoped lang="scss">
@@ -458,4 +489,6 @@ const submitForm = async () => {
 .p-dropdown-items-wrapper {
   padding-left: 12px;
 }
+
+
 </style>

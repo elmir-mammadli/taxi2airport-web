@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @mouseenter="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-2 p-2 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
+    <div @mouseenter="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-2 py-2 px-3 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
     <ul
       v-show="showDropdown"
       class="
@@ -35,8 +35,6 @@ type Languages = {
   name: string;
 };
 
-locale.value = 'en'
-
 const langSwitch = (lang: string) => {
   locale.value = lang
   showDropdown.value = false
@@ -55,7 +53,7 @@ const selectedFlag = computed(() => {
   return lang?.name.toLowerCase();
 });
 
-
+locale.value = 'en'
 const languages: Languages[] = [
   {
     name: 'EN'
@@ -67,4 +65,9 @@ const languages: Languages[] = [
     name: 'DE'
   }
 ];
+
+watch(locale, () => {
+  showDropdown.value = false;
+});
+
 </script>

@@ -32,7 +32,12 @@
     </div>
 </template>
 <script setup lang="ts">
-
+const props = defineProps({
+    price: {
+        type: Number,
+        required: true
+    }
+})
 const emit = defineEmits(['car-selected'])
 const selectCar = (carName: string) => {
     emit('car-selected', carName)
@@ -42,12 +47,12 @@ const details = [
     { 
         img: '/sedan.png',
         name: 'ECONOMY SEDAN',
-        price: '590.00'
+        price: `${props.price + 590}.00`
     },
     {   
         img: '/minivan.png',
         name: 'MINIVAN',
-        price: '990.00'
-    },
+        price: `${props.price + 990}.00`
+    }
 ]
 </script>

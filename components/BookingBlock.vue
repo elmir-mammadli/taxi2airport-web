@@ -11,7 +11,7 @@
         </div>
         <div
         
-        class="flex flex-row gap-x-14 mt-10">
+        class="flex flex-col sm:flex-row gap-x-14 mt-10 hidden">
             <div
             v-for="(item, index) in items" :key="index" 
             class="flex flex-col items-center">

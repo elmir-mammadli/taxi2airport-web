@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     '@nuxtjs/i18n',
     "@formkit/nuxt",
+    ['@storyblok/nuxt', {
+      accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
+    }]
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts',
@@ -71,7 +74,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
+      SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+      MAPBOX_API_KEY: process.env.MAPBOX_TOKEN
     }
   }
 })
