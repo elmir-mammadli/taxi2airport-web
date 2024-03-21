@@ -9,7 +9,7 @@
         p-2
         shadow
         menu
-        z-[1]
+        z-[9999px]
         bg-white
         rounded-box
         font-semibold

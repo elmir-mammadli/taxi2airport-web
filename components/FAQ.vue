@@ -34,11 +34,16 @@
   </div>
 </template>
   
-  <script setup>
+  <script setup lang="ts">
   import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
   import { ChevronUpIcon } from '@heroicons/vue/20/solid'
 
-  const questions = [
+  type Questions = {
+    question: string;
+    answer: string;
+  }
+
+  const questions: Questions[] = [
     {
         question: 'When do I pay?',
         answer: 'For most booking, you can either choose to pay in advance for your airport transport service or when you’re dropped at your hotel. If you’re paying in advance online, our driver will be informed by our system, and there’s nothing more you need to do. If you’re paying on arrival by cash or credit card, you’ll pay the full amount when you arrive at your destination.'

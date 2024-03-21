@@ -11,7 +11,7 @@ export type Coordinates = {
     toCoordinates: Array<number> | null
 }
 
-export const FormData: FormDataVariables = {
+export const formData: FormDataVariables = {
     from: '',
     to: '',
     formattedDate: '',

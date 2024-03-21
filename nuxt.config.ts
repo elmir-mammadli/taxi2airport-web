@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vee-validate/nuxt',
     '@nuxtjs/i18n',
+    'nuxt-bugsnag',
     "@formkit/nuxt",
+    '@pinia/nuxt',
     ['@storyblok/nuxt', {
       accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
     }]

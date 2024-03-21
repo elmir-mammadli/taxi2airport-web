@@ -3,7 +3,7 @@
         <div>
         <aside
         class="max-w-[1280px] mx-auto w-full h-[30px] flex items-center">
-            <div class="flex items-center gap-x-5 me-auto">
+            <div class="hidden md:flex items-center gap-x-5 me-auto">
                 <div v-for="(item, index) in asideData.slice(0, 3)" :key="index">
                 <div class="flex gap-x-2">
                 <Icon :name="item.icon" />

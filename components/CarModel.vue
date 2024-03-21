@@ -20,18 +20,20 @@
             </div>
             </div>
         </div>
-        <div class="flex flex-col items-end">
+        <div class="card">
             <h1 class="font-bold text-[28px] leading-none font-inter">CZK {{ detail.price }}</h1>
-            <button 
-            @click="selectCar(detail.name)"
+            <Button 
+            :loading="loading[index]"
+            @click="selectCar(index)"
             type="button"
-            class="bg-green-400 mt-4 text-white font-semibold text-[18px] px-12 py-3 rounded-md hover:bg-green-500 transition .4s ease-all">
-                        Select
-                </button>
+            label="Search" 
+            icon="pi pi-search"
+            class="bg-green-400 mt-4 text-white font-semibold text-[16px] px-10 py-2.5 rounded-md hover:bg-green-500 transition .4s ease-all" />        
         </div>
     </div>
 </template>
 <script setup lang="ts">
+import Button from "primevue/button/Button.vue";
 const props = defineProps({
     price: {
         type: Number,
@@ -39,9 +41,7 @@ const props = defineProps({
     }
 })
 const emit = defineEmits(['car-selected'])
-const selectCar = (carName: string) => {
-    emit('car-selected', carName)
-}
+
 
 const details = [
     { 
@@ -55,4 +55,14 @@ const details = [
         price: `${props.price + 990}.00`
     }
 ]
+const loading = ref(Array(details.length).fill(false))
+
+const selectCar = (index: number) => {
+  loading.value[index] = true;
+  setTimeout(() => {
+    loading.value[index] = false;
+    emit('car-selected', details[index].name);
+  }, 1000);
+}
+
 </script>

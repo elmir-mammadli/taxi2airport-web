@@ -1,6 +1,6 @@
 <template>
-    <div class="max-w-[992px] mx-auto flex justify-center  mb-6 mt-20">
-    <div v-for="(step, index) in reservationData" :key="index" class="flex items-center">
+    <div class="max-w-[992px] mx-auto flex justify-between mb-6 mt-20">
+    <div v-for="(step, index) in reservationData" :key="index" class="flex flex-col md:flex-row items-center">
         <div :class="[
           chapter > index ? 'bg-green-500' : 'bg-green-200'
           ]" class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white">
@@ -14,14 +14,14 @@
     </div>
 </div>
 <form
-    loading="lazy"
-    data-aos="fade-up"
-    data-aos-duration="600"
     @submit.prevent="submitForm"
     class="max-w-[1024px] outline-4 mx-auto bg-orange-400 mt-10 p-6 rounded-lg"
+    :class="{
+      'shake outline outline-blue-100': shakerState
+    }"
     >
 <section v-if="chapter === 1">
-    <div class="grid grid-cols-2 gap-x-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
       <div class="mb-4">
           <label for="from" class="block mb-2 text-sm font-medium text-white">{{ $t('form.from') }}</label>
           <AdressComplete 
@@ -45,8 +45,8 @@
           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
     </div>
     </div>
-    <div class="flex flex-row items-end gap-x-12 w-full">
-      <div class="flex gap-x-4 items-end w-full">
+    <div class="flex flex-col md:flex-row md:items-end md:gap-x-12 w-full">
+      <div class="flex flex-col md:flex-row gap-x-4 md:items-end w-full">
         <div>
           <FormKit
           v-model="formData.formattedDate"
@@ -88,7 +88,7 @@
       </div>
       </div>
       <div class="w-full">
-        <Button @click="chapterChange" :label="$t('form.search-button')" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white" />
+        <Button @click="chapterChange" :label="$t('form.search-button')" :loading="loading" icon="pi pi-check" class="w-full text-[16px] bg-green-500 hover:bg-green-600 p-2 text-white" />
       </div>
     </div>
 </section>
@@ -114,7 +114,7 @@
 
     <div>
       <div class="space-y-[24px] w-full">
-        <CarModel :price="calculatePrice"  @car-selected="updateSelectedCar" />
+        <CarModel :loading="loading"  :price="calculatePrice"  @car-selected="updateSelectedCar" />
       </div>
     </div>
   </div>
@@ -151,8 +151,8 @@
           </div>
       </div>
     <div class="flex mb-4 gap-x-2">
-        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-white mt-7" />
-        <Button label="Next" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
+        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 text-[16px] p-2 text-white mt-7" />
+        <Button label="Next" :loading="loading" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 text-[16px] p-2 text-white mt-7" />
       </div>
     </div>
   </section>
@@ -197,12 +197,21 @@ import AdressComplete from './AdressComplete.vue';
 import CarModel from './CarModel.vue';
 import Checkbox from 'primevue/checkbox/Checkbox.vue';
 import type { FormDataVariables } from './data/formData';
-import { FormData } from './data/formData';
+import { useEventBus } from '@vueuse/core'
+import { formData } from './data/formData';
 import axios from 'axios';
 import mapboxgl, { type Coordinate } from 'mapbox-gl';
+
+
+import { useShakeStore } from '~/stores/useShakeStore';
+const shakeStore = useShakeStore()
+
+const shakerState = computed(() => {
+  return shakeStore.shouldShakeForm
+})
+
 const { $t } = useLanguage()
 
-const formData = reactive<FormDataVariables>(FormData)
 
 
 const requiredDate = (date: string) => {
@@ -241,6 +250,7 @@ const pickupDate = ref(new Date())
 const pickupTime = ref(new Date())
 const checked = ref(false)
 const isAgreed = ref(false)
+
 const formattedDate = computed(() => {
   let day = String(pickupDate.value.getDate()).padStart(2, '0')
   let month = String(pickupDate.value.getMonth() + 1).padStart(2, '0')
@@ -255,7 +265,7 @@ const formatTime = computed(() => {
 
   return `${hours}:${minutes}`
 })
-
+const isChildSeat = computed(() => checked.value ? 'Yes' : 'No')
 const bookingItems = computed(() => [
   {
     key: $t('form.name'),
@@ -317,17 +327,21 @@ const fromTo = computed(() => [...bookingItems.value.slice(6, 8)])
 
 const chapter = ref(1)
 const config = useRuntimeConfig()
-
+const loading = ref(false)
 const updateSelectedCar = (carName: string) => {
   formData.selectedCar = carName
   chapter.value += 1
 }
-const chapterChange = () => {
-    chapter.value += 1
+const chapterChange = async () => {
+  loading.value = true
+    setTimeout(() => {
+      chapter.value ++
+      loading.value = false
+    }, 1500)
   }
   const chapterBack = () => {
-    chapter.value -= 1
-  }  
+    chapter.value--
+  }
 const submitForm = async () => {
     try {
       const response = await axios.post(
@@ -340,7 +354,9 @@ const submitForm = async () => {
                   email: formData.email, 
                   name: 'Learn to edit dynamic templates'
                 }
-                
+              ],
+              cc: [
+                {}
               ],
               dynamic_template_data: {
                 name: formData.firstName,
@@ -355,7 +371,7 @@ const submitForm = async () => {
                 number: formData.phoneNumber,
                 email: formData.email,
                 passengers: formData.passengers,
-                childSeat: checked.value,
+                childSeat: isChildSeat.value,
                 orderCount: formattedCountDate
               }
               // cc: [{ email: 'hackrecaz@gmail.com' }],
@@ -378,16 +394,6 @@ const submitForm = async () => {
       console.error('Error submitting error', error);
     }
   }
-  // const returnSelectedAddress = (address: {display_name: string}, field: string, coordinates: Array<number>) => {
-  //   if (field === 'from') {
-  //     formData.from = address.display_name
-  //     formData.coordinates.fromCoordinates = coordinates
-      
-  //   } else if (field === 'to') {
-  //     formData.to = address.display_name
-  //     formData.coordinates.toCoordinates = coordinates
-  //   }
-  // }
 
   const reactiveFromCoordinates = ref<number[]>([])
   const reactiveToCoordinates = ref<number[]>([])
@@ -449,29 +455,6 @@ const returnSelectedAddressTo = async (display_name: string, coordinates: number
     }
   });
 
-    // const fromCoordinates = new mapboxgl.LngLat(formData.coordinates.fromCoordinates[0], formData.coordinates.fromCoordinates[1]);
-    // const toCoordinates = new mapboxgl.LngLat(formData.coordinates.toCoordinates[0], formData.coordinates.toCoordinates[1]);
-    // const distanceInKm = fromCoordinates.distanceTo(toCoordinates) / 1000; // Convert meters to kilometers
-    // const roundedDistance = distanceInKm.toFixed(0); // Round to the nearest whole number
-    // console.log('Distance:', roundedDistance, 'km');
-
-// Make sure both fromCoordinates and toCoordinates are set before calculating the distance
-// if (formData.coordinates.fromCoordinates !== null && formData.coordinates.fromCoordinates.length > 0 && formData.coordinates.toCoordinates !== null && formData.coordinates.toCoordinates.length > 0) {
-//   const fromLat = formData.coordinates.fromCoordinates[0];
-//   console.log('FromLAt', fromLat)
-//   const fromLng = formData.coordinates.fromCoordinates[1];
-//   console.log('fromLng', fromLng)
-//   const toLat = formData.coordinates.toCoordinates[0];
-//   console.log('toLat', toLat)
-//   const toLng = formData.coordinates.toCoordinates[1];
-//   console.log('toLng', toLng)
-
-//   console.log('Distance:', haversineDistance(fromLat, fromLng, toLat, toLng), 'km');
-// } else {
-//   console.log("Cannot calculate distance. Both 'fromCoordinates' and 'toCoordinates' must be set.");
-// }
-
-
 </script>
 
 <style scoped lang="scss">
@@ -490,5 +473,23 @@ const returnSelectedAddressTo = async (display_name: string, coordinates: number
   padding-left: 12px;
 }
 
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 
 </style>

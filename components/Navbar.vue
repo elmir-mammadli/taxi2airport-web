@@ -11,9 +11,7 @@
   </a>
 <NavItems />
 <div class="flex relative z-10 items-center gap-x-4">
-  <button class="bg-orange-500 text-white font-semibold text-[15px] px-7 py-2.5 rounded-xl hover:bg-orange-600 transition .4s ease-all">
-                    {{ $t('navbar.button')  }}
-  </button>
+  <Button @click="triggerShake" :label="$t('navbar.button')" class="bg-orange-500 text-white font-semibold text-[15px] px-7 py-2.5 rounded-xl hover:bg-orange-600 transition .4s ease-all" />
   <NavbarLanguage />
 </div>
   </div>
@@ -22,11 +20,19 @@
   </header>
 </template>
 <script lang="ts" setup>
+
 import NavItems from './NavItems.vue';
-import { onMounted } from 'vue';
 import NavbarLanguage from './NavbarLanguage.vue';
 
+import { useShakeStore } from '../stores/useShakeStore'
+const shakeStore = useShakeStore()
+
+function triggerShake() {
+  shakeStore.triggerShake()
+}
+
 const resize = ref(false)
+
 
 
 const handleScroll = () => {
