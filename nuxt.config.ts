@@ -27,6 +27,9 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: 'Headless'
   },
+  svgo: {
+    componentPrefix: 'Icon'
+  },
   plugins: [
   { src: '~/plugins/aos', mode: 'client' },
   ],

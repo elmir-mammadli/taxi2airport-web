@@ -17,8 +17,10 @@
     >
       <li v-for="(item, index) in languages" :key="index" class="">
         <p @click="langSwitch(item.name.toLowerCase())">
-          <Icon :name="`circle-flags:${item.name.toLowerCase()}` " />
-          <p>{{ item.name }}</p>
+          <span class="flex items-center gap-x-1">
+            <Icon  :name="`circle-flags:${item.name.toLowerCase()}` " />
+            <p>{{ item.name }}</p>
+          </span>
         </p>
       </li>
     </ul>

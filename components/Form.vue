@@ -1,19 +1,22 @@
 <template>
-    <div class="max-w-[992px] mx-auto flex justify-between mb-6 mt-20">
-    <div v-for="(step, index) in reservationData" :key="index" class="flex flex-col md:flex-row items-center">
-        <div :class="[
+    <div class="max-w-[992px] mx-auto flex justify-center mb-6 mt-20 px-5">
+    <div v-for="(step, index) in reservationData" :key="index" class="flex flex-row items-center">
+        <div class="flex flex-col md:flex-row items-center justify-center">
+          <div :class="[
           chapter > index ? 'bg-green-500' : 'bg-green-200'
           ]" class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white">
             {{ index + 1 }}
         </div>
-        <div class="flex-grow h-1 bg-gray-400 mx-2"></div>
+        <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2"></div>
         <div>
             {{ step.step }}
         </div>
-        <div v-if="index !== reservationData.length - 1" class="h-[1px] bg-gray-400 w-[150px] mx-4"></div>
+        </div>
+        <div v-if="index !== reservationData.length - 1" class="h-[1px] bg-gray-400 w-[10px] mb-[24px] md:mb-0 md:w-[48px] xl:w-[150px] mx-4"></div>
     </div>
 </div>
-<form
+<div class="px-5">
+  <form
     @submit.prevent="submitForm"
     class="max-w-[1024px] outline-4 mx-auto bg-orange-400 mt-10 p-6 rounded-lg"
     :class="{
@@ -45,8 +48,8 @@
           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
     </div>
     </div>
-    <div class="flex flex-col md:flex-row md:items-end md:gap-x-12 w-full">
-      <div class="flex flex-col md:flex-row gap-x-4 md:items-end w-full">
+    <div class="flex flex-col md:flex-row md:items-end gap-y-4 md:gap-x-12 w-full">
+      <div class="flex flex-col md:flex-row gap-4 md:items-end w-full">
         <div>
           <FormKit
           v-model="formData.formattedDate"
@@ -62,7 +65,7 @@
           input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
           messages-class="absolute bottom-[5px] text-red-500 text-[10px]"
           />
-      </div>
+        </div>
       <div>
         <FormKit
           v-model="formData.formatTime"
@@ -76,14 +79,16 @@
           input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
           />
       </div>
-        <div>
-        <label label for="passengers" class="block mb-2 text-sm font-medium text-white">{{ $t('form.passengers') }}</label>
-        <InputText id="passengers" v-model="formData.passengers" type="number" name="passengers" class="w-[80px] p-2 rounded-[8px]"  placeholder="0" />
+        <div class="flex gap-x-4">
+          <div>
+         <label label for="passengers" class="block mb-2 text-sm font-medium text-white">{{ $t('form.passengers') }}</label>
+          <InputText id="passengers" v-model="formData.passengers" type="number" name="passengers" class="w-[80px] p-2 rounded-[8px]"  placeholder="0" />
         </div>
-      <div class="flex justify-center items-end gap-x-3">
-        <div>
-        <label for="luggage" class="block mb-2 text-sm font-medium text-white">{{ $t('form.luggage') }}</label>
-        <InputText v-model="formData.luggage" type="number" name="luggage" class="w-[80px] p-2 rounded-[8px]" placeholder="0" />
+        <div class="flex justify-center items-end gap-x-3">
+          <div>
+          <label for="luggage" class="block mb-2 text-sm font-medium text-white">{{ $t('form.luggage') }}</label>
+          <InputText v-model="formData.luggage" type="number" name="luggage" class="w-[80px] p-2 rounded-[8px]" placeholder="0" />
+        </div>
         </div>
       </div>
       </div>
@@ -94,8 +99,8 @@
 </section>
 <!-- Chapter 2 -->
 <section v-if="chapter === 2">
-  <div class="flex justify-between space-x-[24px]">
-    <div class="bg-gray-100 rounded-lg flex flex-col max-w-[275px] w-full px-4 py-4">
+  <div class="flex flex-col md:flex-row w-full justify-center md:gap-x-[24px]">
+    <div class="bg-gray-100 rounded-lg hidden md:flex flex-col max-w-[275px] w-full px-4 py-4 order-last sm:-order-last">
       <span class="relative">
         <h1 class="text-left font-semibold">YOUR TRANSFER</h1>
         <span @click="chapter = 1" class="absolute rounded-lg cursor-pointer border border-black px-3 py-1 text-[10px] font-semibold right-0 top-0">
@@ -111,11 +116,16 @@
         </div>
         </div>
     </div>
-
-    <div>
+    <div class="">
       <div class="space-y-[24px] w-full">
         <CarModel :loading="loading"  :price="calculatePrice"  @car-selected="updateSelectedCar" />
       </div>
+      <button
+      @click="chapter = 1"
+      class="sm:hidden outline w-full mt-4 text-white font-semibold text-[18px] px-8 py-4 rounded-md transition .4s ease-all"
+      >
+      Back
+      </button>
     </div>
   </div>
 </section>
@@ -188,6 +198,7 @@
     </div>
   </section>
   </form>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -325,7 +336,7 @@ const itemsSchedule = computed(() => [...bookingItems.value.slice(6, 12)])
 const fromTo = computed(() => [...bookingItems.value.slice(6, 8)])
 
 
-const chapter = ref(1)
+const chapter = ref(2)
 const config = useRuntimeConfig()
 const loading = ref(false)
 const updateSelectedCar = (carName: string) => {

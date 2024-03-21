@@ -2,7 +2,7 @@
     <section class="bg-gray-200">
         <div>
         <aside
-        class="max-w-[1280px] mx-auto w-full h-[30px] flex items-center">
+        class="max-w-[1280px] mx-auto w-full h-[30px] flex items-center text-[10px]">
             <div class="hidden md:flex items-center gap-x-5 me-auto">
                 <div v-for="(item, index) in asideData.slice(0, 3)" :key="index">
                 <div class="flex gap-x-2">
