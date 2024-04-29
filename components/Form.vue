@@ -1,14 +1,14 @@
 <template>
-    <div class="max-w-[992px] mx-auto flex justify-center mb-6 mt-20 px-5">
+    <div id="bookForm" class="max-w-[992px] mx-auto flex justify-center scroll-mt-20 mb-6 mt-20 px-5">
     <div v-for="(step, index) in reservationData" :key="index" class="flex flex-row items-center">
         <div class="flex flex-col md:flex-row items-center justify-center">
           <div :class="[
-          chapter > index ? 'bg-green-500' : 'bg-green-200'
+          chapter > index ? 'bg-[#3E9AFF]' : 'bg-gray-200'
           ]" class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white">
             {{ index + 1 }}
         </div>
-        <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2"></div>
-        <div>
+        <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2" />
+        <div class="text-[12px] md:text-[16px]">
             {{ step.step }}
         </div>
         </div>
@@ -18,7 +18,7 @@
 <div class="px-5">
   <form
     @submit.prevent="submitForm"
-    class="max-w-[1024px] outline-4 mx-auto bg-orange-400 mt-10 p-6 rounded-lg"
+    class="max-w-[1024px] border-[1px] mx-auto border-[#000000] border-opacity-90  mt-10 p-6 rounded-lg"
     :class="{
       'shake outline outline-blue-100': shakerState
     }"
@@ -26,7 +26,7 @@
 <section v-if="chapter === 1">
     <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
       <div class="mb-4">
-          <label for="from" class="block mb-2 text-sm font-medium text-white">{{ $t('form.from') }}</label>
+          <label for="from" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.from') }}</label>
           <AdressComplete 
           v-model="formData.from" 
           type="text" 
@@ -37,7 +37,7 @@
           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
     </div>
     <div class="mb-4">
-      <label label for="to" class="block mb-2 text-sm font-medium text-white">{{ $t('form.to') }}</label>
+      <label label for="to" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.to') }}</label>
       <AdressComplete 
       v-model="formData.to" 
       class="w-full p-2 rounded-[8px]" 
@@ -56,12 +56,14 @@
           type="date"
           :value="requiredDate('today')"
           :label="$t('form.date')"
-          validation="required"
+          :validation="`date_before:${today}`"
+          validation-visibility="live"
           placeholder="DD/MM/YYYY"
           outer-class="$reset"
+          required
           wrapper-class="$reset"
-          label-class="block font-semibold text-white text-sm"
-          inner-class="$reset bg-white outline-none rounded-lg"
+          label-class="block font-semibold text-black opacity-[0.87] text-sm"
+          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
           input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
           messages-class="absolute bottom-[5px] text-red-500 text-[10px]"
           />
@@ -71,36 +73,57 @@
           v-model="formData.formatTime"
           type="time"
           value="12:00"
+          min="00:00"
           :label="$t('form.time')"
           wrapper-class="$reset"
           outer-class="$reset"
-          label-class="block font-semibold text-white text-sm"
-          inner-class="$reset bg-white outline-none rounded-lg"
-          input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
+          label-class="block font-semibold text-black opacity-[0.87] text-sm"
+          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+          input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
           />
       </div>
         <div class="flex gap-x-4">
           <div>
-         <label label for="passengers" class="block mb-2 text-sm font-medium text-white">{{ $t('form.passengers') }}</label>
-          <InputText id="passengers" v-model="formData.passengers" type="number" name="passengers" class="w-[80px] p-2 rounded-[8px]"  placeholder="0" />
+          <FormKit
+          v-model="formData.passengers"
+          type="number"
+          value="0"
+          placeholder="0"
+          :label="$t('form.passengers')"
+          wrapper-class="$reset"
+          outer-class="$reset"
+          label-class="block font-semibold text-black opacity-[0.87] text-sm"
+          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+          input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
+          />
         </div>
         <div class="flex justify-center items-end gap-x-3">
           <div>
-          <label for="luggage" class="block mb-2 text-sm font-medium text-white">{{ $t('form.luggage') }}</label>
-          <InputText v-model="formData.luggage" type="number" name="luggage" class="w-[80px] p-2 rounded-[8px]" placeholder="0" />
+          <FormKit
+          v-model="formData.luggage"
+          type="number"
+          value="0"
+          placeholder="0"
+          :label="$t('form.luggage')"
+          wrapper-class="$reset"
+          outer-class="$reset"
+          label-class="block font-semibold text-black opacity-[0.87] text-sm"
+          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+          input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
+          />
         </div>
         </div>
       </div>
       </div>
       <div class="w-full">
-        <Button @click="chapterChange" :label="$t('form.search-button')" :loading="loading" icon="pi pi-check" class="w-full text-[16px] bg-green-500 hover:bg-green-600 p-2 text-white" />
+        <Button @click="chapterChange" :label="$t('form.search-button')" :loading="loading" :disabled="isDisabled" icon="pi pi-check" class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white" />
       </div>
     </div>
 </section>
 <!-- Chapter 2 -->
 <section v-if="chapter === 2">
   <div class="flex flex-col md:flex-row w-full justify-center md:gap-x-[24px]">
-    <div class="bg-gray-100 rounded-lg hidden md:flex flex-col max-w-[275px] w-full px-4 py-4 order-last sm:-order-last">
+    <div class="bg-gray-100 rounded-lg hidden md:flex flex-col max-w-[275px] w-full px-4 py-4">
       <span class="relative">
         <h1 class="text-left font-semibold">YOUR TRANSFER</h1>
         <span @click="chapter = 1" class="absolute rounded-lg cursor-pointer border border-black px-3 py-1 text-[10px] font-semibold right-0 top-0">
@@ -115,14 +138,14 @@
             <p v-html="item.value"/>
         </div>
         </div>
-    </div>
+      </div>
     <div class="">
       <div class="space-y-[24px] w-full">
-        <CarModel :loading="loading"  :price="calculatePrice"  @car-selected="updateSelectedCar" />
+        <CarModel :loading="loading" :eta="eta"  :price="calculatePrice"  @car-selected="updateSelectedCar" />
       </div>
       <button
       @click="chapter = 1"
-      class="sm:hidden outline w-full mt-4 text-white font-semibold text-[18px] px-8 py-4 rounded-md transition .4s ease-all"
+      class="sm:hidden outline w-full mt-4 text-black opacity-[0.87] font-semibold text-[18px] px-8 py-4 rounded-md transition .4s ease-all"
       >
       Back
       </button>
@@ -130,39 +153,39 @@
   </div>
 </section>
 <section v-if="chapter === 3">
-    <div class="grid grid-cols-3 grid-rows-2 gap-x-8 w-full">
+    <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full">
       <div class="relative mb-4">
-      <label for="firstName" class="block mb-2 text-sm font-medium text-white">{{ $t('form.name') }}</label>
+      <label for="firstName" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.name') }}</label>
       <InputText required v-model="formData.firstName" type="text" name="firstName" placeholder="John" class="w-full p-2 rounded-[8px]" />
       </div>
       <div class="mb-4">
-      <label for="firstName" class="block mb-2 text-sm font-medium text-white">{{ $t('form.surname') }}</label>
+      <label for="firstName" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.surname') }}</label>
       <InputText v-model="formData.lastName" type="text" name="lastName" placeholder="Doe" class="w-full p-2 rounded-[8px]" />
       </div>
       <div class="mb-4">
-      <label for="email" class="block mb-2 text-sm font-medium text-white">{{ $t('form.email') }}</label>
+      <label for="email" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.email') }}</label>
       <InputText v-model="formData.email" type="text" name="email" placeholder="john.doe@mail.com" class="w-full p-2 rounded-[8px]" />
       </div>
       <div class="mb-4">
-      <label for="phoneNumber" class="block mb-2 text-sm font-medium text-white">{{ $t('form.number') }}</label>
+      <label for="phoneNumber" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.number') }}</label>
       <InputText v-model="formData.phoneNumber" type="tel" autofocus name="phoneNumber" placeholder="+1 (123) 456-7890" class="w-full p-2 rounded-[8px]" />
       </div>
       <div class="mb-4">
-      <label for="flightNumber" class="block mb-2 text-sm font-medium text-white">{{ $t('form.flight-number') }}</label>
+      <label for="flightNumber" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.flight-number') }}</label>
       <InputText v-model="formData.flightNumber" type="text" name="flightNumber" placeholder="BA1594" class="w-full p-2 rounded-[8px]" />
       </div>
     </div>
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="mb-4 flex flex-col justify-start gap-y-1">
-          <label for="childSeat" class="block mb-2 text-sm font-medium text-white">{{ $t('form.child-seat') }}</label>
+          <label for="childSeat" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.child-seat') }}</label>
           <div class="flex items-center gap-x-2">
             <Checkbox v-model="checked" :binary="true"/>
-            <p class="text-white">{{ $t('form.child-seat-p') }}</p>
+            <p class="text-black opacity-[0.87]">{{ $t('form.child-seat-p') }}</p>
           </div>
       </div>
-    <div class="flex mb-4 gap-x-2">
-        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 text-[16px] p-2 text-white mt-7" />
-        <Button label="Next" :loading="loading" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 text-[16px] p-2 text-white mt-7" />
+    <div class="flex flex-col md:flex-row mb-4 gap-x-2 gap-y-4">
+        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 text-[16px] p-2 text-black opacity-[0.87] md:mt-7" />
+        <Button label="Next" :loading="loading" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 text-[16px] p-2 text-black opacity-[0.87] md:mt-7" />
       </div>
     </div>
   </section>
@@ -189,11 +212,11 @@
     <div class="flex justify-between items-center">
       <div class="flex items-center gap-x-2">
             <Checkbox v-model="isAgreed" :binary="true"/>
-            <p v-html="$t('tcpp')" class="text-white" />
+            <p v-html="$t('tcpp')" class="text-black opacity-[0.87]" />
           </div>
       <div class="flex gap-x-2 mb-4 w-[400px]">
-        <Button label="Back" @click="chapter--" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-white mt-7" />
-        <Button label="Finish booking" type="submit" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-white mt-7" />
+        <Button label="Back" @click="chapter--" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-black opacity-[0.87] mt-7" />
+        <Button label="Finish booking" type="submit" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-black opacity-[0.87] mt-7" />
       </div>
     </div>
   </section>
@@ -208,7 +231,6 @@ import AdressComplete from './AdressComplete.vue';
 import CarModel from './CarModel.vue';
 import Checkbox from 'primevue/checkbox/Checkbox.vue';
 import type { FormDataVariables } from './data/formData';
-import { useEventBus } from '@vueuse/core'
 import { formData } from './data/formData';
 import axios from 'axios';
 import mapboxgl, { type Coordinate } from 'mapbox-gl';
@@ -261,6 +283,8 @@ const pickupDate = ref(new Date())
 const pickupTime = ref(new Date())
 const checked = ref(false)
 const isAgreed = ref(false)
+const today = new Date()
+const isDisabled = ref(false)
 
 const formattedDate = computed(() => {
   let day = String(pickupDate.value.getDate()).padStart(2, '0')
@@ -336,7 +360,7 @@ const itemsSchedule = computed(() => [...bookingItems.value.slice(6, 12)])
 const fromTo = computed(() => [...bookingItems.value.slice(6, 8)])
 
 
-const chapter = ref(2)
+const chapter = ref(1)
 const config = useRuntimeConfig()
 const loading = ref(false)
 const updateSelectedCar = (carName: string) => {
@@ -344,6 +368,19 @@ const updateSelectedCar = (carName: string) => {
   chapter.value += 1
 }
 const chapterChange = async () => {
+  if (chapter.value === 1) {
+    if (!formData.from || !formData.to || !formData.formattedDate || !formData.formatTime || !formData.passengers || !formData.luggage) {
+      isDisabled.value = true
+      alert('Please fill in all the fields')
+      return
+  }
+  } else if (chapter.value === 3) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phoneNumber || !formData.flightNumber) {
+      isDisabled.value = true
+      alert('Please fill in all the fields')
+      return
+  } }
+
   loading.value = true
     setTimeout(() => {
       chapter.value ++
@@ -367,7 +404,9 @@ const submitForm = async () => {
                 }
               ],
               cc: [
-                {}
+                {
+                  email: 'hackrecaz@gmail.com'
+                }
               ],
               dynamic_template_data: {
                 name: formData.firstName,
@@ -409,35 +448,20 @@ const submitForm = async () => {
   const reactiveFromCoordinates = ref<number[]>([])
   const reactiveToCoordinates = ref<number[]>([])
   const returnSelectedAddressFrom = async (display_name: string, coordinates: number[]) => {
-  console.log('Received Coordinates:', coordinates);
 
   formData.from = display_name;
   formData.coordinates.fromCoordinates = coordinates;
   reactiveFromCoordinates.value = coordinates;
-  console.log('Updated FormData From', formData.from, 'Coordinates:', formData.coordinates.fromCoordinates);
-
-  // Log formData after it has been updated
-  console.log('FormData output after updating from:', formData.coordinates.fromCoordinates[0]);
-  console.log('FormData output after updating from:', formData.coordinates.fromCoordinates[1]);
-
-  const fromCoordinates = new mapboxgl.LngLat(formData.coordinates.fromCoordinates[0], formData.coordinates.fromCoordinates[1]);
-  console.log('FromCoordinates:', fromCoordinates);
 }
 
 
 const returnSelectedAddressTo = async (display_name: string, coordinates: number[]) => {
-  console.log('Received Coordinates:', coordinates);
 
   formData.to = display_name;
   formData.coordinates.toCoordinates = coordinates;
   reactiveToCoordinates.value = coordinates;
-  console.log('Updated FormData To', formData.to, 'Coordinates:', formData.coordinates.toCoordinates);
 
   // Log formData after it has been updated
-  console.log('FormData output after updating to:', formData);
-
-  console.log('FormData output after updating from:', formData.coordinates.toCoordinates[0]);
-  console.log('FormData output after updating from:', formData.coordinates.toCoordinates[1]);
 }
 
   function haversineDistance(fromLat: number, fromLng: number, toLat: number, toLng: number) {
@@ -456,6 +480,11 @@ const returnSelectedAddressTo = async (display_name: string, coordinates: number
   const haversineResult = computed(() => {
     return `${haversineDistance(reactiveFromCoordinates.value[0], reactiveFromCoordinates.value[1], reactiveToCoordinates.value[0], reactiveToCoordinates.value[1]).toFixed(0)}`
   })
+
+  const eta = computed(() => {
+    return `${(Number(haversineResult.value) / 60) * 60}`
+  })
+  
 
   const calculatePrice = computed(() => {
     const distance = Number(haversineResult.value);

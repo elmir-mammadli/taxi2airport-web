@@ -11,17 +11,17 @@
                         {{ detail.name }}
                     </h1>
                     <div class="flex justify-center gap-x-4 mt-3 font-medium">
-                        <span>🚹 Max 4</span>
-                        <span>🛄 Max 3</span>
+                        <span>🚹 Max {{ detail.person }}</span>
+                        <span>🛄 Max {{ detail.luggage }}</span>
                     </div>
                     <p class="font-normal mt-2">⌛️ Free waiting time: <span class="font-semibold">45 min</span></p>
-                    <p class="font-normal mt-2">⏱️ Estimated duration: <span class="font-semibold">30 min</span></p>
+                    <p class="font-normal mt-2">⏱️ Estimated duration: <span class="font-semibold">{{ eta }} min</span></p>
                 </div>
             </div>
             </div>
         </div>
         <div class="card">
-            <h1 class="font-extrabold text-[32px] text-center mt-3 leading-none font-inter">Kč {{ detail.price }}</h1>
+            <h1 class="font-bold text-[32px] text-center mt-3 leading-none font-helvetica">{{ detail.extraPrice + '.00 Kč' }}</h1>
             <Button 
             :loading="loading[index]"
             @click="selectCar(index)"
@@ -34,27 +34,23 @@
 </template>
 <script setup lang="ts">
 import Button from "primevue/button/Button.vue";
+import { details } from './data/formData'
 const props = defineProps({
     price: {
         type: Number,
         required: true
+    },
+    eta : {
+        type: String,
+        required: true
     }
 })
+for (let i = 0; i < details.length; i++) {
+    details[i].extraPrice = props.price + details[i].initialPrice
+}
+
 const emit = defineEmits(['car-selected'])
 
-
-const details = [
-    { 
-        img: '/sedan.png',
-        name: 'Economy Sedan',
-        price: `${props.price + 590}.00`
-    },
-    {   
-        img: '/minivan.png',
-        name: 'Economy Minivan',
-        price: `${props.price + 990}.00`
-    }
-]
 const loading = ref(Array(details.length).fill(false))
 
 const selectCar = (index: number) => {

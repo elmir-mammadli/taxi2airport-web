@@ -1,6 +1,6 @@
 <template>
     
-<footer class="max-w-[1600px] mx-auto mb-5">
+<footer class="max-w-[1600px] mx-auto">
     <div class="mx-auto w-full shadow-lg">
     <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-900 font-medium dark:text-gray-300 sm:text-center">© 2023 <a href="/">Transfervan.</a> All Rights Reserved.

@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     ['@storyblok/nuxt', {
       accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
-    }]
+    }],
+    "nuxt-security"
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts',
@@ -27,14 +28,23 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: 'Headless'
   },
-  svgo: {
-    componentPrefix: 'Icon'
-  },
   plugins: [
   { src: '~/plugins/aos', mode: 'client' },
   ],
   build: {
     transpile: ['vuetify'],
+  },
+  security: {
+
+    corsHandler: {
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+      allowHeaders: '*',
+      exposeHeaders: '*',
+      preflight: {
+        statusCode: 204,
+      },
+    }
   },
   vite: {
     define: {

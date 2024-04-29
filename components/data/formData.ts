@@ -11,6 +11,34 @@ export type Coordinates = {
     toCoordinates: Array<number> | null
 }
 
+export type Details = {
+    img: string;
+    name: string;
+    person: number;
+    luggage: number;
+    initialPrice: number;
+    extraPrice: number;
+}
+
+export const details: Details[] = [
+    { 
+        img: '/images/sedan.png',
+        name: 'Economy Sedan',
+        person: 4,
+        luggage: 3,
+        initialPrice: 590,
+        extraPrice: 0
+    },
+    {   
+        img: '/images/minivan.png',
+        name: 'Economy Minivan',
+        person: 8,
+        luggage: 7,
+        initialPrice: 990,
+        extraPrice: 0
+    },
+]
+
 export const formData: FormDataVariables = {
     from: '',
     to: '',

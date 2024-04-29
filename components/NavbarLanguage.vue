@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @mouseenter="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-2 py-2 px-3 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
+    <div @click="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-[1px] border-custom-blue z-30 py-2 px-3 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
     <ul
       v-show="showDropdown"
       class="
@@ -9,7 +9,6 @@
         p-2
         shadow
         menu
-        z-[9999px]
         bg-white
         rounded-box
         font-semibold

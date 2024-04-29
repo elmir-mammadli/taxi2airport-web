@@ -1,24 +1,24 @@
 <template>
-    <div class="max-w-screen-xl mx-auto mt-16 z-10">
+    <div class="max-w-screen-xl mx-auto mt-10 md:mt-16">
         <div
-        class="relative flex flex-row justify-between items-center z-30">
+        class="relative flex flex-row md:justify-between items-center px-5">
             <div 
-            class="flex flex-col items-start">
+            class="flex flex-col items-start sm:items-center md:items-start justify-center">
                 <h1
                 v-html="$t('hero.title')"
-                class="text-[24px] xl:text-[72px] font-bold max-w-xl text-gray-800 leading-[80px]" />
+                class="text-[42px] md:text-[54px] lg:text-[72px] font-bold max-w-xl text-black opacity-[0.87] leading-[48px] md:leading-[64px] lg:leading-[80px]" />
                 <p 
                 v-html="$t('hero.subtitle')"
-                class="mt-4 max-w-xl text-gray-700 font-normal text-[20px]"/>
+                class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[20px]"/>
                 <div 
                 class="flex gap-x-5">
                     <button 
                     @click="triggerShake" 
-                    class="bg-orange-500 text-white font-semibold text-[18px] px-9 py-3 rounded-xl mt-8 hover:bg-orange-600 transition .4s ease-all">
+                    class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-3 rounded-xl mt-8 hover:bg-opacity-80 transition .4s ease-all">
                         {{ $t('button-2') }}
                   </button>
                   <NuxtLink to="#faq">
-                    <button class="bg-[#fff] hover:bg-gray-800 text-gray-900 hover:text-[#fff] outline outline-gray-800 font-medium text-[18px] px-9 py-3 rounded-xl mt-8 transition .4s ease-all">
+                    <button class="bg-[#fff] text-custom-blue outline outline-custom-blue font-medium text-[18px] px-9 py-3 rounded-xl mt-8 transition .4s ease-all">
                     FAQ
                 </button>
                   </NuxtLink>
@@ -28,15 +28,11 @@
                 <span 
                 class="relative">
                     <img
-                    class="hidden md:block relative z-20" src="/images/hero_vector.png" width="560" alt="hero-img">
-                    <span 
-                    class="hidden md:block absolute z-10 -left-[12%] -top-[5%] -rotate-0">
-                        <img class="" src="/images/plane.png" width="220" alt="">
-                    </span>
+                    class="hidden md:block relative" src="/images/hero_vector1.svg" width="540" alt="hero-img" />
                 </span>
             </div>
         </div>
-        <Form/>
+        <Form />
     </div>
 </template>
 <script setup lang="ts">

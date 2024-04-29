@@ -1,15 +1,15 @@
 <template>
   <div class="relative">
-    <InputText
+    <input
       class="w-full"
       type="text"
       v-model="query"
       @input="autopredict"
-      required
       :placeholder="$t('form.address-placeholder')"
+      required
     />
     <div
-      class="bg-white rounded border p-2 max-w-[510px] mt-4 z-30" 
+      class="absolute bg-white rounded border p-2 max-w-[510px] mt-4 z-30" 
       v-if="addresses.length && (addresses.length || popularLocations.length)">
       <div
         class="p-2 border-b cursor-pointer"

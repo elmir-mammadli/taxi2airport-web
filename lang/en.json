@@ -1,10 +1,14 @@
 {
 	"aside": {
 		"item-1": "No hidden costs",
-		"item-2": "24/7 Customer Support",
+		"item-2": "Customer Support",
 		"item-3": "<span class=\"font-semibold\">Free</span> cancellation up to 24 hours before departure"
 	},
 	"button-2": "Let's Go!",
+	"cars": {
+		"header": "Your Ride, Your Way: Explore Our Car Options!",
+		"title": "Our available cars"
+	},
 	"form": {
 		"address-placeholder": "Airport, address, station",
 		"booking-details": "YOUR BOOKING DETAILS",
@@ -26,7 +30,7 @@
 	},
 	"hero": {
 		"subtitle": "Fast, safe and easiest transfer services <span class=\"font-bold\">in Prague.</span>",
-		"title": "Have your <span class=\"text-orange-400\">best&nbsp;transfer</span>"
+		"title": "Have your <span class=\"text-custom-blue\">best&nbsp;transfer</span>"
 	},
 	"navbar": {
 		"about": "About",
@@ -35,7 +39,7 @@
 		"faq": "FAQ",
 		"home": "Home",
 		"price": "Pricing",
-		"services": "Services"
+		"services": "Available Cars"
 	},
 	"reservation": {
 		"button": "Book Now!",
@@ -51,9 +55,6 @@
 		"step-3": "Details",
 		"step-4": "Booking",
 		"title": "Reserve within a minute"
-	},
-	"faq": {
-		
 	},
 	"tcpp": "Accept the <span class=\"text-white underline\"><a href=\"/terms-and-conditions\">Terms And Conditions</a></span> and the <span class=\"text-white underline\"><a href=\"/privacy-policy\">Privacy policy</a></span>"
 }
