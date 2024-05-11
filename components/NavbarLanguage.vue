@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @mouseenter="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-2 p-2 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
+    <div @click="toggleDropdown" class="relative flex items-center gap-x-2 cursor-pointer border-[1px] border-custom-blue z-30 py-2 px-3 rounded-full font-semibold"><Icon :name="`circle-flags:${selectedFlag}`" /> {{ selectedLanguage }}</div>
     <ul
       v-show="showDropdown"
       class="
@@ -9,7 +9,6 @@
         p-2
         shadow
         menu
-        z-[1]
         bg-white
         rounded-box
         font-semibold
@@ -17,8 +16,10 @@
     >
       <li v-for="(item, index) in languages" :key="index" class="">
         <p @click="langSwitch(item.name.toLowerCase())">
-          <Icon :name="`circle-flags:${item.name.toLowerCase()}` " />
-          <p>{{ item.name }}</p>
+          <span class="flex items-center gap-x-1">
+            <Icon  :name="`circle-flags:${item.name.toLowerCase()}` " />
+            <p>{{ item.name }}</p>
+          </span>
         </p>
       </li>
     </ul>
@@ -34,8 +35,6 @@ const showDropdown = ref(false);
 type Languages = {
   name: string;
 };
-
-locale.value = 'en'
 
 const langSwitch = (lang: string) => {
   locale.value = lang
@@ -55,7 +54,7 @@ const selectedFlag = computed(() => {
   return lang?.name.toLowerCase();
 });
 
-
+locale.value = 'en'
 const languages: Languages[] = [
   {
     name: 'EN'
@@ -67,4 +66,9 @@ const languages: Languages[] = [
     name: 'DE'
   }
 ];
+
+watch(locale, () => {
+  showDropdown.value = false;
+});
+
 </script>

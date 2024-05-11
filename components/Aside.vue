@@ -1,24 +1,23 @@
 <template>
-    <section class="bg-gray-200">
+    <section class="bg-gray-200 px-5">
         <div>
         <aside
-        class="max-w-[1280px] mx-auto w-full h-[30px] flex items-center">
-            <div class="flex items-center gap-x-5 me-auto">
+        class="max-w-[1280px] mx-auto w-full h-[40px] flex items-center text-[10px]">
+            <div class="hidden md:flex items-center gap-x-5 me-auto">
                 <div v-for="(item, index) in asideData.slice(0, 3)" :key="index">
-                <div class="flex gap-x-2">
-                <Icon :name="item.icon" />
+                <div class="flex gap-x-2 items-center">
+                <Icon :name="item.icon" size="15" />
                 <p class="text-xs" v-html="item.text" />
                 </div>
             </div>
             </div>
             <div class="flex items-center gap-x-2">
                 <div v-for="(item, index) in slicedAsideData" :key="index">
-                <div class="flex">
-                <Icon :name="item.icon" />
+                <div class="flex items-center gap-x-1">
+                <Icon :name="item.icon" size="15" />
                 <p class="text-xs" v-html="item.text" :class="{
                     'border-r pr-2 border-gray-500' : index === 0
                 }" />
-                <!-- <span v-if="index === 0" class="h-[15px] bg-black w-[1px]"></span> -->
                 </div>
             </div>
             </div>

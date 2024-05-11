@@ -3,18 +3,17 @@
     <div>
       <nav class="max-w-screen-xl mx-auto bg-gray-600 bg-transparent transition-all .3s ease-in"
       >
-      <div class="flex flex-wrap items-center justify-between mx-auto pt-8">
-      <a href="/" class="flex items-center z-10">
+      <div class="flex items-center mx-auto pt-8 justify-between px-5">
+    <NuxtLink to="/" class="flex items-center z-10">
       <span class="text-[28px] tracking-[-0px] text-gray-800">
-        <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-orange-400">2</span><span class="lowercase font-semibold">airport</span>
+        <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-custom-blue">2</span><span class="lowercase font-semibold">airport</span>
       </span>
-  </a>
+  </NuxtLink>
+  <Hamburger class="block lg:hidden z-[9999]" />
 <NavItems />
-<div class="flex relative z-10 items-center gap-x-4">
-  <button class="bg-orange-500 text-white font-semibold text-[15px] px-7 py-2.5 rounded-xl hover:bg-orange-600 transition .4s ease-all">
-                    {{ $t('navbar.button')  }}
-  </button>
-  <NavbarLanguage />
+<div class="lg:flex relative z-10 items-center gap-x-4 hidden">
+  <Button @click="triggerShake" :label="$t('navbar.button')" class="bg-custom-blue text-white font-semibold text-[15px] px-7 py-2.5 rounded-xl hover:bg-opacity-80 transition .4s ease-all" />
+  <NavbarLanguage class="z-30" />
 </div>
   </div>
 </nav>
@@ -22,11 +21,20 @@
   </header>
 </template>
 <script lang="ts" setup>
+
 import NavItems from './NavItems.vue';
-import { onMounted } from 'vue';
+import Hamburger from './Hamburger.vue';
 import NavbarLanguage from './NavbarLanguage.vue';
 
+import { useShakeStore } from '../stores/useShakeStore'
+const shakeStore = useShakeStore()
+
+function triggerShake() {
+  shakeStore.triggerShake()
+}
+
 const resize = ref(false)
+
 
 
 const handleScroll = () => {

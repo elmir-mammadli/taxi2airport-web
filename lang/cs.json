@@ -5,6 +5,10 @@
 		"item-3": "<span class=\"font-semibold\">Bezplatné</span> zrušení do 24 hodin před odjezdem"
 	},
 	"button-2": "Objednat jízdu",
+	"cars": {
+		"header": "Vaše jízda, vaše cesta: Prozkoumejte naše možnosti auta!",
+		"title": "Naše dostupné vozy"
+	},
 	"form": {
 		"address-placeholder": "Letiště, adresa, stanice",
 		"booking-details": "VAŠE REZERVAČNÍ ÚDAJE",
@@ -26,7 +30,7 @@
 	},
 	"hero": {
 		"subtitle": "Rychlé, bezpečné a nejjednodušší transfery <span class=\"font-bold\">v&nbsp;Praze.</span>",
-		"title": "Získejte <span class=\"text-orange-400\">nejlepší&nbsp;převod</span>"
+		"title": "Získejte <span class=\"text-custom-blue\">nejlepší&nbsp;převod</span>"
 	},
 	"navbar": {
 		"about": "O nás",

@@ -13,19 +13,38 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     'nuxt-icon',
     '@vee-validate/nuxt',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    'nuxt-bugsnag',
+    "@formkit/nuxt",
+    '@pinia/nuxt',
+    ['@storyblok/nuxt', {
+      accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
+    }],
+    "nuxt-security"
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts',
   },
   headlessui: {
     prefix: 'Headless'
-},
-plugins: [
+  },
+  plugins: [
   { src: '~/plugins/aos', mode: 'client' },
-],
+  ],
   build: {
     transpile: ['vuetify'],
+  },
+  security: {
+
+    corsHandler: {
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+      allowHeaders: '*',
+      exposeHeaders: '*',
+      preflight: {
+        statusCode: 204,
+      },
+    }
   },
   vite: {
     define: {
@@ -68,4 +87,10 @@ plugins: [
       baseURL: 'https://ik.imagekit.io/transfervan'
     }
   },
+  runtimeConfig: {
+    public: {
+      SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+      MAPBOX_API_KEY: process.env.MAPBOX_TOKEN
+    }
+  }
 })

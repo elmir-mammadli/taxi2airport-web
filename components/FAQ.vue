@@ -1,7 +1,7 @@
 <template>
   <div id="faq" class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto">
         <div class="flex flex-col items-center mb-[40px]">
-            <p class="uppercase text-[16px] text-orange-400 font-bold">Frequently Asked Questions</p>
+            <p class="uppercase text-[16px] text-custom-blue font-bold">Frequently Asked Questions</p>
             <h1 class="text-[36px] max-w-xl text-gray-800 text-center font-semibold leading-[1.4]">Your most common questions answered here</h1>
         </div>
       <div 
@@ -27,18 +27,23 @@
       </div>
       <p v-if="showAssistance" class="ms-3 mt-5">Can't find an answer to your question? Start a chat with us for <span class="font-semibold underline"><a href="">assistance!</a></span></p>
       <div class="mx-auto">
-            <button v-if="!showButton" @click="loadMore" class="bg-orange-500 text-white font-semibold text-[18px] px-12 py-4 rounded-full mt-8 hover:bg-orange-600 transition .4s ease-all">
+            <button v-if="!showButton" @click="loadMore" class="text-gray-800 font-semibold text-[16px] mt-8 underline transition .4s ease-all">
                        More questions
                 </button>
         </div>
   </div>
 </template>
   
-  <script setup>
+  <script setup lang="ts">
   import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
   import { ChevronUpIcon } from '@heroicons/vue/20/solid'
 
-  const questions = [
+  type Questions = {
+    question: string;
+    answer: string;
+  }
+
+  const questions: Questions[] = [
     {
         question: 'When do I pay?',
         answer: 'For most booking, you can either choose to pay in advance for your airport transport service or when you’re dropped at your hotel. If you’re paying in advance online, our driver will be informed by our system, and there’s nothing more you need to do. If you’re paying on arrival by cash or credit card, you’ll pay the full amount when you arrive at your destination.'
