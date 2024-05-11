@@ -14,7 +14,6 @@
        />
        </div>
        <Disclosure />
-       <button @click="contactForm">Send Email</button>
     </main>
 </template>
 <script lang="ts" setup>
