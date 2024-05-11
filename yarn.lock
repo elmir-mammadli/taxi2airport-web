@@ -391,7 +391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.24.1":
+"@babel/runtime@npm:^7.24.1":
   version: 7.24.4
   resolution: "@babel/runtime@npm:7.24.4"
   dependencies:
@@ -899,7 +899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/vue@npm:^1.7.13, @headlessui/vue@npm:^1.7.18, @headlessui/vue@npm:^1.7.19":
+"@headlessui/vue@npm:^1.7.18, @headlessui/vue@npm:^1.7.19":
   version: 1.7.20
   resolution: "@headlessui/vue@npm:1.7.20"
   dependencies:
@@ -3153,7 +3153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:10.9.0, @vueuse/core@npm:^10.1.2, @vueuse/core@npm:^10.9.0":
+"@vueuse/core@npm:10.9.0, @vueuse/core@npm:^10.9.0":
   version: 10.9.0
   resolution: "@vueuse/core@npm:10.9.0"
   dependencies:
@@ -3237,35 +3237,6 @@ __metadata:
   dependencies:
     vue-demi: "npm:>=0.14.7"
   checksum: 55593c325b9dc15cfe9eaf84ca2a757a0c418491be56760f5560a641dfe2579c72cb55ccd04ead71217a97fc6b17ad7b7b7b9177b376bc6967174121707d1c49
-  languageName: node
-  linkType: hard
-
-"@zaptime/core@npm:0.4.19":
-  version: 0.4.19
-  resolution: "@zaptime/core@npm:0.4.19"
-  dependencies:
-    "@vueuse/core": "npm:^10.1.2"
-    date-fns: "npm:^2.30.0"
-    date-fns-tz: "npm:^2.0.0"
-  peerDependencies:
-    vue: ^3.2.37
-  checksum: 244c373de37dc5f102ce35ca91b649c4e3a58ad22ff29dcb6d483c47ceff2bdb6a92e2f8eae938169ae3de16b3399d637de9d98c663cedbaa208145bfef30816
-  languageName: node
-  linkType: hard
-
-"@zaptime/vue3@npm:^1.4.37":
-  version: 1.4.38
-  resolution: "@zaptime/vue3@npm:1.4.38"
-  dependencies:
-    "@headlessui/vue": "npm:^1.7.13"
-    "@heroicons/vue": "npm:^2.0.18"
-    "@vueuse/core": "npm:^10.1.2"
-    "@zaptime/core": "npm:0.4.19"
-    date-fns: "npm:^2.30.0"
-    date-fns-tz: "npm:^2.0.0"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 970d43445df6a2385c92616e248749998976b78a1fc70a9264e769d6b2c2b03ae6a26776ba57c1ee2829e60c7551fb4aed101a1329a41d205de8e0aeeca846cb
   languageName: node
   linkType: hard
 
@@ -4720,24 +4691,6 @@ __metadata:
     whatwg-mimetype: "npm:^4.0.0"
     whatwg-url: "npm:^14.0.0"
   checksum: 1b894d7d41c861f3a4ed2ae9b1c3f0909d4575ada02e36d3d3bc584bdd84278e20709070c79c3b3bff7ac98598cb191eb3e86a89a79ea4ee1ef360e1694f92ad
-  languageName: node
-  linkType: hard
-
-"date-fns-tz@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "date-fns-tz@npm:2.0.1"
-  peerDependencies:
-    date-fns: 2.x
-  checksum: f860dda9e3d38bc99dc325c678cafb94b3a18c12b1fea0e2f4e451396ea6c4cacced683066c669a67ec380f64fdda83aa4c414a207029b647faa2b76b2a5c6e3
-  languageName: node
-  linkType: hard
-
-"date-fns@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.21.0"
-  checksum: e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
   languageName: node
   linkType: hard
 
@@ -8256,7 +8209,6 @@ __metadata:
     "@types/express": "npm:^4.17.20"
     "@types/mapbox-gl": "npm:^3"
     "@vee-validate/nuxt": "npm:^4.11.8"
-    "@zaptime/vue3": "npm:^1.4.37"
     aos: "npm:^2.3.4"
     autoprefixer: "npm:^10.4.15"
     axios: "npm:^1.5.1"
