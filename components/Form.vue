@@ -258,11 +258,10 @@ const requiredDate = (date: string) => {
 };
 
 const currentDate = new Date();
-const formattedCountDate = currentDate.getFullYear().toString() +
-  (currentDate.getMonth() + 1).toString().padStart(2, '0') +
-  currentDate.getDate().toString().padStart(2, '0');
-
-
+const formattedCountDate = computed(() => {
+  return `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`
+  // currentDate.getFullYear().toString() + (currentDate.getMonth() + 1).toString().padStart(2, '0') + currentDate.getDate().toString().padStart(2, '0');
+})
 
 const reservationData = computed(() => [
   {
