@@ -116,7 +116,7 @@
       </div>
       </div>
       <div class="w-full">
-        <Button @click="chapterChange" :label="$t('form.search-button')" :loading="loading" :disabled="isDisabled" icon="pi pi-check" class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white" />
+        <Button @click="chapterChange" :label="$t('form.search-button')" :loading="loading" icon="pi pi-check" class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white" />
       </div>
     </div>
 </section>
@@ -156,36 +156,36 @@
     <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full">
       <div class="relative mb-4">
       <label for="firstName" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.name') }}</label>
-      <InputText required v-model="formData.firstName" type="text" name="firstName" placeholder="John" class="w-full p-2 rounded-[8px]" />
+      <InputText required v-model="formData.firstName" type="text" name="firstName" placeholder="John" class="w-full p-2 rounded-[8px] border" />
       </div>
       <div class="mb-4">
       <label for="firstName" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.surname') }}</label>
-      <InputText v-model="formData.lastName" type="text" name="lastName" placeholder="Doe" class="w-full p-2 rounded-[8px]" />
+      <InputText v-model="formData.lastName" type="text" name="lastName" placeholder="Doe" class="w-full p-2 rounded-[8px] border" />
       </div>
       <div class="mb-4">
       <label for="email" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.email') }}</label>
-      <InputText v-model="formData.email" type="text" name="email" placeholder="john.doe@mail.com" class="w-full p-2 rounded-[8px]" />
+      <InputText v-model="formData.email" type="text" name="email" placeholder="john.doe@mail.com" class="w-full p-2 rounded-[8px] border" />
       </div>
       <div class="mb-4">
       <label for="phoneNumber" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.number') }}</label>
-      <InputText v-model="formData.phoneNumber" type="tel" autofocus name="phoneNumber" placeholder="+1 (123) 456-7890" class="w-full p-2 rounded-[8px]" />
+      <InputText v-model="formData.phoneNumber" type="tel" autofocus name="phoneNumber" placeholder="+1 (123) 456-7890" class="w-full p-2 rounded-[8px] border" />
       </div>
       <div class="mb-4">
       <label for="flightNumber" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.flight-number') }}</label>
-      <InputText v-model="formData.flightNumber" type="text" name="flightNumber" placeholder="BA1594" class="w-full p-2 rounded-[8px]" />
+      <InputText v-model="formData.flightNumber" type="text" name="flightNumber" placeholder="BA1594" class="w-full p-2 rounded-[8px] border" />
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="mb-4 flex flex-col justify-start gap-y-1">
           <label for="childSeat" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.child-seat') }}</label>
           <div class="flex items-center gap-x-2">
-            <Checkbox v-model="checked" :binary="true"/>
+            <Checkbox v-model="checked" :binary="true" class="outline rounded-md outline-offset-1 outline-blue-black" />
             <p class="text-black opacity-[0.87]">{{ $t('form.child-seat-p') }}</p>
           </div>
       </div>
     <div class="flex flex-col md:flex-row mb-4 gap-x-2 gap-y-4">
-        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 text-[16px] p-2 text-black opacity-[0.87] md:mt-7" />
-        <Button label="Next" :loading="loading" @click="chapterChange" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 text-[16px] p-2 text-black opacity-[0.87] md:mt-7" />
+        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full text-[16px] bg-white hover:bg-opacity-85 p-2 md:mt-7 border !border-custom-blue !text-custom-blue" />
+        <Button label="Next" :loading="loading" @click="chapterChange" icon="pi pi-check" class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white md:mt-7" />
       </div>
     </div>
   </section>
@@ -209,14 +209,14 @@
         </table>
       </div>
     </div>
-    <div class="flex justify-between items-center">
-      <div class="flex items-center gap-x-2">
-            <Checkbox v-model="isAgreed" :binary="true"/>
+    <div class="flex items-center justify-between mt-4 mx-4">
+      <div class="flex items-center">
+            <Checkbox v-model="isAgreed" class="outline rounded-md outline-blue-black me-2" :binary="true"/>
             <p v-html="$t('tcpp')" class="text-black opacity-[0.87]" />
           </div>
-      <div class="flex gap-x-2 mb-4 w-[400px]">
-        <Button label="Back" @click="chapter--" icon="pi pi-check" class="w-full bg-red-500 hover:bg-red-600 p-2 text-black opacity-[0.87] mt-7" />
-        <Button label="Finish booking" type="submit" icon="pi pi-check" class="w-full bg-green-500 hover:bg-green-600 p-2 text-black opacity-[0.87] mt-7" />
+      <div class="flex gap-x-2 w-[400px]">
+        <Button label="Back" @click="chapterBack" icon="pi pi-check" class="w-full text-[16px] bg-white hover:bg-opacity-85 p-2 border !border-custom-blue !text-custom-blue" />
+        <Button label="Finish booking" type="submit" :loading="loading" icon="pi pi-check" class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white" />
       </div>
     </div>
   </section>
@@ -258,9 +258,9 @@ const requiredDate = (date: string) => {
 };
 
 const currentDate = new Date();
+
 const formattedCountDate = computed(() => {
-  return `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`
-  // currentDate.getFullYear().toString() + (currentDate.getMonth() + 1).toString().padStart(2, '0') + currentDate.getDate().toString().padStart(2, '0');
+  return currentDate.getFullYear().toString() + (currentDate.getMonth() + 1).toString().padStart(2, '0') + currentDate.getDate().toString().padStart(2, '0');
 })
 
 const reservationData = computed(() => [
@@ -283,7 +283,6 @@ const pickupTime = ref(new Date())
 const checked = ref(false)
 const isAgreed = ref(false)
 const today = new Date()
-const isDisabled = ref(false)
 
 const formattedDate = computed(() => {
   let day = String(pickupDate.value.getDate()).padStart(2, '0')
@@ -369,13 +368,11 @@ const updateSelectedCar = (carName: string) => {
 const chapterChange = async () => {
   if (chapter.value === 1) {
     if (!formData.from || !formData.to || !formData.formattedDate || !formData.formatTime || !formData.passengers || !formData.luggage) {
-      isDisabled.value = true
       alert('Please fill in all the fields')
       return
   }
   } else if (chapter.value === 3) {
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phoneNumber || !formData.flightNumber) {
-      isDisabled.value = true
       alert('Please fill in all the fields')
       return
   } }

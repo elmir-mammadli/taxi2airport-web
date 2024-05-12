@@ -16,7 +16,7 @@
         v-for="(popular, index) in popularLocations"
         :key="index"
         @click="selectedAddress(popular)"
-        v-if="query.length <= 3"
+        v-if="query.length <= 5"
       >
         <div>
           <span class="font-bold">
@@ -41,7 +41,6 @@
 </template>
 
 <script setup lang="ts">
-import InputText from 'primevue/inputtext/InputText.vue';
 import { ref } from 'vue'
 import axios from "axios";
 import mapboxgl from 'mapbox-gl'
@@ -60,10 +59,10 @@ type PopularLocations = {
 }
 
 const popularLocations: PopularLocations[] = [
-  { icon: 'ph:airplane-tilt', display_name: "Prague Airport (PRG)", coordinates: [50.1000, 14.2600]},
-  { icon: 'ph:bank', display_name: "Prague City Centre (Václavské náměstí)", coordinates: [50.0833, 14.4167]},
-  { icon: 'ph:bus', display_name: "Praha, ÚAN Florenc (Central Bus Station Florenc)", coordinates: [50.0900, 14.4400]},
-  { icon: 'ph:train', display_name: "Praha, Hlavní nádraží (Main Train Station)", coordinates: [50.0833, 14.4333]}
+  { icon: 'ph:airplane-tilt', display_name: "Prague Airport PRG (Václav Havel Airport)", coordinates: [14.2638025, 50.1042955]},
+  { icon: 'ph:bank', display_name: "Prague City Centre (Václavské náměstí)", coordinates: [14.427477, 50.0818262]},
+  { icon: 'ph:bus', display_name: "Praha, ÚAN Florenc (Central Bus Station Florenc)", coordinates: [14.440543, 50.090029]},
+  { icon: 'ph:train', display_name: "Praha, Hlavní nádraží (Main Train Station)", coordinates: [14.4353, 50.0829]}
 ];
 
 
@@ -92,24 +91,10 @@ const autopredict = async () => {
         )
         
     } catch (error) {
-        console.error('Fetch error:Elmir', error);
+        console.error('Fetch error:', error);
     }
 }
 
-// const selectedAddress = (address: any) => {
-//     query.value = address.display_name;
-//     addresses.value = [];
-//     coordinates.value = address.coordinates;
-//     emit('address-selected', address);
-
-//     // Example usage of mapboxgl haversine formula
-//     const originCoordinates = new mapboxgl.LngLat(address.coordinates[0], address.coordinates[1]); // Example: New York coordinates
-//   const selectedCoordinates = new mapboxgl.LngLat(address.coordinates[0], address.coordinates[1]);
-//   const distanceInKm = originCoordinates.distanceTo(selectedCoordinates) / 1000; // Convert meters to kilometers
-//   const roundedDistance = distanceInKm.toFixed(0); // Round to the nearest whole number
-//   console.log('Distance:', roundedDistance, 'km');
-  
-// };
 type PartialLocations = Partial<PopularLocations>
 
 const selectedAddress = (address: PartialLocations ) => {
@@ -117,6 +102,8 @@ const selectedAddress = (address: PartialLocations ) => {
     addresses.value = [];
     if (address.coordinates) {
       coordinates.value.push({ coordinates: address.coordinates });
+      console.log('asdsad', coordinates.value);
+      
     }
 
     emit('address-selected', address);

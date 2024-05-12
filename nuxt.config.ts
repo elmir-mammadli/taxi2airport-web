@@ -33,18 +33,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  security: {
-
-    corsHandler: {
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-      allowHeaders: '*',
-      exposeHeaders: '*',
-      preflight: {
-        statusCode: 204,
-      },
-    }
-  },
   vite: {
     define: {
       'process.env.DEBUG': false,
@@ -80,12 +68,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  image: {
-    provider: 'imagekit',
-    imagekit: {
-      baseURL: 'https://ik.imagekit.io/transfervan'
-    }
-  },
+
   runtimeConfig: {
     public: {
       SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
