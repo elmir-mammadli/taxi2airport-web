@@ -19,8 +19,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     ['@storyblok/nuxt', {
       accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
-    }],
-    "nuxt-security"
+    }]
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts',
