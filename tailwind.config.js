@@ -1,20 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
     'node_modules/preline/dist/*.js',
-    "./nuxt.config.{js,ts}",
-    "./app.vue",
-    "./node_modules/flowbite/**/*.{js,ts}"
+    './nuxt.config.{js,ts}',
+    './app.vue',
+    './node_modules/flowbite/**/*.{js,ts}'
   ],
   theme: {
     extend: {
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
-        'poppins': ['Montserrat', 'sans-serif']
+        inter: ['Inter', 'sans-serif'],
+        poppins: ['Montserrat', 'sans-serif']
       },
       colors: {
         primary: '#F5D21B',
@@ -33,12 +33,11 @@ module.exports = {
           950: '#052e16'
         }
       }
-    },
+    }
   },
   plugins: [
-    require("daisyui"),
+    require('daisyui'),
     require('flowbite/plugin'),
     require('@headlessui/tailwindcss')({ prefix: 'ui' })
-  ],
-}
-
+  ]
+};

@@ -18,10 +18,7 @@
       />
 
       <!-- This element is to trick the browser into centering the modal contents. -->
-      <span
-        class="align-middle h-screen"
-        aria-hidden="true"
-      >&#8203;</span>
+      <span class="align-middle h-screen" aria-hidden="true">&#8203;</span>
 
       <div
         data-aos="fade-up"
@@ -36,18 +33,16 @@
 </template>
 
 <script lang="ts" setup>
-
 defineProps({
   value: {
     type: Boolean,
     default: false
   }
-})
+});
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close']);
 
 const closeModal = () => {
-  emit('close')
-}
-
+  emit('close');
+};
 </script>
