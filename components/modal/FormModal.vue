@@ -1,20 +1,18 @@
 <template>
-        <Modal :value="value" @close="$emit('close')">
-            <Form />
-        </Modal>
+  <Modal :value="value" @close="$emit('close')">
+    <Form />
+  </Modal>
 </template>
 <script setup lang="ts">
-import Modal from './Modal.vue';
 import Form from '../Form.vue';
+import Modal from './Modal.vue';
 
 defineProps({
-    value:{
-        type: Boolean,
-        default: false
-    }
-})
+  value: {
+    type: Boolean,
+    default: false
+  }
+});
 
-defineEmits([
-    'close'
-])
+defineEmits(['close']);
 </script>

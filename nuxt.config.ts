@@ -5,40 +5,41 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.min.css',
     'primevue/resources/themes/lara-light-blue/theme.css',
-    'primevue/resources/primevue.css',
+    'primevue/resources/primevue.css'
   ],
   modules: [
-    "@nuxt/image",
-    "nuxt-primevue",
+    '@nuxt/image',
+    'nuxt-primevue',
     'nuxt-headlessui',
     'nuxt-icon',
     '@vee-validate/nuxt',
     '@nuxtjs/i18n',
     'nuxt-bugsnag',
-    "@formkit/nuxt",
+    '@formkit/nuxt',
     '@pinia/nuxt',
-    ['@storyblok/nuxt', {
-      accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
-    }]
+    [
+      '@storyblok/nuxt',
+      {
+        accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
+      }
+    ]
   ],
   i18n: {
-    vueI18n: './plugins/i18n.config.ts',
+    vueI18n: './plugins/i18n.config.ts'
   },
   headlessui: {
     prefix: 'Headless'
   },
-  plugins: [
-  { src: '~/plugins/aos', mode: 'client' },
-  ],
+  plugins: [{ src: '~/plugins/aos', mode: 'client' }],
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify']
   },
   vite: {
     define: {
-      'process.env.DEBUG': false,
-    },
+      'process.env.DEBUG': false
+    }
   },
-  app:{
+  app: {
     head: {
       link: [
         // Inter font
@@ -50,29 +51,31 @@ export default defineNuxtConfig({
         {
           href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap',
           rel: 'stylesheet'
-        },
+        }
       ],
       script: [
         {
           hid: 'tawkto',
           src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
           defer: true,
-          crossorigin: 'anonymous',
+          crossorigin: 'anonymous'
         }
-    ]
-    },
+      ]
+    }
   },
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
 
   runtimeConfig: {
     public: {
       SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
-      MAPBOX_API_KEY: process.env.MAPBOX_TOKEN
+      MAPBOX_API_KEY: process.env.MAPBOX_TOKEN,
+      RAPID_API_KEY: process.env.RAPID_API_KEY,
+      TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-})
+});

@@ -1,6 +1,6 @@
 <template>
-    <div>
-      Some *custom* layout
-      <slot />
-    </div>
-  </template>
+  <div>
+    Some *custom* layout
+    <slot />
+  </div>
+</template>

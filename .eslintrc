@@ -1,0 +1,58 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "@nuxtjs/eslint-config-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "./server/**/*.ts",
+        "./components/**/*.vue",
+        "./components/**/*.ts",
+        "./layouts/**/*.vue"
+      ],
+      "rules": {
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "info",
+              "warn",
+              "trace",
+              "error"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+
+  "rules": {
+    "vue/no-v-html": ["off"],
+    "vue/multi-word-component-names": ["off"],
+    "vue/no-reserved-component-names": ["off"],
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "semi": true,
+      "tabWidth": 2,
+      "useTabs": false,
+      "trailingComma": "none",
+      "printWidth": 80
+    }]
+    //Uncomment to check TS usage in Vue files
+
+    // "vue/block-lang": [
+    //   "error",
+    //   {
+    //     "script": {
+    //       "lang": "ts"
+    //     }
+    //   }
+    // ]
+  }
+}

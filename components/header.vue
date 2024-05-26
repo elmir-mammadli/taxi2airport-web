@@ -1,10 +1,9 @@
 <template>
-    <div>
-        <Navbar />
-        <HeroSection />
-    </div>
+  <div>
+    <Navbar />
+    <HeroSection />
+  </div>
 </template>
 <script setup>
-import Navbar from './Navbar.vue'
-import Aside from './Aside.vue'
+import Navbar from './Navbar.vue';
 </script>
