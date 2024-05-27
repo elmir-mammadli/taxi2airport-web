@@ -10,6 +10,7 @@
     "lint": "eslint --max-warnings 0 ."
   },
   "devDependencies": {
+    "@nuxt/content": "^2.12.1",
     "@nuxt/devtools": "latest",
     "@types/aos": "^3.0.5",
     "@types/cors": "^2.8.15",

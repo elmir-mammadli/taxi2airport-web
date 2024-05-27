@@ -1,0 +1,60 @@
+{
+	"aside": {
+		"item-1": "Sin costos ocultos",
+		"item-2": "Atención al cliente",
+		"item-3": "<span class=\"font-semibold\">Cancelación</span> gratuita hasta 24 horas antes de la salida"
+	},
+	"button-2": "¡Vamos!",
+	"cars": {
+		"header": "Su viaje, a su manera: ¡Explore nuestras opciones de automóviles! ",
+		"title": "Nuestros autos disponibles"
+	},
+	"form": {
+		"address-placeholder": "Aeropuerto, dirección, estación.",
+		"booking-details": "LOS DETALLES DE TU RESERVA",
+		"child-seat": "Asiento para niños",
+		"child-seat-p": "Necesito agregar un asiento para niños",
+		"date": "Fecha",
+		"email": "Correo electrónico",
+		"flight-number": "Número de vuelo",
+		"from": "De",
+		"luggage": "Equipaje",
+		"name": "Nombre de pila",
+		"number": "Número de teléfono",
+		"passengers": "Pasajeros",
+		"search-button": "Buscar",
+		"selected-car": "Coche seleccionado",
+		"surname": "Apellido",
+		"time": "Tiempo",
+		"to": "A"
+	},
+	"hero": {
+		"subtitle": "Servicios de traslado rápidos, seguros y sencillos <span class=\"font-bold\">en Praga.</span>",
+		"title": "Tenga su <span class=\"text-custom-blue\">mejor&nbsp;transferencia</span>"
+	},
+	"navbar": {
+		"about": "Acerca de",
+		"button": "Reservar un viaje",
+		"contact": "Contacto",
+		"faq": "Preguntas más frecuentes",
+		"home": "Hogar",
+		"price": "Precios",
+		"services": "Coches disponibles"
+	},
+	"reservation": {
+		"button": "¡Reservar ahora!",
+		"card-1": "Planifica tu viaje con antelación",
+		"card-2": "Elige el transporte",
+		"card-3": "¡Paga y disfruta!",
+		"card-desc-1": "Fija una hora y elige un lugar de encuentro para tu viaje.",
+		"card-desc-2": "Elija un tipo de automóvil y personalice las opciones para un viaje más placentero.",
+		"card-desc-3": "Sin costos ocultos. Precios razonables, aceptando todos los métodos de pago.",
+		"header": "Organice su traslado al aeropuerto en&nbsp;unos sencillos pasos",
+		"step-1": "Viaje",
+		"step-2": "Vehículo",
+		"step-3": "Detalles",
+		"step-4": "Reserva",
+		"title": "Reserva en un minuto"
+	},
+	"tcpp": "Acepte los <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Términos y condiciones</a></span> y la <span class=\"text-white underline\"><a href=\"/privacy-policy\">Política de privacidad</a></span>"
+}

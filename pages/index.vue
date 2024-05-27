@@ -1,5 +1,6 @@
 <template>
   <main>
+    <HeroSection />
     <BookingBlock />
     <div
       id="available-cars"
@@ -22,6 +23,6 @@
   </main>
 </template>
 <script lang="ts" setup>
-import Disclosure from '~/components/faq/FAQ.vue';
-import { details } from '~/components/data/formData';
+import Disclosure from '~/components/faq/FAQ.vue'
+import { details } from '~/components/data/formData'
 </script>

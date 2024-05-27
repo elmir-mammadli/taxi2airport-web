@@ -35,7 +35,7 @@ export type Details = {
 };
 
 export const useReservationData = () => {
-  const { $t } = useLanguage();
+  const { $t } = useLanguage()
   return [
     {
       step: $t('reservation.step-1')
@@ -49,8 +49,8 @@ export const useReservationData = () => {
     {
       step: $t('reservation.step-4')
     }
-  ];
-};
+  ]
+}
 
 export const details: Details[] = [
   {
@@ -69,7 +69,7 @@ export const details: Details[] = [
     initialPrice: 990,
     extraPrice: 0
   }
-];
+]
 
 export const formData: FormDataVariables = {
   from: '',
@@ -89,4 +89,4 @@ export const formData: FormDataVariables = {
     fromCoordinates: [],
     toCoordinates: []
   }
-};
+}

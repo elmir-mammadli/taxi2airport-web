@@ -7,7 +7,7 @@
       :placeholder="$t('form.address-placeholder')"
       :required="true"
       @input="autopredict"
-    />
+    >
     <div
       v-if="addresses.length && (addresses.length || popularLocations.length)"
       class="absolute bg-white rounded border p-2 max-w-[510px] mt-4 z-30"
@@ -39,12 +39,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import axios from 'axios';
+import { ref } from 'vue'
+import axios from 'axios'
 
-const config = useRuntimeConfig();
-const emit = defineEmits(['address-selected', 'update:modelValue']);
-const query = ref('');
+const config = useRuntimeConfig()
+const emit = defineEmits(['address-selected', 'update:modelValue'])
+const query = ref('')
 
 type PopularLocations = {
   icon: string;
@@ -52,8 +52,8 @@ type PopularLocations = {
   coordinates: Array<number>;
 };
 
-const coordinates = ref<Pick<PopularLocations, 'coordinates'>[]>([]);
-const addresses = ref<Pick<PopularLocations, 'display_name'>[]>([]);
+const coordinates = ref<Pick<PopularLocations, 'coordinates'>[]>([])
+const addresses = ref<Pick<PopularLocations, 'display_name'>[]>([])
 
 const popularLocations: PopularLocations[] = [
   {
@@ -76,12 +76,12 @@ const popularLocations: PopularLocations[] = [
     display_name: 'Praha, Hlavní nádraží (Main Train Station)',
     coordinates: [14.4353, 50.0829]
   }
-];
+]
 
 const autopredict = async () => {
   if (!query.value) {
-    addresses.value = [];
-    return;
+    addresses.value = []
+    return
   }
   try {
     const response = await axios.get(
@@ -95,32 +95,32 @@ const autopredict = async () => {
           language: 'en'
         }
       }
-    );
+    )
     addresses.value = response.data.features.map(
       (feature: { place_name: string; center: Array<number> }) => ({
         display_name: feature.place_name,
         coordinates: feature.center
       })
-    );
+    )
   } catch (error) {
-    console.error('Fetch error:', error);
+    console.error('Fetch error:', error)
   }
-};
+}
 
 type PartialLocations = Partial<PopularLocations>;
 
 const selectedAddress = (address: PartialLocations) => {
-  query.value = address.display_name ?? '';
-  addresses.value = [];
+  query.value = address.display_name ?? ''
+  addresses.value = []
   if (address.coordinates) {
-    coordinates.value.push({ coordinates: address.coordinates });
-    console.log('asdsad', coordinates.value);
+    coordinates.value.push({ coordinates: address.coordinates })
+    console.log('asdsad', coordinates.value)
   }
 
-  emit('address-selected', address);
-};
+  emit('address-selected', address)
+}
 
 watch(query, (newQuery) => {
-  emit('update:modelValue', newQuery);
-});
+  emit('update:modelValue', newQuery)
+})
 </script>

@@ -22,7 +22,8 @@ export default defineNuxtConfig({
       {
         accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
       }
-    ]
+    ],
+    '@nuxt/content'
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts'
@@ -78,4 +79,4 @@ export default defineNuxtConfig({
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-});
+})
