@@ -222,6 +222,10 @@
               v-if="!isFlightNumber"
               class="text-red-500"
             >Entered flight number does not exists</small>
+            <small
+              v-if="isFlightNumber"
+              class=""
+            >{{ flightInfo }}</small>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2">
@@ -449,6 +453,7 @@ const config = useRuntimeConfig()
 const loading = ref(false)
 const todaysDateForAPI = new Date().toISOString().split('T')[0]
 const isFlightNumber = ref(true)
+const flightInfo = ref('')
 const isLoading = ref(false)
 
 //  <div class="mb-4">
@@ -498,6 +503,10 @@ const fetchFlightsData = async () => {
   }
 
   try {
+    const departureIcao = ref('')
+    const departureName = ref('')
+    const departureCityName = ref('')
+    const departureStatus = ref('')
     if (dynamicFlightNumber.length >= 6) {
       const response = await axios.request(options)
       isLoading.value = true
@@ -505,13 +514,14 @@ const fetchFlightsData = async () => {
         (item: { arrival: { airport: { countryCode: string } } }) =>
           item.arrival.airport.countryCode === 'CZ'
       )
-      console.log(
-        'Response, Airport Name:',
-        response.data[0].arrival.airport.name
-      )
-
+      console.log('FilteredArrival', response.data[0])
+      departureIcao.value = response.data[0].airline.icao
+      departureName.value = response.data[0].airline.name
+      departureCityName.value = response.data[0].departure.airport.name
+      departureStatus.value = response.data[0].status
       setTimeout(() => {
         isFlightNumber.value = filteredArrival[0]
+        flightInfo.value = `${departureIcao.value}, ${departureName.value}, ${departureCityName.value}`
         isLoading.value = false
       }, 1000)
       console.log('FlN', isFlightNumber.value)

@@ -54,14 +54,14 @@ export default defineNuxtConfig({
           rel: 'stylesheet'
         }
       ],
-      script: [
-        {
-          hid: 'tawkto',
-          src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
-          defer: true,
-          crossorigin: 'anonymous'
-        }
-      ]
+      // script: [
+      //   {
+      //     hid: 'tawkto',
+      //     src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
+      //     defer: true,
+      //     crossorigin: 'anonymous'
+      //   }
+      // ]
     }
   },
   postcss: {
