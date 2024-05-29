@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const isDropDown = ref(false);
-const { $t } = useLanguage();
+const isDropDown = ref(false)
+const { $t } = useLanguage()
 
 const toggleDropDown = () => {
-  isDropDown.value = !isDropDown.value;
-};
+  isDropDown.value = !isDropDown.value
+}
 const items = [
   {
     name: $t('navbar.services'),
@@ -26,7 +26,7 @@ const items = [
     name: $t('navbar.contact'),
     link: '/contact'
   }
-];
+]
 </script>
 
 <template>

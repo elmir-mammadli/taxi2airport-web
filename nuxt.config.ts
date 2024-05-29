@@ -22,7 +22,8 @@ export default defineNuxtConfig({
       {
         accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
       }
-    ]
+    ],
+    '@nuxt/content'
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts'
@@ -53,14 +54,14 @@ export default defineNuxtConfig({
           rel: 'stylesheet'
         }
       ],
-      script: [
-        {
-          hid: 'tawkto',
-          src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
-          defer: true,
-          crossorigin: 'anonymous'
-        }
-      ]
+      // script: [
+      //   {
+      //     hid: 'tawkto',
+      //     src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
+      //     defer: true,
+      //     crossorigin: 'anonymous'
+      //   }
+      // ]
     }
   },
   postcss: {
@@ -78,4 +79,4 @@ export default defineNuxtConfig({
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-});
+})

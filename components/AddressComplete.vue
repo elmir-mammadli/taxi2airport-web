@@ -7,44 +7,56 @@
       :placeholder="$t('form.address-placeholder')"
       :required="true"
       @input="autopredict"
-    />
+    >
     <div
       v-if="addresses.length && (addresses.length || popularLocations.length)"
-      class="absolute bg-white rounded border p-2 max-w-[510px] mt-4 z-30"
+      class="absolute rounded border bg-white p-2 max-w-[510px] w-full mt-4 z-30"
+      :class="{
+        'h-[303px]' : query.length <= 3,
+      }"
     >
-      <div
-        v-for="(popular, index) in popularLocations"
-        v-if="query.length <= 5"
-        :key="index"
-        class="p-2 border-b cursor-pointer"
-        @click="selectedAddress(popular)"
-      >
-        <div>
-          <span class="font-bold">
-            <Icon class="mr-1" :name="popular.icon" />
-          </span>
-          <span>{{ popular.display_name }}</span>
+      <Icon
+        v-if="addressLoader && query.length <= 3"
+        class="text-[72px] absolute inset-0 m-auto"
+        name="svg-spinners:90-ring-with-bg"
+      />
+      <div v-if="!addressLoader && query.length <= 3">
+        <div
+          v-for="(popular, index) in popularLocations"
+          :key="index"
+          class="p-2 border-b cursor-pointer"
+          @click="selectedAddress(popular)"
+        >
+          <div>
+            <span class="font-bold">
+              <Icon class="mr-1" :name="popular.icon" />
+            </span>
+            <span>{{ popular.display_name }}</span>
+          </div>
         </div>
       </div>
-      <div
-        v-for="(address, index) in addresses"
-        :key="index"
-        class="p-2 border-b cursor-pointer"
-        @click="selectedAddress(address)"
-      >
-        {{ address.display_name }}
+      <div v-if="!addressLoader">
+        <div
+          v-for="(address, index) in addresses"
+          :key="index"
+          class="p-2 border-b cursor-pointer"
+          @click="selectedAddress(address)"
+        >
+          {{ address.display_name }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import axios from 'axios';
+import { ref } from 'vue'
+import axios from 'axios'
 
-const config = useRuntimeConfig();
-const emit = defineEmits(['address-selected', 'update:modelValue']);
-const query = ref('');
+const config = useRuntimeConfig()
+const emit = defineEmits(['address-selected', 'update:modelValue'])
+const query = ref('')
+const addressLoader = ref(false)
 
 type PopularLocations = {
   icon: string;
@@ -52,8 +64,8 @@ type PopularLocations = {
   coordinates: Array<number>;
 };
 
-const coordinates = ref<Pick<PopularLocations, 'coordinates'>[]>([]);
-const addresses = ref<Pick<PopularLocations, 'display_name'>[]>([]);
+const coordinates = ref<Pick<PopularLocations, 'coordinates'>[]>([])
+const addresses = ref<Pick<PopularLocations, 'display_name'>[]>([])
 
 const popularLocations: PopularLocations[] = [
   {
@@ -76,13 +88,14 @@ const popularLocations: PopularLocations[] = [
     display_name: 'Praha, Hlavní nádraží (Main Train Station)',
     coordinates: [14.4353, 50.0829]
   }
-];
+]
 
 const autopredict = async () => {
   if (!query.value) {
-    addresses.value = [];
-    return;
+    addresses.value = []
+    return
   }
+  addressLoader.value = true
   try {
     const response = await axios.get(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${query.value}.json`,
@@ -95,32 +108,35 @@ const autopredict = async () => {
           language: 'en'
         }
       }
-    );
+    )
     addresses.value = response.data.features.map(
       (feature: { place_name: string; center: Array<number> }) => ({
         display_name: feature.place_name,
         coordinates: feature.center
       })
-    );
+    )
+    setInterval(() => {
+      addressLoader.value = false
+    }, 500)
   } catch (error) {
-    console.error('Fetch error:', error);
+    console.error('Fetch error:', error)
   }
-};
+}
 
 type PartialLocations = Partial<PopularLocations>;
 
 const selectedAddress = (address: PartialLocations) => {
-  query.value = address.display_name ?? '';
-  addresses.value = [];
+  query.value = address.display_name ?? ''
+  addresses.value = []
   if (address.coordinates) {
-    coordinates.value.push({ coordinates: address.coordinates });
-    console.log('asdsad', coordinates.value);
+    coordinates.value.push({ coordinates: address.coordinates })
+    console.log('asdsad', coordinates.value)
   }
 
-  emit('address-selected', address);
-};
+  emit('address-selected', address)
+}
 
 watch(query, (newQuery) => {
-  emit('update:modelValue', newQuery);
-});
+  emit('update:modelValue', newQuery)
+})
 </script>

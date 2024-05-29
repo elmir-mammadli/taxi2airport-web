@@ -5,8 +5,7 @@
     "node": true
   },
   "extends": [
-    "@nuxtjs/eslint-config-typescript",
-    "plugin:prettier/recommended"
+    "@nuxtjs/eslint-config-typescript"
   ],
   "overrides": [
     {
@@ -35,15 +34,7 @@
   "rules": {
     "vue/no-v-html": ["off"],
     "vue/multi-word-component-names": ["off"],
-    "vue/no-reserved-component-names": ["off"],
-    "prettier/prettier": ["error", {
-      "singleQuote": true,
-      "semi": true,
-      "tabWidth": 2,
-      "useTabs": false,
-      "trailingComma": "none",
-      "printWidth": 80
-    }]
+    "vue/no-reserved-component-names": ["off"]
     //Uncomment to check TS usage in Vue files
 
     // "vue/block-lang": [

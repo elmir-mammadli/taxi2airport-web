@@ -6,9 +6,12 @@
       >
         <span
           class="text-sm text-gray-900 font-medium dark:text-gray-300 sm:text-center"
-          >© 2023 <a href="/">Transfervan.</a> All Rights Reserved.
+        >© 2023 <a href="/">Transfervan.</a> All Rights Reserved.
         </span>
-        <div class="flex mt-4 space-x-5 sm:justify-center md:mt-0">
+        <div class="flex mt-4 space-x-5 sm:justify-center items-center md:mt-0">
+          <NuxtLink to="/privacy-policy" class="underline">
+            Privacy Policy
+          </NuxtLink>
           <a
             href="#"
             class="text-gray-400 hover:text-gray-900 dark:hover:text-white"

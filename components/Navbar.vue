@@ -7,9 +7,7 @@
         <div class="flex items-center mx-auto pt-8 justify-between px-5">
           <NuxtLink to="/" class="flex items-center z-10">
             <span class="text-[28px] tracking-[-0px] text-gray-800">
-              <span class="font-semibold text-gray-800">taxi</span
-              ><span class="font-semibold text-custom-blue">2</span
-              ><span class="lowercase font-semibold">airport</span>
+              <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-custom-blue">2</span><span class="lowercase font-semibold">airport</span>
             </span>
           </NuxtLink>
           <Hamburger class="block lg:hidden z-[9999]" />
@@ -28,28 +26,28 @@
   </header>
 </template>
 <script lang="ts" setup>
-import { useShakeStore } from '../stores/useShakeStore';
-import NavItems from './NavItems.vue';
-import Hamburger from './Hamburger.vue';
-import NavbarLanguage from './NavbarLanguage.vue';
+import { useShakeStore } from '../stores/useShakeStore'
+import NavItems from './NavItems.vue'
+import Hamburger from './Hamburger.vue'
+import NavbarLanguage from './NavbarLanguage.vue'
 
-const shakeStore = useShakeStore();
+const shakeStore = useShakeStore()
 
-function triggerShake() {
-  shakeStore.triggerShake();
+function triggerShake () {
+  shakeStore.triggerShake()
 }
 
-const resize = ref(false);
+const resize = ref(false)
 
 const handleScroll = () => {
   if (window.scrollY > 50) {
-    resize.value = true;
+    resize.value = true
   } else {
-    resize.value = false;
+    resize.value = false
   }
-};
+}
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 </script>

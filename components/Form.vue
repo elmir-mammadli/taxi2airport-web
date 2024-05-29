@@ -3,30 +3,7 @@
     id="bookForm"
     class="max-w-[992px] mx-auto flex justify-center scroll-mt-20 mb-6 mt-20 px-5"
   >
-    <div
-      v-for="(step, index) in reservationData"
-      :key="index"
-      class="flex flex-row items-center"
-    >
-      <div class="flex flex-col md:flex-row items-center justify-center">
-        <div
-          :class="[chapter > index ? 'bg-[#3E9AFF]' : 'bg-gray-200']"
-          class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white"
-        >
-          {{ index + 1 }}
-        </div>
-        <div
-          class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2"
-        />
-        <div class="text-[12px] md:text-[16px]">
-          {{ step.step }}
-        </div>
-      </div>
-      <div
-        v-if="index !== reservationData.length - 1"
-        class="h-[1px] bg-gray-400 w-[10px] mb-[24px] md:mb-0 md:w-[48px] xl:w-[150px] mx-4"
-      />
-    </div>
+    <ReservationData :chapter="chapter" />
   </div>
   <div class="px-5">
     <form
@@ -37,87 +14,52 @@
       @submit.prevent="submitForm"
     >
       <section v-if="chapter === 1">
-        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
-          <div v-for="(value, index) in addressInputValues" :key="index">
-            <div class="mb-4">
-              <label
-                :for="value.label"
-                class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-                >{{ value.direction }}</label
-              >
-              <AddressComplete
-                :v-model="value.model"
-                type="text"
-                :name="value.name"
-                class="w-full p-2 rounded-[8px]"
-                @address-selected="value.handleSelectedAddress"
-              />
-              <p v-if="selectedAddress">
-                Selected Address: {{ selectedAddress }}
-              </p>
-            </div>
-            <!-- <div class="mb-4">
-        <label label for="to" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.to') }}</label>
-        <AddressComplete
-        v-model="formData.to"
-        class="w-full p-2 rounded-[8px]"
-        type="text"
-        name="to"
-        @address-selected="returnSelectedAddressTo($event.display_name, $event.coordinates)"
-        />
-            <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
-      </div> -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 md:gap-x-12">
+          <div class="mb-4">
+            <label for="from" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.from') }}</label>
+            <AddressComplete
+              v-model="formData.from"
+              type="text"
+              name="from"
+              class="w-full p-2 rounded-[8px]"
+              @address-selected="returnSelectedAddressFrom($event.display_name, $event.coordinates)"
+            />
+            <p v-if="selectedAddress">
+              Selected Address: {{ selectedAddress }}
+            </p>
+          </div>
+          <div class="mb-4">
+            <label label for="to" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.to') }}</label>
+            <AddressComplete
+              v-model="formData.to"
+              class="w-full p-2 rounded-[8px]"
+              type="text"
+              name="to"
+              @address-selected="returnSelectedAddressTo($event.display_name, $event.coordinates)"
+            />
+            <p v-if="selectedAddress">
+              Selected Address: {{ selectedAddress }}
+            </p>
           </div>
           <div
             class="flex flex-col md:flex-row md:items-end gap-y-4 md:gap-x-12 w-full"
           >
             <div class="flex flex-col md:flex-row gap-4 md:items-end w-full">
-              <DateTime
-                :format-time="formData.formatTime"
-                :formatted-date="formData.formattedDate"
-              />
-              <div class="flex gap-x-4">
-                <div>
-                  <FormKit
-                    v-model="formData.passengers"
-                    type="number"
-                    value="0"
-                    placeholder="0"
-                    :label="$t('form.passengers')"
-                    wrapper-class="$reset"
-                    outer-class="$reset"
-                    label-class="block font-semibold text-black opacity-[0.87] text-sm"
-                    inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
-                    input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
-                  />
-                </div>
-                <div class="flex justify-center items-end gap-x-3">
-                  <div>
-                    <FormKit
-                      v-model="formData.luggage"
-                      type="number"
-                      value="0"
-                      placeholder="0"
-                      :label="$t('form.luggage')"
-                      wrapper-class="$reset"
-                      outer-class="$reset"
-                      label-class="block font-semibold text-black opacity-[0.87] text-sm"
-                      inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
-                      input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="w-full">
-              <Button
-                :label="$t('form.search-button')"
+              <TravelBundle
+                v-model="formData"
                 :loading="loading"
-                icon="pi pi-check"
-                class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white"
-                @click="chapterChange"
+                @emitted-chapter="chapterChange"
               />
             </div>
+          </div>
+          <div class="block sm:hidden lg:flex items-end w-full">
+            <Button
+              :label="$t('form.search-button')"
+              :loading="loading"
+              icon="pi pi-check"
+              class="w-full h-12 text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white mt-8 lg:mt-0"
+              @click="chapterChange"
+            />
           </div>
         </div>
       </section>
@@ -143,7 +85,7 @@
                 <p class="font-semibold">
                   {{ item.key }}
                 </p>
-                <p v-html="item.value" />
+                <p v-html="item.value.substring(0, 19) + (formData.to === item.value || formData.from === item.value ? '...' : '')" />
               </div>
             </div>
           </div>
@@ -170,61 +112,63 @@
           class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full"
         >
           <div class="relative mb-4">
-            <label
-              for="firstName"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-              >{{ $t('form.name') }}</label
-            >
-            <InputText
+            <FormKit
               v-model="formData.firstName"
-              required
+              :label="$t('form.name')"
               type="text"
               name="firstName"
+              :message="!formData.firstName ? 'First name is required' : ''"
               placeholder="John"
-              class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="firstName"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-              >{{ $t('form.surname') }}</label
-            >
-            <InputText
+            <FormKit
               v-model="formData.lastName"
+              :label="$t('form.name')"
               type="text"
               name="lastName"
+              :message="!formData.lastName ? 'First name is required' : ''"
               placeholder="Doe"
-              class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-              >{{ $t('form.email') }}</label
-            >
-            <InputText
+            <FormKit
               v-model="formData.email"
+              :label="$t('form.email')"
+              validation="required|email"
+              :validation-messages="{
+                matches: 'Phone number must be in the format xxx-xxx-xxxx',
+              }"
+              validation-visibility="dirty"
               type="email"
               name="email"
               placeholder="john.doe@mail.com"
               class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="phoneNumber"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-              >{{ $t('form.number') }}</label
-            >
-            <InputText
-              v-model="formData.phoneNumber"
+            <FormKit
               type="tel"
-              autofocus
-              name="phoneNumber"
-              placeholder="+1 (123) 456-7890"
+              label="Phone number"
+              placeholder="xxx-xxx-xxx"
+              validation="matches:/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/"
+              :validation-messages="{
+                matches: 'Phone number must be in the format xxx-xxx-xxx',
+              }"
+              validation-visibility="dirty"
               class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
@@ -232,8 +176,7 @@
               for="flightNumber"
               class="block mb-2 text-sm font-medium opacity-[0.87]"
               :class="[!isFlightNumber ? 'text-red-500' : 'text-black']"
-              >{{ $t('form.flight-number') }}</label
-            >
+            >{{ $t('form.flight-number') }}</label>
             <div class="relative">
               <InputText
                 v-model="formData.flightNumber"
@@ -258,9 +201,14 @@
                 name="ic:baseline-error"
               />
             </div>
-            <small v-if="!isFlightNumber" class="text-red-500"
-              >Entered flight number does not exists</small
-            >
+            <small
+              v-if="!isFlightNumber"
+              class="text-red-500"
+            >Entered flight number does not exists</small>
+            <small
+              v-if="isFlightNumber"
+              class=""
+            >{{ flightInfo }}</small>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2">
@@ -268,8 +216,7 @@
             <label
               for="childSeat"
               class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-              >{{ $t('form.child-seat') }}</label
-            >
+            >{{ $t('form.child-seat') }}</label>
             <div class="flex items-center gap-x-2">
               <Checkbox
                 v-model="checked"
@@ -358,56 +305,76 @@
 </template>
 
 <script setup lang="ts">
-import InputText from 'primevue/inputtext';
-import Button from 'primevue/button/Button.vue';
-import Checkbox from 'primevue/checkbox/Checkbox.vue';
-import axios from 'axios';
-import AddressComplete from './AddressComplete.vue';
-import CarModel from './CarModel.vue';
-import DateTime from './form/DateTime.vue';
-import { formData, useReservationData } from './data/formData';
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button/Button.vue'
+import Checkbox from 'primevue/checkbox/Checkbox.vue'
+import axios from 'axios'
+import AddressComplete from './AddressComplete.vue'
+import CarModel from './CarModel.vue'
+import TravelBundle from './form/TravelBundle.vue'
+import { formData } from './data/formData'
+import ReservationData from './ReservationData.vue'
 
-import { useShakeStore } from '~/stores/useShakeStore';
-const shakeStore = useShakeStore();
+import { useShakeStore } from '~/stores/useShakeStore'
+const shakeStore = useShakeStore()
 
 const shakerState = computed(() => {
-  return shakeStore.shouldShakeForm;
-});
+  return shakeStore.shouldShakeForm
+})
 
-const { $t } = useLanguage();
+const { $t } = useLanguage()
 
-const currentDate = new Date();
+const currentDate = new Date()
 
 const formattedCountDate = computed(() => {
   return (
     currentDate.getFullYear().toString() +
     (currentDate.getMonth() + 1).toString().padStart(2, '0') +
     currentDate.getDate().toString().padStart(2, '0')
-  );
-});
+  )
+})
 
-const reservationData = useReservationData();
-const selectedAddress = ref('');
-const pickupDate = ref(new Date());
-const pickupTime = ref(new Date());
-const checked = ref(false);
-const isAgreed = ref(false);
+const selectedAddress = ref('')
+const pickupDate = ref(new Date())
+const pickupTime = ref(new Date())
+const checked = ref(false)
+const isAgreed = ref(false)
 
 const formattedDate = computed(() => {
-  const day = String(pickupDate.value.getDate()).padStart(2, '0');
-  const month = String(pickupDate.value.getMonth() + 1).padStart(2, '0');
-  const year = pickupDate.value.getFullYear();
+  const day = String(pickupDate.value.getDate()).padStart(2, '0')
+  const month = String(pickupDate.value.getMonth() + 1).padStart(2, '0')
+  const year = pickupDate.value.getFullYear()
 
-  return `${day}.${month}.${year}`;
-});
+  return `${day}.${month}.${year}`
+})
+// new Date().toISOString().split('T')[0]
 
 const formatTime = computed(() => {
-  const hours = String(pickupTime.value.getHours()).padStart(2, '0');
-  const minutes = String(pickupTime.value.getMinutes()).padStart(2, '0');
+  const hours = String(pickupTime.value.getHours()).padStart(2, '0')
+  const minutes = String(pickupTime.value.getMinutes()).padStart(2, '0')
 
-  return `${hours}:${minutes}`;
-});
-const isChildSeat = computed(() => (checked.value ? 'Yes' : 'No'));
+  return `${hours}:${minutes}`
+})
+
+const isChildSeat = computed(() => (checked.value ? 'Yes' : 'No'))
+
+const haversineResult = computed(() => {
+  return `${haversineDistance(reactiveFromCoordinates.value[0], reactiveFromCoordinates.value[1], reactiveToCoordinates.value[0], reactiveToCoordinates.value[1]).toFixed(0)}`
+})
+
+const eta = computed(() => {
+  return `${(Number(haversineResult.value) / 60) * 60}`
+})
+
+const calculatePrice = computed(() => {
+  const distance = Number(haversineResult.value)
+  if (distance > 20) {
+    return (distance - 20) * 34
+  } else {
+    return 0
+  }
+})
+
 const bookingItems = computed(() => [
   {
     key: $t('form.name'),
@@ -447,11 +414,11 @@ const bookingItems = computed(() => [
   },
   {
     key: $t('form.date').toUpperCase(),
-    value: formattedDate.value
+    value: formData.formattedDate
   },
   {
     key: $t('form.time').toUpperCase(),
-    value: formatTime.value
+    value: formData.formatTime
   },
   {
     key: $t('form.passengers').toUpperCase(),
@@ -461,16 +428,17 @@ const bookingItems = computed(() => [
     key: $t('form.luggage').toUpperCase(),
     value: formData.luggage
   }
-]);
+])
 
-const itemsSchedule = computed(() => [...bookingItems.value.slice(6, 12)]);
+const itemsSchedule = computed(() => [...bookingItems.value.slice(6, bookingItems.value.length)])
 
-const chapter = ref(1);
-const config = useRuntimeConfig();
-const loading = ref(false);
-const todaysDateForAPI = new Date().toISOString().split('T')[0];
-const isFlightNumber = ref(true);
-const isLoading = ref(false);
+const chapter = ref(1)
+const config = useRuntimeConfig()
+const loading = ref(false)
+const todaysDateForAPI = new Date().toISOString().split('T')[0]
+const isFlightNumber = ref(true)
+const flightInfo = ref('')
+const isLoading = ref(false)
 
 //  <div class="mb-4">
 //           <label for="from" class="block mb-2 text-sm font-medium text-black opacity-[0.87]">{{ $t('form.from') }}</label>
@@ -484,101 +452,118 @@ const isLoading = ref(false);
 //           <p v-if="selectedAddress">Selected Address: {{ selectedAddress }}</p>
 //     </div>
 
-const reactiveFromCoordinates = ref<number[]>([]);
-const reactiveToCoordinates = ref<number[]>([]);
+const reactiveFromCoordinates = ref<number[]>([])
+const reactiveToCoordinates = ref<number[]>([])
 const returnSelectedAddressFrom = (
   displayName: string,
   coordinates: number[]
 ) => {
-  formData.from = displayName;
-  formData.coordinates.fromCoordinates = coordinates;
-  reactiveFromCoordinates.value = coordinates;
-};
+  formData.from = displayName
+  formData.coordinates.fromCoordinates = coordinates
+  reactiveFromCoordinates.value = coordinates
+}
 
 const returnSelectedAddressTo = (
   displayName: string,
   coordinates: number[]
 ) => {
-  formData.to = displayName;
-  formData.coordinates.toCoordinates = coordinates;
-  reactiveToCoordinates.value = coordinates;
+  formData.to = displayName
+  formData.coordinates.toCoordinates = coordinates
+  reactiveToCoordinates.value = coordinates
 
   // Log formData after it has been updated
-};
-
-interface AddressInputAttributes {
-  label: string;
-  direction: string;
-  model: string;
-  name: string;
-  handleSelectedAddress: () => void;
 }
 
-const addressInputValues: AddressInputAttributes[] = [
-  {
-    label: 'from',
-    direction: $t('form.from'),
-    model: formData.from,
-    name: 'from',
-    handleSelectedAddress: () =>
-      returnSelectedAddressFrom($event.display_name, $event.coordinates)
-  },
-  {
-    label: 'to',
-    direction: $t('form.to'),
-    model: formData.to,
-    name: 'to',
-    handleSelectedAddress: () =>
-      returnSelectedAddressTo($event.display_name, $event.coordinates)
-  }
-];
+// const fetchFlightsData = async () => {
+//   const dynamicFlightNumber: string = formData.flightNumber
+//   // Options for the API request
+//   const options = {
+//     method: 'GET',
+//     url: `https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${todaysDateForAPI}`,
+//     headers: {
+//       'X-RapidAPI-Key': config.public.RAPID_API_KEY,
+//       'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
+//     }
+//   }
+
+//   try {
+//     const departureIcao = ref('')
+//     const departureName = ref('')
+//     const departureCityName = ref('')
+//     const departureStatus = ref('')
+
+//     if (dynamicFlightNumber.length >= 6) {
+//       const response = await axios.request(options)
+
+//       isLoading.value = true
+
+//       const filteredArrival = response.data.filter(
+//         (item: {
+//           arrival: {
+//             airport: {
+//               countryCode: string
+//              }
+//             }
+//           }) =>
+//           item.arrival.airport.countryCode === 'CZ'
+//       )
+//       console.log('FilteredArrival', filteredArrival[0])
+
+//       departureIcao.value = response.data[0].airline.icao
+//       departureName.value = response.data[0].airline.name
+//       departureCityName.value = response.data[0].departure.airport.name
+//       departureStatus.value = response.data[0].status
+
+//       setTimeout(() => {
+//         isFlightNumber.value = filteredArrival[0]
+//         flightInfo.value = `${departureIcao.value}, ${departureName.value}, ${departureCityName.value}`
+//         isLoading.value = false
+//       }, 1000)
+
+//       if (response.data[0].number === dynamicFlightNumber) {
+//         formData.flightNumber = dynamicFlightNumber
+//       }
+//     }
+//   } catch (error) {
+//     console.error('Error fetching flight data', error)
+//   }
+// }
 
 const fetchFlightsData = async () => {
-  const dynamicFlightNumber: string = formData.flightNumber;
-  // Options for the API request
-  const options = {
-    method: 'GET',
-    url: `https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${todaysDateForAPI}`,
-    headers: {
-      'X-RapidAPI-Key': config.public.RAPID_API_KEY,
-      'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
-    }
-  };
-
+  const dynamicFlightNumber = formData.flightNumber
   try {
-    if (dynamicFlightNumber.length >= 6) {
-      const response = await axios.request(options);
-      isLoading.value = true;
-      const filteredArrival = response.data.map(
-        (item: { arrival: { airport: { countryCode: string } } }) =>
-          item.arrival.airport.countryCode === 'CZ'
-      );
-      console.log(
-        'Response, Airport Name:',
-        response.data[0].arrival.airport.name
-      );
-
-      setTimeout(() => {
-        isFlightNumber.value = filteredArrival[0];
-        isLoading.value = false;
-      }, 1000);
-      console.log('FlN', isFlightNumber.value);
-
-      console.log('FilteredArrival', filteredArrival[0]);
-
-      if (response.data[0].number === dynamicFlightNumber) {
-        formData.flightNumber = dynamicFlightNumber;
+    const res = await axios.get(`https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${formData.formattedDate}`, {
+      headers: {
+        'X-RapidAPI-Key': config.public.RAPID_API_KEY,
+        'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
       }
+    })
+    const data = res.data[0]
+    if (data) {
+      isLoading.value = true
+      setTimeout(() => {
+        isFlightNumber.value = true
+        isLoading.value = false
+        flightInfo.value = `${data.airline.icao}, ${data.airline.name}, ${data.departure.airport.name}`
+      }, 1000)
+    } else {
+      isFlightNumber.value = false
     }
   } catch (error) {
-    console.error('Error fetching flight data', error);
+    console.log('Fetch error', error)
+  } finally {
+    loading.value = false
   }
-};
+}
+
+watch(() => formData.flightNumber, async () => {
+  await fetchFlightsData()
+})
 
 const updateSelectedCar = (carName: string) => {
-  formData.selectedCar = carName;
-  chapter.value += 1;
-};
+  formData.selectedCar = carName
+  chapter.value += 1
+}
 const chapterChange = () => {
   if (chapter.value === 1) {
     if (
@@ -589,8 +574,8 @@ const chapterChange = () => {
       !formData.passengers ||
       !formData.luggage
     ) {
-      alert('Please fill in all the fields');
-      return;
+      alert('Please fill in all the fields')
+      return
     }
   } else if (chapter.value === 3) {
     if (
@@ -600,38 +585,38 @@ const chapterChange = () => {
       !formData.phoneNumber ||
       !formData.flightNumber
     ) {
-      alert('Please fill in all the fields');
-      return;
+      alert('Please fill in all the fields')
+      return
     }
   }
 
-  loading.value = true;
+  loading.value = true
   setTimeout(() => {
-    chapter.value++;
-    loading.value = false;
-  }, 1500);
-};
+    chapter.value++
+    loading.value = false
+  }, 1500)
+}
 const chapterBack = () => {
-  chapter.value--;
-};
+  chapter.value--
+}
 
 // Send message to TG channgel
 const sendMessageToTelegram = async (message: any) => {
-  const botToken = config.public.TELEGRAM_BOT_TOKEN;
-  const chatId = '+ntPwnPCz5P0xNzli'; // Replace with your actual channel chat ID
+  const botToken = config.public.TELEGRAM_BOT_TOKEN
+  const chatId = '+ntPwnPCz5P0xNzli' // Replace with your actual channel chat ID
 
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+  const url = `https://api.telegram.org/bot${botToken}/sendMessage`
 
   try {
     await axios.post(url, {
       chat_id: chatId,
       text: message
-    });
-    console.log('Message sent successfully');
+    })
+    console.log('Message sent successfully')
   } catch (error) {
-    console.error('Error sending message', error);
+    console.error('Error sending message', error)
   }
-};
+}
 
 // Example usage
 const trimmedMessage = `
@@ -642,13 +627,13 @@ const trimmedMessage = `
   Time: ${formatTime.value}
   Passengers: ${formData.passengers}
   Luggage: ${formData.luggage}
-`;
+`
 
-sendMessageToTelegram(trimmedMessage);
+sendMessageToTelegram(trimmedMessage)
 // End of code TG
 const submitForm = async () => {
   try {
-    const response = await axios.post(
+    await axios.post(
       'https://api.sendgrid.com/v3/mail/send',
       {
         personalizations: [
@@ -693,8 +678,8 @@ const submitForm = async () => {
           Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
         }
       }
-    );
-    chapter.value++;
+    )
+    chapter.value++
     const message = `
       New booking request:
       From: ${formData.from}
@@ -703,51 +688,34 @@ const submitForm = async () => {
       Time: ${formatTime.value}
       Passengers: ${formData.passengers}
       Luggage: ${formData.luggage}
-    `;
+    `
 
-    await sendMessageToTelegram(message);
+    await sendMessageToTelegram(message)
   } catch (error) {
-    console.error('Error submitting error', error);
+    console.error('Error submitting error', error)
   }
-};
+}
 
-function haversineDistance(
+function haversineDistance (
   fromLat: number,
   fromLng: number,
   toLat: number,
   toLng: number
 ) {
-  const R = 6371; // Radius of the earth in km
-  const p1 = fromLat * (Math.PI / 180);
-  const p2 = toLat * (Math.PI / 180);
+  const R = 6371 // Radius of the earth in km
+  const p1 = fromLat * (Math.PI / 180)
+  const p2 = toLat * (Math.PI / 180)
 
-  const deltaLon = toLng - fromLng;
-  const deltaLambda = (deltaLon * Math.PI) / 180;
+  const deltaLon = toLng - fromLng
+  const deltaLambda = (deltaLon * Math.PI) / 180
 
   const distance =
     Math.acos(
       Math.sin(p1) * Math.sin(p2) +
         Math.cos(p1) * Math.cos(p2) * Math.cos(deltaLambda)
-    ) * R;
-  return distance;
+    ) * R
+  return distance
 }
-
-const haversineResult = computed(() => {
-  return `${haversineDistance(reactiveFromCoordinates.value[0], reactiveFromCoordinates.value[1], reactiveToCoordinates.value[0], reactiveToCoordinates.value[1]).toFixed(0)}`;
-});
-
-const eta = computed(() => {
-  return `${(Number(haversineResult.value) / 60) * 60}`;
-});
-
-const calculatePrice = computed(() => {
-  const distance = Number(haversineResult.value);
-  if (distance > 20) {
-    return (distance - 20) * 34;
-  } else {
-    return 0;
-  }
-});
 </script>
 
 <style scoped lang="scss">

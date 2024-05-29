@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <HeroSection />
+    <!-- <HeroSection /> -->
   </div>
 </template>
 <script setup>
-import Navbar from './Navbar.vue';
+import Navbar from './Navbar.vue'
 </script>
