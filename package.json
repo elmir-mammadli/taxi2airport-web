@@ -48,7 +48,7 @@
     "@storyblok/nuxt": "^6.0.0",
     "@vee-validate/nuxt": "^4.11.8",
     "aos": "^2.3.4",
-    "axios": "^1.5.1",
+    "axios": "^1.6.8",
     "cors": "^2.8.5",
     "daisyui": "^3.7.4",
     "flowbite": "^1.8.1",

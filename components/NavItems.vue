@@ -31,7 +31,7 @@ const items = computed(() => [
   },
   {
     item: $t('navbar.about'),
-    link: '/about'
+    link: '#about'
   },
   {
     item: $t('navbar.faq'),

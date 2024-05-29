@@ -3,30 +3,7 @@
     id="bookForm"
     class="max-w-[992px] mx-auto flex justify-center scroll-mt-20 mb-6 mt-20 px-5"
   >
-    <div
-      v-for="(step, index) in reservationData"
-      :key="index"
-      class="flex flex-row items-center"
-    >
-      <div class="flex flex-col md:flex-row items-center justify-center">
-        <div
-          :class="[chapter > index ? 'bg-[#3E9AFF]' : 'bg-gray-200']"
-          class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white"
-        >
-          {{ index + 1 }}
-        </div>
-        <div
-          class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2"
-        />
-        <div class="text-[12px] md:text-[16px]">
-          {{ step.step }}
-        </div>
-      </div>
-      <div
-        v-if="index !== reservationData.length - 1"
-        class="h-[1px] bg-gray-400 w-[10px] mb-[24px] md:mb-0 md:w-[48px] xl:w-[150px] mx-4"
-      />
-    </div>
+    <ReservationData :chapter="chapter" />
   </div>
   <div class="px-5">
     <form
@@ -135,57 +112,63 @@
           class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full"
         >
           <div class="relative mb-4">
-            <label
-              for="firstName"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-            >{{ $t('form.name') }}</label>
-            <InputText
+            <FormKit
               v-model="formData.firstName"
-              required
+              :label="$t('form.name')"
               type="text"
               name="firstName"
+              :message="!formData.firstName ? 'First name is required' : ''"
               placeholder="John"
-              class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="firstName"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-            >{{ $t('form.surname') }}</label>
-            <InputText
+            <FormKit
               v-model="formData.lastName"
+              :label="$t('form.name')"
               type="text"
               name="lastName"
+              :message="!formData.lastName ? 'First name is required' : ''"
               placeholder="Doe"
-              class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-            >{{ $t('form.email') }}</label>
-            <InputText
+            <FormKit
               v-model="formData.email"
+              :label="$t('form.email')"
+              validation="required|email"
+              :validation-messages="{
+                matches: 'Phone number must be in the format xxx-xxx-xxxx',
+              }"
+              validation-visibility="dirty"
               type="email"
               name="email"
               placeholder="john.doe@mail.com"
               class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
-            <label
-              for="phoneNumber"
-              class="block mb-2 text-sm font-medium text-black opacity-[0.87]"
-            >{{ $t('form.number') }}</label>
-            <InputText
-              v-model="formData.phoneNumber"
+            <FormKit
               type="tel"
-              autofocus
-              name="phoneNumber"
-              placeholder="+1 (123) 456-7890"
+              label="Phone number"
+              placeholder="xxx-xxx-xxx"
+              validation="matches:/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/"
+              :validation-messages="{
+                matches: 'Phone number must be in the format xxx-xxx-xxx',
+              }"
+              validation-visibility="dirty"
               class="w-full p-2 rounded-[8px] border"
+              label-class="block font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
           <div class="mb-4">
@@ -329,7 +312,8 @@ import axios from 'axios'
 import AddressComplete from './AddressComplete.vue'
 import CarModel from './CarModel.vue'
 import TravelBundle from './form/TravelBundle.vue'
-import { formData, useReservationData } from './data/formData'
+import { formData } from './data/formData'
+import ReservationData from './ReservationData.vue'
 
 import { useShakeStore } from '~/stores/useShakeStore'
 const shakeStore = useShakeStore()
@@ -350,7 +334,6 @@ const formattedCountDate = computed(() => {
   )
 })
 
-const reservationData = useReservationData()
 const selectedAddress = ref('')
 const pickupDate = ref(new Date())
 const pickupTime = ref(new Date())
@@ -364,6 +347,7 @@ const formattedDate = computed(() => {
 
   return `${day}.${month}.${year}`
 })
+// new Date().toISOString().split('T')[0]
 
 const formatTime = computed(() => {
   const hours = String(pickupTime.value.getHours()).padStart(2, '0')
@@ -430,11 +414,11 @@ const bookingItems = computed(() => [
   },
   {
     key: $t('form.date').toUpperCase(),
-    value: formattedDate.value
+    value: formData.formattedDate
   },
   {
     key: $t('form.time').toUpperCase(),
-    value: formatTime.value
+    value: formData.formatTime
   },
   {
     key: $t('form.passengers').toUpperCase(),
@@ -490,52 +474,91 @@ const returnSelectedAddressTo = (
   // Log formData after it has been updated
 }
 
+// const fetchFlightsData = async () => {
+//   const dynamicFlightNumber: string = formData.flightNumber
+//   // Options for the API request
+//   const options = {
+//     method: 'GET',
+//     url: `https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${todaysDateForAPI}`,
+//     headers: {
+//       'X-RapidAPI-Key': config.public.RAPID_API_KEY,
+//       'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
+//     }
+//   }
+
+//   try {
+//     const departureIcao = ref('')
+//     const departureName = ref('')
+//     const departureCityName = ref('')
+//     const departureStatus = ref('')
+
+//     if (dynamicFlightNumber.length >= 6) {
+//       const response = await axios.request(options)
+
+//       isLoading.value = true
+
+//       const filteredArrival = response.data.filter(
+//         (item: {
+//           arrival: {
+//             airport: {
+//               countryCode: string
+//              }
+//             }
+//           }) =>
+//           item.arrival.airport.countryCode === 'CZ'
+//       )
+//       console.log('FilteredArrival', filteredArrival[0])
+
+//       departureIcao.value = response.data[0].airline.icao
+//       departureName.value = response.data[0].airline.name
+//       departureCityName.value = response.data[0].departure.airport.name
+//       departureStatus.value = response.data[0].status
+
+//       setTimeout(() => {
+//         isFlightNumber.value = filteredArrival[0]
+//         flightInfo.value = `${departureIcao.value}, ${departureName.value}, ${departureCityName.value}`
+//         isLoading.value = false
+//       }, 1000)
+
+//       if (response.data[0].number === dynamicFlightNumber) {
+//         formData.flightNumber = dynamicFlightNumber
+//       }
+//     }
+//   } catch (error) {
+//     console.error('Error fetching flight data', error)
+//   }
+// }
+
 const fetchFlightsData = async () => {
-  const dynamicFlightNumber: string = formData.flightNumber
-  // Options for the API request
-  const options = {
-    method: 'GET',
-    url: `https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${todaysDateForAPI}`,
-    headers: {
-      'X-RapidAPI-Key': config.public.RAPID_API_KEY,
-      'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
-    }
-  }
-
+  const dynamicFlightNumber = formData.flightNumber
   try {
-    const departureIcao = ref('')
-    const departureName = ref('')
-    const departureCityName = ref('')
-    const departureStatus = ref('')
-    if (dynamicFlightNumber.length >= 6) {
-      const response = await axios.request(options)
-      isLoading.value = true
-      const filteredArrival = response.data.map(
-        (item: { arrival: { airport: { countryCode: string } } }) =>
-          item.arrival.airport.countryCode === 'CZ'
-      )
-      console.log('FilteredArrival', response.data[0])
-      departureIcao.value = response.data[0].airline.icao
-      departureName.value = response.data[0].airline.name
-      departureCityName.value = response.data[0].departure.airport.name
-      departureStatus.value = response.data[0].status
-      setTimeout(() => {
-        isFlightNumber.value = filteredArrival[0]
-        flightInfo.value = `${departureIcao.value}, ${departureName.value}, ${departureCityName.value}`
-        isLoading.value = false
-      }, 1000)
-      console.log('FlN', isFlightNumber.value)
-
-      console.log('FilteredArrival', filteredArrival[0])
-
-      if (response.data[0].number === dynamicFlightNumber) {
-        formData.flightNumber = dynamicFlightNumber
+    const res = await axios.get(`https://aerodatabox.p.rapidapi.com/flights/number/${dynamicFlightNumber}/${formData.formattedDate}`, {
+      headers: {
+        'X-RapidAPI-Key': config.public.RAPID_API_KEY,
+        'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
       }
+    })
+    const data = res.data[0]
+    if (data) {
+      isLoading.value = true
+      setTimeout(() => {
+        isFlightNumber.value = true
+        isLoading.value = false
+        flightInfo.value = `${data.airline.icao}, ${data.airline.name}, ${data.departure.airport.name}`
+      }, 1000)
+    } else {
+      isFlightNumber.value = false
     }
   } catch (error) {
-    console.error('Error fetching flight data', error)
+    console.log('Fetch error', error)
+  } finally {
+    loading.value = false
   }
 }
+
+watch(() => formData.flightNumber, async () => {
+  await fetchFlightsData()
+})
 
 const updateSelectedCar = (carName: string) => {
   formData.selectedCar = carName
@@ -610,7 +633,7 @@ sendMessageToTelegram(trimmedMessage)
 // End of code TG
 const submitForm = async () => {
   try {
-    const response = await axios.post(
+    await axios.post(
       'https://api.sendgrid.com/v3/mail/send',
       {
         personalizations: [

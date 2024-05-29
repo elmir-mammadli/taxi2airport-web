@@ -6,7 +6,6 @@
         type="date"
         :value="requiredDate('today')"
         :label="$t('form.date')"
-        :validation="`date_before:${todaysDate}`"
         validation-visibility="live"
         placeholder="DD/MM/YYYY"
         :min="todaysDate"

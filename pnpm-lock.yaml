@@ -57,7 +57,7 @@ importers:
         specifier: ^2.3.4
         version: 2.3.4
       axios:
-        specifier: ^1.5.1
+        specifier: ^1.6.8
         version: 1.6.8
       cors:
         specifier: ^2.8.5
