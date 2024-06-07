@@ -32,7 +32,7 @@ defineProps<{
       </div>
 
       <button
-        class="w-[260px] bg-[#007BFF] text-white font-semibold text-[18px] px-12 py-4 rounded-lg mt-8 group-hover:bg-[#4DA8FF] transition .4s ease-all"
+        class="w-[260px] bg-custom-blue text-white font-semibold text-[18px] px-12 py-4 rounded-lg mt-8 group-hover:bg-custom-blue group-hover:bg-opacity-95 transition .4s ease-all"
       >
         {{ $t('reservation.button') }}
       </button>

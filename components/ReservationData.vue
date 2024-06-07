@@ -6,14 +6,12 @@
   >
     <div class="flex flex-col md:flex-row items-center justify-center">
       <div
-        :class="[chapter > index ? 'bg-[#3E9AFF]' : 'bg-gray-200']"
+        :class="[chapter > index ? 'bg-custom-blue' : 'bg-gray-200']"
         class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white"
       >
         {{ index + 1 }}
       </div>
-      <div
-        class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2"
-      />
+      <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2" />
       <div class="text-[12px] md:text-[16px]">
         {{ step.step }}
       </div>
@@ -26,11 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { useReservationData } from './data/formData'
+import { useReservationData } from './data/formData';
 
-const reservationData = useReservationData()
+const reservationData = useReservationData();
 
 defineProps<{
-  chapter: number
-}>()
+  chapter: number;
+}>();
 </script>

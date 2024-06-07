@@ -7,7 +7,7 @@
         <div class="flex items-center mx-auto pt-8 justify-between px-5">
           <NuxtLink to="/" class="flex items-center z-10">
             <span class="text-[28px] tracking-[-0px] text-gray-800">
-              <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-custom-blue">2</span><span class="lowercase font-semibold">airport</span>
+              <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-light-blue">2</span><span class="lowercase font-semibold">airport</span>
             </span>
           </NuxtLink>
           <Hamburger class="block lg:hidden z-[9999]" />
@@ -15,7 +15,7 @@
           <div class="lg:flex relative z-10 items-center gap-x-4 hidden">
             <Button
               :label="$t('navbar.button')"
-              class="bg-custom-blue text-white font-semibold text-[15px] px-7 py-2.5 rounded-xl hover:bg-opacity-80 transition .4s ease-all"
+              class="bg-custom-blue text-white font-semibold text-[15px] px-7 py-2.5 rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
               @click="triggerShake"
             />
             <NavbarLanguage class="z-30" />

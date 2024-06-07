@@ -80,11 +80,14 @@
 
 <script lang="ts" setup>
 import { type FormDataVariables } from '../data/formData'
-type ModelValue = Pick<FormDataVariables, 'formattedDate' | 'formatTime' | 'passengers' | 'luggage'>
+type ModelValue = Pick<
+  FormDataVariables,
+  'formattedDate' | 'formatTime' | 'passengers' | 'luggage'
+>;
 
 const props = defineProps<{
-  modelValue: ModelValue
-  loading: boolean
+  modelValue: ModelValue;
+  loading: boolean;
 }>()
 
 const internalData = ref(props.modelValue)
@@ -99,9 +102,12 @@ watch(internalData, (value: ModelValue) => {
   emit('update:modelValue', value)
 })
 
-watch(() => props.modelValue, (value: ModelValue) => {
-  internalData.value = value
-})
+watch(
+  () => props.modelValue,
+  (value: ModelValue) => {
+    internalData.value = value
+  }
+)
 
 const todaysDate = computed(() => {
   const date = new Date()

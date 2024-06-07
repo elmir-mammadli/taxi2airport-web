@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 export type FormDataAttributes =
   | 'from'
   | 'to'
@@ -16,7 +17,8 @@ export type ReservationDataTypes = {};
 export type FormDataVariables = {
   [Key in FormDataAttributes]: string;
 } & {
-  checked: boolean;
+  checked: boolean
+  paymentMethod: string
   step?: string;
   coordinates: Coordinates;
 };
@@ -84,7 +86,8 @@ export const formData: FormDataVariables = {
   lastName: '',
   phoneNumber: '',
   flightNumber: '',
-  checked: false,
+  paymentMethod: '',
+  checked: '',
   coordinates: {
     fromCoordinates: [],
     toCoordinates: []

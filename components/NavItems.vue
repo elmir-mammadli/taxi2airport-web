@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
 
-const { t: $t } = useI18n();
+const { t: $t } = useI18n()
 
 const items = computed(() => [
   {
@@ -41,5 +41,5 @@ const items = computed(() => [
     item: $t('navbar.contact'),
     link: '/contact'
   }
-]);
+])
 </script>

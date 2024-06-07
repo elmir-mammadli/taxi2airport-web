@@ -12,16 +12,16 @@
           class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[20px]"
           v-html="$t('hero.subtitle')"
         />
-        <div class="flex gap-x-5">
+        <div class="flex gap-x-5 items-center mt-9">
           <button
-            class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-3 rounded-xl mt-8 hover:bg-opacity-80 transition .4s ease-all"
+            class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-[13px] rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
             @click="triggerShake"
           >
             {{ $t('button-2') }}
           </button>
           <NuxtLink to="#faq">
             <button
-              class="bg-[#fff] text-custom-blue outline outline-custom-blue font-medium text-[18px] px-9 py-3 rounded-xl mt-8 transition .4s ease-all"
+              class="bg-[#fff] text-custom-blue outline outline-custom-blue font-medium text-[18px] px-9 py-3 rounded-[6px] transition .4s ease-all"
             >
               FAQ
             </button>
@@ -35,7 +35,7 @@
             src="/images/hero_vector1.svg"
             width="540"
             alt="hero-img"
-          />
+          >
         </span>
       </div>
     </div>
@@ -43,12 +43,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useShakeStore } from '../stores/useShakeStore';
-import Form from './Form.vue';
+import { useShakeStore } from '../stores/useShakeStore'
+import Form from './Form.vue'
 
-const shakeStore = useShakeStore();
-function triggerShake() {
-  shakeStore.triggerShake();
+const shakeStore = useShakeStore()
+function triggerShake () {
+  shakeStore.triggerShake()
 }
 </script>
 

@@ -32,8 +32,9 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "@formkit/nuxt": "^1.4.0",
-    "@formkit/themes": "^1.4.0",
+    "@formkit/inputs": "^1.6.5",
+    "@formkit/nuxt": "^1.6.4",
+    "@formkit/themes": "^1.6.4",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/vue": "^2.0.18",

@@ -1,60 +1,60 @@
 {
-	"aside": {
-		"item-1": "Gizli maliyet yok",
-		"item-2": "Müşteri Desteği",
-		"item-3": " Kalkıştan 24 saat öncesine kadar<span class=\"font-semibold\">ücretsiz</span> iptali"
-	},
-	"button-2": "Hadi gidelim!",
-	"cars": {
-		"header": "Sizin Sürüşünüz, Sizin Yolunuz: Araç Seçeneklerimizi Keşfedin! ",
-		"title": "Mevcut araçlarımız"
-	},
-	"form": {
-		"address-placeholder": "Havaalanı, adres, istasyon",
-		"booking-details": "REZERVASYON DETAYLARINIZ",
-		"child-seat": "Çocuk koltuğu",
-		"child-seat-p": "Çocuk koltuğu eklemem gerekiyor",
-		"date": "Tarih",
-		"email": "E-posta",
-		"flight-number": "Uçuş numarası",
-		"from": "Nereden",
-		"luggage": "Bagaj",
-		"name": "İlk adı",
-		"number": "Telefon numarası",
-		"passengers": "Yolcular",
-		"search-button": "Ara",
-		"selected-car": "Araba",
-		"surname": "Soy isim",
-		"time": "Zaman",
-		"to": "Nereye"
-	},
-	"hero": {
-		"subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri <span class=\"font-bold\">.</span>",
-		"title": " <span class=\"text-custom-blue\">En iyi&nbsp;transferinizi</span>yapın "
-	},
-	"navbar": {
-		"about": "Hakkında",
-		"button": "Yolculuk rezervasyonu yapın",
-		"contact": "Temas etmek",
-		"faq": "SSS",
-		"home": "Ev",
-		"price": "Fiyatlandırma",
-		"services": "Mevcut Arabalar"
-	},
-	"reservation": {
-		"button": "Şimdi Rezervasyon Yapın!",
-		"card-1": "Sürüşünüzü önceden planlayın",
-		"card-2": "Taşımayı seçin",
-		"card-3": "Ödeme yapın ve keyfini çıkarın!",
-		"card-desc-1": "Bir zaman belirleyin ve yolculuğunuz için bir buluşma yeri seçin.",
-		"card-desc-2": "Daha keyifli bir yolculuk için bir araba türü seçin ve seçenekleri özelleştirin.",
-		"card-desc-3": "Gizli maliyet yok. Uygun fiyatlandırma, tüm ödeme yöntemlerini kabul etme.",
-		"header": "&nbsp;birkaç kolay adımda havaalanı transferinizi ayarlayın",
-		"step-1": "Seyahat",
-		"step-2": "Araç",
-		"step-3": "Detaylar",
-		"step-4": "Rezervasyon",
-		"title": "Bir dakika içinde rezervasyon yapın"
-	},
-	"tcpp": " <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-white underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
+  "aside": {
+    "item-1": "Gizli maliyet yok",
+    "item-2": "Müşteri Desteği",
+    "item-3": " Kalkıştan 24 saat öncesine kadar<span class=\"font-semibold\">ücretsiz</span> iptali"
+  },
+  "button-2": "Hadi gidelim!",
+  "cars": {
+    "header": "Sizin Sürüşünüz, Sizin Yolunuz: Araç Seçeneklerimizi Keşfedin! ",
+    "title": "Mevcut araçlarımız"
+  },
+  "form": {
+    "address-placeholder": "Havaalanı, adres, istasyon",
+    "booking-details": "REZERVASYON DETAYLARINIZ",
+    "child-seat": "Çocuk koltuğu",
+    "child-seat-p": "Çocuk koltuğu eklemem gerekiyor",
+    "date": "Tarih",
+    "email": "E-posta",
+    "flight-number": "Uçuş numarası",
+    "from": "Nereden",
+    "luggage": "Bagaj",
+    "name": "İlk adı",
+    "number": "Telefon numarası",
+    "passengers": "Yolcular",
+    "search-button": "Ara",
+    "selected-car": "Araba",
+    "surname": "Soy isim",
+    "time": "Zaman",
+    "to": "Nereye"
+  },
+  "hero": {
+    "subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri",
+    "title": " <span class=\"text-custom-blue\">En iyi&nbsp;transferinizi</span>yapın "
+  },
+  "navbar": {
+    "about": "Hakkında",
+    "button": "Yolculuk rezervasyonu yapın",
+    "contact": "Temas etmek",
+    "faq": "SSS",
+    "home": "Ev",
+    "price": "Fiyatlandırma",
+    "services": "Mevcut Arabalar"
+  },
+  "reservation": {
+    "button": "Şimdi Rezervasyon Yapın!",
+    "card-1": "Sürüşünüzü önceden planlayın",
+    "card-2": "Taşımayı seçin",
+    "card-3": "Ödeme yapın ve keyfini çıkarın!",
+    "card-desc-1": "Bir zaman belirleyin ve yolculuğunuz için bir buluşma yeri seçin.",
+    "card-desc-2": "Daha keyifli bir yolculuk için bir araba türü seçin ve seçenekleri özelleştirin.",
+    "card-desc-3": "Gizli maliyet yok. Uygun fiyatlandırma, tüm ödeme yöntemlerini kabul etme.",
+    "header": "&nbsp;birkaç kolay adımda havaalanı transferinizi ayarlayın",
+    "step-1": "Seyahat",
+    "step-2": "Araç",
+    "step-3": "Detaylar",
+    "step-4": "Rezervasyon",
+    "title": "Bir dakika içinde rezervasyon yapın"
+  },
+  "tcpp": " <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
 }

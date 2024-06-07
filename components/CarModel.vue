@@ -2,7 +2,7 @@
   <div
     v-for="(detail, index) in details"
     :key="index"
-    class="flex flex-col md:flex-row justify-between md:w-[700px] bg-gray-100 pt-8 pb-4 md:p-7 rounded-lg"
+    class="flex flex-col md:flex-row justify-between md:w-[700px] bg-gray-100 pt-10 pb-4 md:p-7 rounded-lg"
   >
     <div id="section1">
       <div id="section-left" class="flex flex-col justify-start">
@@ -38,15 +38,15 @@
         type="button"
         label="Select Car"
         icon="pi pi-search"
-        class="bg-green-400 mt-4 mx-4 text-white font-semibold text-[18px] px-10 py-4 rounded-md hover:bg-green-500 transition .4s ease-all"
+        class="bg-blue-600 mt-4 mx-4 text-white font-semibold text-[18px] px-10 py-4 rounded-md hover:bg-blue-800 transition .4s ease-all"
         @click="selectCar(index)"
       />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import Button from 'primevue/button/Button.vue';
-import { details } from './data/formData';
+import Button from 'primevue/button/Button.vue'
+import { details } from './data/formData'
 const props = defineProps({
   price: {
     type: Number,
@@ -56,20 +56,20 @@ const props = defineProps({
     type: String,
     required: true
   }
-});
+})
 for (let i = 0; i < details.length; i++) {
-  details[i].extraPrice = props.price + details[i].initialPrice;
+  details[i].extraPrice = props.price + details[i].initialPrice
 }
 
-const emit = defineEmits(['car-selected']);
+const emit = defineEmits(['car-selected'])
 
-const loading = ref(Array(details.length).fill(false));
+const loading = ref(Array(details.length).fill(false))
 
 const selectCar = (index: number) => {
-  loading.value[index] = true;
+  loading.value[index] = true
   setTimeout(() => {
-    loading.value[index] = false;
-    emit('car-selected', details[index].name);
-  }, 1000);
-};
+    loading.value[index] = false
+    emit('car-selected', details[index].name)
+  }, 1000)
+}
 </script>

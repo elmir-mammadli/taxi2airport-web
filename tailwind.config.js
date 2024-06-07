@@ -8,7 +8,8 @@ module.exports = {
     'node_modules/preline/dist/*.js',
     './nuxt.config.{js,ts}',
     './app.vue',
-    './node_modules/flowbite/**/*.{js,ts}'
+    './node_modules/flowbite/**/*.{js,ts}',
+    './tailwind-theme.js'
   ],
   theme: {
     extend: {
@@ -18,7 +19,8 @@ module.exports = {
       },
       colors: {
         primary: '#F5D21B',
-        'custom-blue': '#007BFF',
+        'light-blue': '#007BFF',
+        'custom-blue': '#00396B',
         green: {
           50: '#EFFDF5',
           100: '#D9FBE8',
@@ -31,13 +33,22 @@ module.exports = {
           800: '#016538',
           900: '#0A5331',
           950: '#052e16'
+        },
+        red: {
+          50: '#FEF2F2',
+          100: '#FEE2E2',
+          200: '#FECACA',
+          300: '#FCA5A5',
+          400: '#F87171',
+          500: '#EF4444',
+          600: '#DC2626',
+          700: '#c53030',
+          800: '#991b1b',
+          900: '#7b341e',
+          'freaky-element': '#ff5c00'
         }
       }
     }
   },
-  plugins: [
-    require('daisyui'),
-    require('flowbite/plugin'),
-    require('@headlessui/tailwindcss')({ prefix: 'ui' })
-  ]
-};
+  plugins: [require('flowbite/plugin')]
+}
