@@ -29,7 +29,7 @@
 		"to": "Do destinace"
 	},
 	"hero": {
-		"subtitle": "Rychlé, bezpečné a nejjednodušší transfery <span class=\"font-bold\">v&nbsp;Praze.</span>",
+		"subtitle": "Rychlé, bezpečné a nejjednodušší transfery",
 		"title": "Získejte <span class=\"text-custom-blue\">nejlepší&nbsp;převod</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Rezervace",
 		"title": "Rezervovat během minuty"
 	},
-	"tcpp": "Přijměte <span class=\"text-white underline\"><a href=\"/terms-and-conditions\">Smluvní podmínky</a></span> a <span class=\"text-white underline\"><a href=\"/privacy-policy\">Zásady ochrany osobních údajů</a></span>"
+	"tcpp": "Přijměte <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Smluvní podmínky</a></span> a <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Zásady ochrany osobních údajů</a></span>"
 }

@@ -29,7 +29,7 @@
 		"to": "До"
 	},
 	"hero": {
-		"subtitle": "Швидкі, безпечні та найпростіші послуги трансферу <span class=\"font-bold\">у Празі.</span> ",
+		"subtitle": "Швидкі, безпечні та найпростіші послуги трансферу",
 		"title": "Отримайте <span class=\"text-custom-blue\">найкращу&nbsp;передачу</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Бронювання",
 		"title": "Забронюйте протягом хвилини"
 	},
-	"tcpp": "Прийміть <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Загальні положення та умови</a></span> та <span class=\"text-white underline\"><a href=\"/privacy-policy\">Політику конфіденційності</a></span>"
+	"tcpp": "Прийміть <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Загальні положення та умови</a></span> та <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Політику конфіденційності</a></span>"
 }

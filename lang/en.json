@@ -29,7 +29,7 @@
 		"to": "To"
 	},
 	"hero": {
-		"subtitle": "Fast, safe and easiest transfer services <span class=\"font-bold\">in Prague.</span>",
+		"subtitle": "Fast, safe and easiest transfer services",
 		"title": "Have your <span class=\"text-custom-blue\">best&nbsp;transfer</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Booking",
 		"title": "Reserve within a minute"
 	},
-	"tcpp": "Accept the <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Terms And Conditions</a></span> and the <span class=\"text-white underline\"><a href=\"/privacy-policy\">Privacy policy</a></span>"
+	"tcpp": "Accept the <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Terms And Conditions</a></span> and the <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Privacy policy</a></span>"
 }

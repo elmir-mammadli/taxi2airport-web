@@ -29,7 +29,7 @@
 		"to": "До"
 	},
 	"hero": {
-		"subtitle": "Быстрые, безопасные и простые услуги трансфера <span class=\"font-bold\">в Праге.</span>",
+		"subtitle": "Быстрые, безопасные и простые услуги трансфера",
 		"title": "Получите <span class=\"text-custom-blue\">лучший&nbsp;трансфер</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Бронирование",
 		"title": "Забронируйте за минуту"
 	},
-	"tcpp": "Принять <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Условия использования</a></span> и <span class=\"text-white underline\"><a href=\"/privacy-policy\">Политику конфиденциальности</a></span>"
+	"tcpp": "Принять <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Условия использования</a></span> и <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Политику конфиденциальности</a></span>"
 }

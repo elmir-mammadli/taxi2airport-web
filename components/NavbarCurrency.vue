@@ -62,13 +62,13 @@ const selectedFlag = computed(() => {
 locale.value = 'en'
 const languages: Languages[] = [
   {
-    name: 'EN'
+    name: '$'
   },
   {
-    name: 'CS'
+    name: '€'
   },
   {
-    name: 'DE'
+    name: '£'
   },
   {
     name: 'ES'

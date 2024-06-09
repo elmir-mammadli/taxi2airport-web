@@ -29,7 +29,7 @@
 		"to": "An"
 	},
 	"hero": {
-		"subtitle": "Schnelle, sichere und einfachste Transferdienste <span class=\"font-bold\">in Prag.</span>",
+		"subtitle": "Schnelle, sichere und einfachste Transferdienste",
 		"title": "Machen Sie Ihren <span class=\"text-custom-blue\">besten&nbsp;Transfer</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Buchung",
 		"title": "Innerhalb einer Minute reservieren"
 	},
-	"tcpp": "Akzeptieren Sie die <span class=\"text-white underline\"><a href=\"/terms-and-conditions\">Allgemeinen Geschäftsbedingungen</a></span> und die <span class=\"text-white underline\"><a href=\"/privacy-policy\">Datenschutzbestimmungen</a></span>"
+	"tcpp": "Akzeptieren Sie die <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Allgemeinen Geschäftsbedingungen</a></span> und die <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Datenschutzbestimmungen</a></span>"
 }

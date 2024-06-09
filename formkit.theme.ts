@@ -1,4 +1,4 @@
-import type { FormKitNode } from '@formkit/core';
+import type { FormKitNode } from '@formkit/core'
 
 /**
  * @privateRemarks
@@ -25,26 +25,26 @@ import type { FormKitNode } from '@formkit/core';
  * })
  * ```
  **/
-export function rootClasses(
+export function rootClasses (
   sectionName: string,
   node: FormKitNode
 ): Record<string, boolean> {
-  const key = `${node.props.type}__${sectionName}`;
-  const semanticKey = `formkit-${sectionName}`;
+  const key = `${node.props.type}__${sectionName}`
+  const semanticKey = `formkit-${sectionName}`
   const familyKey = node.props.family
     ? `family:${node.props.family}__${sectionName}`
-    : '';
-  const memoKey = `${key}__${familyKey}`;
+    : ''
+  const memoKey = `${key}__${familyKey}`
   if (!(memoKey in classes)) {
-    const sectionClasses = classes[key] ?? globals[sectionName] ?? {};
-    sectionClasses[semanticKey] = true;
+    const sectionClasses = classes[key] ?? globals[sectionName] ?? {}
+    sectionClasses[semanticKey] = true
     if (familyKey in classes) {
-      classes[memoKey] = { ...classes[familyKey], ...sectionClasses };
+      classes[memoKey] = { ...classes[familyKey], ...sectionClasses }
     } else {
-      classes[memoKey] = sectionClasses;
+      classes[memoKey] = sectionClasses
     }
   }
-  return classes[memoKey] ?? { [semanticKey]: true };
+  return classes[memoKey] ?? { [semanticKey]: true }
 }
 
 /**
@@ -766,7 +766,7 @@ const classes: Record<string, Record<string, boolean>> = {
   },
   form__message: {
     'text-red-600': true,
-    'mb-1.5': true,
+    'pt-1.5': true,
     'text-xs': true,
     'dark:text-red-400': true,
     'group-[]/summary:text-sm': true
@@ -3311,8 +3311,8 @@ const globals: Record<string, Record<string, boolean>> = {
     'dark:text-neutral-400': true
   },
   message: {
-    'text-red-600': true,
-    'mb-1.5': true,
+    'text-[#FF0000]': true,
+    'pt-2': true,
     'text-xs': true,
     'dark:text-red-400': true
   },

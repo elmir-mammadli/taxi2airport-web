@@ -37,8 +37,9 @@
         <FormKit
           v-model="internalData.passengers"
           type="number"
-          value="0"
-          placeholder="0"
+          value="1"
+          min="1"
+          placeholder="1"
           :label="$t('form.passengers')"
           wrapper-class="$reset"
           outer-class="$reset"
@@ -53,8 +54,9 @@
             <FormKit
               v-model="internalData.luggage"
               type="number"
-              value="0"
-              placeholder="0"
+              value="1"
+              min="1"
+              placeholder="1"
               :label="$t('form.luggage')"
               wrapper-class="$reset"
               outer-class="$reset"
@@ -80,11 +82,14 @@
 
 <script lang="ts" setup>
 import { type FormDataVariables } from '../data/formData'
-type ModelValue = Pick<FormDataVariables, 'formattedDate' | 'formatTime' | 'passengers' | 'luggage'>
+type ModelValue = Pick<
+  FormDataVariables,
+  'formattedDate' | 'formatTime' | 'passengers' | 'luggage'
+>;
 
 const props = defineProps<{
-  modelValue: ModelValue
-  loading: boolean
+  modelValue: ModelValue;
+  loading: boolean;
 }>()
 
 const internalData = ref(props.modelValue)
@@ -99,9 +104,12 @@ watch(internalData, (value: ModelValue) => {
   emit('update:modelValue', value)
 })
 
-watch(() => props.modelValue, (value: ModelValue) => {
-  internalData.value = value
-})
+watch(
+  () => props.modelValue,
+  (value: ModelValue) => {
+    internalData.value = value
+  }
+)
 
 const todaysDate = computed(() => {
   const date = new Date()

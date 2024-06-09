@@ -29,7 +29,7 @@
 		"to": "Nereye"
 	},
 	"hero": {
-		"subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri <span class=\"font-bold\">.</span>",
+		"subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri",
 		"title": " <span class=\"text-custom-blue\">En iyi&nbsp;transferinizi</span>yapın "
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Rezervasyon",
 		"title": "Bir dakika içinde rezervasyon yapın"
 	},
-	"tcpp": " <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-white underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
+	"tcpp": " <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
 }

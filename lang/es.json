@@ -29,7 +29,7 @@
 		"to": "A"
 	},
 	"hero": {
-		"subtitle": "Servicios de traslado rápidos, seguros y sencillos <span class=\"font-bold\">en Praga.</span>",
+		"subtitle": "Servicios de traslado rápidos, seguros y sencillos",
 		"title": "Tenga su <span class=\"text-custom-blue\">mejor&nbsp;transferencia</span>"
 	},
 	"navbar": {
@@ -56,5 +56,5 @@
 		"step-4": "Reserva",
 		"title": "Reserva en un minuto"
 	},
-	"tcpp": "Acepte los <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Términos y condiciones</a></span> y la <span class=\"text-white underline\"><a href=\"/privacy-policy\">Política de privacidad</a></span>"
+	"tcpp": "Acepte los <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Términos y condiciones</a></span> y la <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Política de privacidad</a></span>"
 }

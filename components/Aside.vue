@@ -15,7 +15,9 @@
         <div class="flex items-center gap-x-2">
           <div v-for="(item, index) in slicedAsideData" :key="index">
             <div class="flex items-center gap-x-1">
-              <Icon :name="item.icon" size="15" />
+              <NuxtLink :to="item.link">
+                <Icon :name="item.icon" size="18" />
+              </NuxtLink>
               <p
                 class="text-xs"
                 :class="{
@@ -31,15 +33,15 @@
   </section>
 </template>
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
 
-const { t: $t } = useI18n();
+const { t: $t } = useI18n()
 
-type AsideVariables = 'icon' | 'text';
+type AsideVariables = 'icon' | 'text'
 
 type AsideData = {
   [Key in AsideVariables]: string;
-};
+} & {link?: string}
 
 const asideData: ComputedRef<AsideData[]> = computed(() => [
   {
@@ -60,13 +62,15 @@ const asideData: ComputedRef<AsideData[]> = computed(() => [
   },
   {
     icon: 'bxl:whatsapp',
+    link: 'https://wa.me/420773150831',
     text: ''
   },
   {
     icon: 'bxl:telegram',
+    link: 'https://t.me/+420773150831',
     text: ''
   }
-]);
+])
 
-const slicedAsideData = [...asideData.value.slice(3)];
+const slicedAsideData = [...asideData.value.slice(3)]
 </script>

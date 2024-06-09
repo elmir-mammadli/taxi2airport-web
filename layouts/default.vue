@@ -23,7 +23,7 @@ onBeforeMount(() => {
 }
 
 .page__wrap {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Rubik', sans-serif;
   min-width: 300px;
   width: 100%;
 }

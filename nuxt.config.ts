@@ -9,13 +9,13 @@ export default defineNuxtConfig({
   ],
   modules: [
     '@nuxt/image',
+    '@formkit/nuxt',
     'nuxt-primevue',
     'nuxt-headlessui',
     'nuxt-icon',
     '@vee-validate/nuxt',
     '@nuxtjs/i18n',
     'nuxt-bugsnag',
-    '@formkit/nuxt',
     '@pinia/nuxt',
     [
       '@storyblok/nuxt',
@@ -27,6 +27,9 @@ export default defineNuxtConfig({
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts'
+  },
+  formkit: {
+    autoImport: true
   },
   headlessui: {
     prefix: 'Headless'
@@ -52,16 +55,13 @@ export default defineNuxtConfig({
         {
           href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap',
           rel: 'stylesheet'
+        },
+        // MuseoModerno font
+        {
+          href: 'https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap',
+          rel: 'stylesheet'
         }
-      ],
-      // script: [
-      //   {
-      //     hid: 'tawkto',
-      //     src: 'https://embed.tawk.to/65381772a84dd54dc484c68a/1hdhhn65v',
-      //     defer: true,
-      //     crossorigin: 'anonymous'
-      //   }
-      // ]
+      ]
     }
   },
   postcss: {
@@ -79,4 +79,4 @@ export default defineNuxtConfig({
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-})
+});

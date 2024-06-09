@@ -9,7 +9,7 @@ const cardItems = details;
     id="available-cars"
     class="flex flex-col items-center scroll-mt-[64px] mt-[120px]"
   >
-    <p class="uppercase text-[16px] text-custom-blue font-bold">
+    <p class="text-[16px] capitalize text-custom-blue font-bold">
       {{ $t('cars.title') }}
     </p>
     <h1
