@@ -1,60 +1,60 @@
 {
-  "aside": {
-    "item-1": "Žádné skryté náklady",
-    "item-2": "Zákaznická podpora",
-    "item-3": "<span class=\"font-semibold\">Bezplatné</span> zrušení do 24 hodin před odjezdem"
-  },
-  "button-2": "Objednat jízdu",
-  "cars": {
-    "header": "Vaše jízda, vaše cesta: Prozkoumejte naše možnosti auta!",
-    "title": "Naše dostupné vozy"
-  },
-  "form": {
-    "address-placeholder": "Letiště, adresa, stanice",
-    "booking-details": "VAŠE REZERVAČNÍ ÚDAJE",
-    "child-seat": "Autosedačka pro děti",
-    "child-seat-p": "Potřebuji přidat dětskou autosedačku",
-    "date": "Datum",
-    "email": "E-mail",
-    "flight-number": "Číslo letu",
-    "from": "Ze",
-    "luggage": "Zavazadla",
-    "name": "Jméno",
-    "number": "Telefonní číslo",
-    "passengers": "Cestující",
-    "search-button": "Hledat",
-    "selected-car": "Vybrané auto",
-    "surname": "Příjmení",
-    "time": "Čas",
-    "to": "Do destinace"
-  },
-  "hero": {
-    "subtitle": "Rychlé, bezpečné a nejjednodušší transfery",
-    "title": "Získejte <span class=\"text-custom-blue\">nejlepší&nbsp;převod</span>"
-  },
-  "navbar": {
-    "about": "O nás",
-    "button": "Objednat jízdu",
-    "contact": "Kontakty",
-    "faq": "FAQ",
-    "home": "Home",
-    "price": "Ceník",
-    "services": "Služby"
-  },
-  "reservation": {
-    "button": "Rezervujte nyní!",
-    "card-1": "Naplánujte si jízdu dopředu",
-    "card-2": "Vyberte dopravu",
-    "card-3": "Zaplaťte a užívejte si!",
-    "card-desc-1": "Stanovte si čas a vyberte místo setkání.",
-    "card-desc-2": "Vyberte si typ vozu a přizpůsobte si možnosti pro příjemnější cestu.",
-    "card-desc-3": "Žádné skryté náklady. Rozumné ceny, přijímání všech způsobů platby.",
-    "header": "Sjednejte si transfer z letiště v&nbsp;několika jednoduchých krocích",
-    "step-1": "Cesta",
-    "step-2": "Vozidlo",
-    "step-3": "Podrobnosti",
-    "step-4": "Rezervace",
-    "title": "Rezervovat během minuty"
-  },
-  "tcpp": "Přijměte <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Smluvní podmínky</a></span> a <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Zásady ochrany osobních údajů</a></span>"
+	"aside": {
+		"item-1": "Žádné skryté náklady",
+		"item-2": "Zákaznická podpora",
+		"item-3": "<span class=\"font-semibold\">Bezplatné</span> zrušení do 24 hodin před odjezdem"
+	},
+	"button-2": "Objednat jízdu",
+	"cars": {
+		"header": "Vaše jízda, vaše cesta: Prozkoumejte naše možnosti auta!",
+		"title": "Naše dostupné vozy"
+	},
+	"form": {
+		"address-placeholder": "Letiště, adresa, stanice",
+		"booking-details": "VAŠE REZERVAČNÍ ÚDAJE",
+		"child-seat": "Autosedačka pro děti",
+		"child-seat-p": "Potřebuji přidat dětskou autosedačku",
+		"date": "Datum",
+		"email": "E-mail",
+		"flight-number": "Číslo letu",
+		"from": "Ze",
+		"luggage": "Zavazadla",
+		"name": "Jméno",
+		"number": "Telefonní číslo",
+		"passengers": "Cestující",
+		"search-button": "Hledat",
+		"selected-car": "Vybrané auto",
+		"surname": "Příjmení",
+		"time": "Čas",
+		"to": "Do destinace"
+	},
+	"hero": {
+		"subtitle": "Rychlé, bezpečné a nejjednodušší transfery",
+		"title": "Získejte <span class=\"text-custom-blue\">nejlepší&nbsp;převod</span>"
+	},
+	"navbar": {
+		"about": "O nás",
+		"button": "Objednat jízdu",
+		"contact": "Kontakty",
+		"faq": "FAQ",
+		"home": "Home",
+		"price": "Ceník",
+		"services": "Služby"
+	},
+	"reservation": {
+		"button": "Rezervujte nyní!",
+		"card-1": "Naplánujte si jízdu dopředu",
+		"card-2": "Vyberte dopravu",
+		"card-3": "Zaplaťte a užívejte si!",
+		"card-desc-1": "Stanovte si čas a vyberte místo setkání.",
+		"card-desc-2": "Vyberte si typ vozu a přizpůsobte si možnosti pro příjemnější cestu.",
+		"card-desc-3": "Žádné skryté náklady. Rozumné ceny, přijímání všech způsobů platby.",
+		"header": "Sjednejte si transfer z letiště v&nbsp;několika jednoduchých krocích",
+		"step-1": "Cesta",
+		"step-2": "Vozidlo",
+		"step-3": "Podrobnosti",
+		"step-4": "Rezervace",
+		"title": "Rezervovat během minuty"
+	},
+	"tcpp": "Přijměte <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Smluvní podmínky</a></span> a <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Zásady ochrany osobních údajů</a></span>"
 }

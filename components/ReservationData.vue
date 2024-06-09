@@ -24,11 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { useReservationData } from './data/formData';
+import { useReservationData } from './data/formData'
 
-const reservationData = useReservationData();
+const reservationData = useReservationData()
 
 defineProps<{
   chapter: number;
-}>();
+}>()
 </script>

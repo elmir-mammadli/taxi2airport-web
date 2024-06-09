@@ -49,17 +49,17 @@
 </template>
 
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { ChevronUpIcon } from '@heroicons/vue/20/solid';
-import { questions } from './faqData';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import { ChevronUpIcon } from '@heroicons/vue/20/solid'
+import { questions } from './faqData'
 
-const showAssistance = ref(false);
-const showButton = ref(false);
-const displayedQuestions = ref(questions.slice(0, 6));
+const showAssistance = ref(false)
+const showButton = ref(false)
+const displayedQuestions = ref(questions.slice(0, 6))
 
 const loadMore = () => {
-  displayedQuestions.value = questions;
-  showButton.value = true;
-  showAssistance.value = true;
-};
+  displayedQuestions.value = questions
+  showButton.value = true
+  showAssistance.value = true
+}
 </script>

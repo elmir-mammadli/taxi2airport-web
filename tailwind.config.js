@@ -15,7 +15,8 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
-        poppins: ['Montserrat', 'sans-serif']
+        poppins: ['Montserrat', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif']
       },
       colors: {
         primary: '#F5D21B',
@@ -32,7 +33,8 @@ module.exports = {
           700: '#007F45',
           800: '#016538',
           900: '#0A5331',
-          950: '#052e16'
+          950: '#052e16',
+          'custom-green': '#00CF95'
         },
         red: {
           50: '#FEF2F2',
@@ -51,4 +53,4 @@ module.exports = {
     }
   },
   plugins: [require('flowbite/plugin')]
-}
+};

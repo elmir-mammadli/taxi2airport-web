@@ -1,60 +1,60 @@
 {
-  "aside": {
-    "item-1": "Keine versteckten Kosten",
-    "item-2": "24/7 Kundenbetreuung",
-    "item-3": "<span class=\"font-semibold\">Kostenlos</span> Stornierung bis zu 24 Stunden vor Abfahrt"
-  },
-  "button-2": "Lass uns gehen!",
-  "cars": {
-    "header": "Ihr Fahrzeug, Ihr Weg: Entdecken Sie unsere Autooptionen!",
-    "title": "Unsere verfügbaren Autos"
-  },
-  "form": {
-    "address-placeholder": "Flughafen, Adresse, Bahnhof",
-    "booking-details": "Ihre Buchungsdaten",
-    "child-seat": "Kindersitz",
-    "child-seat-p": "Ich muss einen Kindersitz hinzufügen",
-    "date": "Datum",
-    "email": "E-Mail",
-    "flight-number": "Flugnummer",
-    "from": "Von",
-    "luggage": "Reisegepäck",
-    "name": "Vorname",
-    "number": "Telefonnummer",
-    "passengers": "Passagiere",
-    "search-button": "Suche",
-    "selected-car": "Ausgewähltes Auto",
-    "surname": "Nachname",
-    "time": "Zeit",
-    "to": "An"
-  },
-  "hero": {
-    "subtitle": "Schnelle, sichere und einfachste Transferdienste",
-    "title": "Machen Sie Ihren <span class=\"text-custom-blue\">besten&nbsp;Transfer</span>"
-  },
-  "navbar": {
-    "about": "Über",
-    "button": "Buchen Sie eine Fahrt",
-    "contact": "Kontakt",
-    "faq": "FAQ",
-    "home": "Zuhause",
-    "price": "Preisgestaltung",
-    "services": "Dienste"
-  },
-  "reservation": {
-    "button": "Jetzt buchen!",
-    "card-1": "Planen Sie Ihre Fahrt im Voraus",
-    "card-2": "Wählen Sie den Transport",
-    "card-3": "Bezahlen und genießen!",
-    "card-desc-1": "Vereinbaren Sie eine Zeit und einen Treffpunkt für Ihre Fahrt.",
-    "card-desc-2": "Wählen Sie einen Fahrzeugtyp und passen Sie die Optionen für eine angenehmere Reise an.",
-    "card-desc-3": "Keine versteckten Kosten. Angemessene Preise, Akzeptanz aller Zahlungsmethoden.",
-    "header": "Vereinbaren Sie Ihren Flughafentransfer in&nbsp;wenigen einfachen Schritten",
-    "step-1": "Reise",
-    "step-2": "Fahrzeug",
-    "step-3": "Details",
-    "step-4": "Buchung",
-    "title": "Innerhalb einer Minute reservieren"
-  },
-  "tcpp": "Akzeptieren Sie die <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Allgemeinen Geschäftsbedingungen</a></span> und die <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Datenschutzbestimmungen</a></span>"
+	"aside": {
+		"item-1": "Keine versteckten Kosten",
+		"item-2": "24/7 Kundenbetreuung",
+		"item-3": "<span class=\"font-semibold\">Kostenlos</span> Stornierung bis zu 24 Stunden vor Abfahrt"
+	},
+	"button-2": "Lass uns gehen!",
+	"cars": {
+		"header": "Ihr Fahrzeug, Ihr Weg: Entdecken Sie unsere Autooptionen!",
+		"title": "Unsere verfügbaren Autos"
+	},
+	"form": {
+		"address-placeholder": "Flughafen, Adresse, Bahnhof",
+		"booking-details": "Ihre Buchungsdaten",
+		"child-seat": "Kindersitz",
+		"child-seat-p": "Ich muss einen Kindersitz hinzufügen",
+		"date": "Datum",
+		"email": "E-Mail",
+		"flight-number": "Flugnummer",
+		"from": "Von",
+		"luggage": "Reisegepäck",
+		"name": "Vorname",
+		"number": "Telefonnummer",
+		"passengers": "Passagiere",
+		"search-button": "Suche",
+		"selected-car": "Ausgewähltes Auto",
+		"surname": "Nachname",
+		"time": "Zeit",
+		"to": "An"
+	},
+	"hero": {
+		"subtitle": "Schnelle, sichere und einfachste Transferdienste",
+		"title": "Machen Sie Ihren <span class=\"text-custom-blue\">besten&nbsp;Transfer</span>"
+	},
+	"navbar": {
+		"about": "Über",
+		"button": "Buchen Sie eine Fahrt",
+		"contact": "Kontakt",
+		"faq": "FAQ",
+		"home": "Zuhause",
+		"price": "Preisgestaltung",
+		"services": "Dienste"
+	},
+	"reservation": {
+		"button": "Jetzt buchen!",
+		"card-1": "Planen Sie Ihre Fahrt im Voraus",
+		"card-2": "Wählen Sie den Transport",
+		"card-3": "Bezahlen und genießen!",
+		"card-desc-1": "Vereinbaren Sie eine Zeit und einen Treffpunkt für Ihre Fahrt.",
+		"card-desc-2": "Wählen Sie einen Fahrzeugtyp und passen Sie die Optionen für eine angenehmere Reise an.",
+		"card-desc-3": "Keine versteckten Kosten. Angemessene Preise, Akzeptanz aller Zahlungsmethoden.",
+		"header": "Vereinbaren Sie Ihren Flughafentransfer in&nbsp;wenigen einfachen Schritten",
+		"step-1": "Reise",
+		"step-2": "Fahrzeug",
+		"step-3": "Details",
+		"step-4": "Buchung",
+		"title": "Innerhalb einer Minute reservieren"
+	},
+	"tcpp": "Akzeptieren Sie die <span class=\"text-custom-blue underline\"><a href=\"/terms-and-conditions\">Allgemeinen Geschäftsbedingungen</a></span> und die <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Datenschutzbestimmungen</a></span>"
 }

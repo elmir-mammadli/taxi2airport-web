@@ -60,7 +60,7 @@ export const details: Details[] = [
     name: 'Economy Sedan',
     person: 4,
     luggage: 3,
-    initialPrice: 590,
+    initialPrice: 49,
     extraPrice: 0
   },
   {
@@ -68,7 +68,7 @@ export const details: Details[] = [
     name: 'Economy Minivan',
     person: 8,
     luggage: 7,
-    initialPrice: 990,
+    initialPrice: 59,
     extraPrice: 0
   }
 ]

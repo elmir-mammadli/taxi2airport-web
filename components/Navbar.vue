@@ -19,6 +19,7 @@
               @click="triggerShake"
             />
             <NavbarLanguage class="z-30" />
+            <!-- <NavbarCurrency class="z-30" /> -->
           </div>
         </div>
       </nav>

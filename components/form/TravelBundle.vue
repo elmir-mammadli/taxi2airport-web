@@ -37,8 +37,9 @@
         <FormKit
           v-model="internalData.passengers"
           type="number"
-          value="0"
-          placeholder="0"
+          value="1"
+          min="1"
+          placeholder="1"
           :label="$t('form.passengers')"
           wrapper-class="$reset"
           outer-class="$reset"
@@ -53,8 +54,9 @@
             <FormKit
               v-model="internalData.luggage"
               type="number"
-              value="0"
-              placeholder="0"
+              value="1"
+              min="1"
+              placeholder="1"
               :label="$t('form.luggage')"
               wrapper-class="$reset"
               outer-class="$reset"

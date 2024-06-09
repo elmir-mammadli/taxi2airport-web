@@ -55,6 +55,11 @@ export default defineNuxtConfig({
         {
           href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap',
           rel: 'stylesheet'
+        },
+        // MuseoModerno font
+        {
+          href: 'https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap',
+          rel: 'stylesheet'
         }
       ]
     }

@@ -6,32 +6,29 @@
     <ReservationData :chapter="chapter" />
   </div>
   <div
-    class="px-5 mx-auto"
+    class="relative px-5 mx-auto"
     :class="[
       shakerState ? 'shake outline outline-blue-100' : '',
-      chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]'
+      chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1040px]'
     ]"
   >
+    <LoadingSpinner
+      size="60"
+      :class="[
+        loading ? 'absolute z-30 inset-0 m-auto' : 'hidden'
+      ]"
+    />
     <form
-      class="relative border-[1px] mx-auto border-[#000000] border-opacity-90 mt-10 p-6 rounded-lg"
+      class="border-[1px] mx-auto border-[#000000] border-opacity-90 mt-10 p-6 rounded-lg"
       :class="[
         shakerState ? 'shake outline outline-blue-100' : '',
-        chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]'
+        chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]',
+        loading ? 'blur-sm z-10 pointer-events-none' : ''
       ]"
       @submit.prevent="submitForm"
     >
-      <ProgressSpinner
-        :class="[
-          loading ? 'absolute z-20 inset-0 m-auto' : 'hidden'
-        ]"
-      />
-
       <section
         v-if="chapter === 1"
-        class=""
-        :class="[
-          loading ? 'blur-sm z-10 pointer-events-none' : ''
-        ]"
       >
         <div class="grid grid-cols-1 lg:grid-cols-2 md:gap-x-12">
           <div class="mb-4">
@@ -51,6 +48,7 @@
                 )
               "
             />
+            <small v-if="disabled" class="text-red-500">Addresses should not match</small>
             <p v-if="selectedAddress">
               Selected Address: {{ selectedAddress }}
             </p>
@@ -70,6 +68,7 @@
                 returnSelectedAddressTo($event.display_name, $event.coordinates)
               "
             />
+            <small v-if="disabled" class="text-red-500">Addresses should not match</small>
             <p v-if="selectedAddress">
               Selected Address: {{ selectedAddress }}
             </p>
@@ -89,6 +88,7 @@
             <Button
               :label="$t('form.search-button')"
               :loading="loading"
+              :disabled="disabled"
               icon="pi pi-check"
               class="w-full h-12 text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white mt-8 lg:mt-0"
               @click="chapterChange"
@@ -99,15 +99,15 @@
       <!-- Chapter 2 -->
       <section
         v-if="chapter === 2"
-        :class="[
-          loading ? 'blur-sm z-10 pointer-events-none' : ''
-        ]"
       >
         <div
           class="flex flex-col md:flex-row w-full justify-center md:gap-x-[24px]"
         >
           <div
             class="bg-gray-100 rounded-lg hidden md:flex flex-col max-w-[275px] w-full px-4 py-4"
+            :class="[
+              loading ? 'blur-sm z-10 pointer-events-none' : ''
+            ]"
           >
             <span class="relative">
               <h1 class="text-left font-semibold">YOUR TRANSFER</h1>
@@ -137,9 +137,10 @@
           <div class="">
             <div class="space-y-[24px] w-full">
               <CarModel
-                :loading="loading"
                 :eta="eta"
+                :loading-state="loading"
                 :price="calculatePrice"
+                :distance="haversineResult"
                 @car-selected="updateSelectedCar"
               />
             </div>
@@ -154,9 +155,6 @@
       </section>
       <section
         v-if="chapter === 3"
-        :class="[
-          loading ? 'blur-sm z-10 pointer-events-none' : ''
-        ]"
       >
         <div
           class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full"
@@ -305,9 +303,6 @@
       </section>
       <section
         v-if="chapter === 4"
-        :class="[
-          loading ? 'blur-sm z-10 pointer-events-none' : ''
-        ]"
       >
         <div class="bg-white rounded-lg w-full p-1.5 md:px-4 md:pt-0 md:pb-4">
           <h1 class="text-center font-semibold mb-6">
@@ -355,7 +350,6 @@
             <Button
               label="Finish booking"
               type="submit"
-              :loading="loading"
               icon="pi pi-check"
               class="w-full text-[14px] md:text-base bg-custom-blue hover:bg-opacity-85 p-2 text-white"
             />
@@ -377,7 +371,7 @@
             confirmation message has been sent to your email inbox. We will
             contact you shortly.
           </p>
-          <Button class="mt-4" @click="chapter = 1">
+          <Button class="mt-4" @click="reloadWindow">
             <span
               class="text-[14px] text-custom-blue font-semibold hover:underline"
             >
@@ -388,7 +382,7 @@
       </section>
     </form>
     <div
-      class="flex items-center justify-end gap-x-2 mt-2"
+      class="flex items-center text-sm md:text-base justify-end gap-x-2 mt-2"
       :class="[
         chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]'
       ]"
@@ -406,7 +400,6 @@ import RadioButton from 'primevue/radiobutton'
 import Checkbox from 'primevue/checkbox/Checkbox.vue'
 import { changeLocale } from '@formkit/vue'
 import AddressComplete from './AddressComplete.vue'
-import CarModel from './CarModel.vue'
 import TravelBundle from './form/TravelBundle.vue'
 import { type FormDataVariables } from './data/formData'
 import ReservationData from './ReservationData.vue'
@@ -421,7 +414,28 @@ const shakerState = computed(() => {
 
 const { $t, locale } = useLanguage()
 
+const reloadWindow = () => {
+  chapter.value = 1
+  window.location.reload()
+}
+
 const currentDate = new Date()
+const chapter = ref(1)
+const config = useRuntimeConfig()
+const disabled = ref(false)
+const loading = ref(false)
+const todaysDateForAPI = new Date().toISOString().split('T')[0]
+const isFlightNumber = ref(true)
+const flightInfo = ref('')
+const isLoading = ref(false)
+
+const updateSelectedCar = (carName: string, isBlur: boolean) => {
+  formData.selectedCar = carName
+  loading.value = isBlur
+  if (!isBlur) {
+    chapter.value += 1
+  }
+}
 
 const formattedCountDate = computed(() => {
   return (
@@ -471,14 +485,14 @@ const eta = computed(() => {
 const calculatePrice = computed(() => {
   const distance = Number(haversineResult.value)
   if (distance > 20) {
-    return (distance - 20) * 34
+    return (distance - 20) * 1.5
   } else {
     return 0
   }
 })
 
 const formData: FormDataVariables = reactive({
-  from: 'Prague',
+  from: '',
   to: '',
   formattedDate: '',
   formatTime: '',
@@ -497,20 +511,25 @@ const formData: FormDataVariables = reactive({
     toCoordinates: []
   }
 })
+const addressShouldNotMatch = () => {
+  const from = formData.from
+  const to = formData.to
+
+  if (from === to) {
+    disabled.value = true
+  } else {
+    disabled.value = false
+  }
+}
+
+watch(
+  () => [formData.from, formData.to],
+  () => {
+    addressShouldNotMatch()
+  })
+
 // In order to avoid circular references
 const bookingItems = computed(() => [
-  {
-    key: $t('form.from').toUpperCase(),
-    value: formData.from
-  },
-  {
-    key: $t('form.to').toUpperCase(),
-    value: formData.to
-  },
-  {
-    key: $t('form.email'),
-    value: formData.email
-  },
   {
     key: $t('form.name'),
     value: formData.firstName
@@ -518,6 +537,10 @@ const bookingItems = computed(() => [
   {
     key: $t('form.surname'),
     value: formData.lastName
+  },
+  {
+    key: $t('form.email'),
+    value: formData.email
   },
   {
     key: $t('form.number'),
@@ -530,6 +553,14 @@ const bookingItems = computed(() => [
   {
     key: $t('form.flight-number'),
     value: formData.flightNumber
+  },
+  {
+    key: $t('form.from').toUpperCase(),
+    value: formData.from
+  },
+  {
+    key: $t('form.to').toUpperCase(),
+    value: formData.to
   },
   {
     key: 'Distance',
@@ -556,22 +587,14 @@ const bookingItems = computed(() => [
     value: isChildSeat.value
   },
   {
-    key: 'Payment method',
-    value: formData.paymentMethod
+    key: $t('form.selected-car').toUpperCase(),
+    value: formData.selectedCar
   }
 ])
 
 const itemsSchedule = computed(() => [
-  ...bookingItems.value.slice(6, bookingItems.value.length - 2)
+  ...bookingItems.value.slice(6, bookingItems.value.length - 3)
 ])
-
-const chapter = ref(1)
-const config = useRuntimeConfig()
-const loading = ref(false)
-const todaysDateForAPI = new Date().toISOString().split('T')[0]
-const isFlightNumber = ref(true)
-const flightInfo = ref('')
-const isLoading = ref(false)
 
 const reactiveFromCoordinates = ref<number[]>([])
 const reactiveToCoordinates = ref<number[]>([])
@@ -637,10 +660,6 @@ watch(
   }
 )
 
-const updateSelectedCar = (carName: string) => {
-  formData.selectedCar = carName
-  chapter.value += 1
-}
 const chapterChange = () => {
   if (chapter.value === 1) {
     if (
@@ -708,6 +727,7 @@ const chapterBack = () => {
 // sendMessageToTelegram(trimmedMessage)
 // End of code TG
 const submitForm = async () => {
+  loading.value = true
   try {
     const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
@@ -755,7 +775,9 @@ const submitForm = async () => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)
     }
-    chapter.value++
+    setTimeout(() => {
+      chapter.value++
+    }, 1500)
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {
