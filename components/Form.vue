@@ -145,7 +145,7 @@
               />
             </div>
             <button
-              class="sm:hidden outline w-full mt-4 text-black opacity-[0.87] font-semibold text-[18px] px-8 py-4 rounded-md transition .4s ease-all"
+              class="sm:hidden outline w-full mt-4 text-black opacity-[0.87] font-semibold text-[18px] px-8 py-2 md:py-4 rounded-md transition .4s ease-all"
               @click="chapter = 1"
             >
               Back
@@ -295,7 +295,7 @@
               label="Next"
               :loading="loading"
               icon="pi pi-check"
-              class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white md:mt-7"
+              class="w-full text-[16px] bg-custom-blue hover:bg-opacity-85 p-3 md:p-2 text-white md:mt-7"
               @click="chapterChange"
             />
           </div>
@@ -326,20 +326,13 @@
           </div>
         </div>
         <div
-          class="flex md:flex-row flex-col-reverse items-center justify-between mt-4 mx-4 gap-y-4 md:gap-y-0"
+          class="flex md:flex-row flex-col-reverse items-center sm:items-start md:items-center justify-between mt-4 mx-4 gap-y-4 md:gap-y-0"
         >
           <div class="flex items-start">
-            <Checkbox
-              v-model="isAgreed"
-              class="outline rounded-md outline-blue-black me-2"
-              :binary="true"
-              required
-              validation-messages="{ required: 'Please agree to the terms and conditions' }"
-            />
-            <p class="text-black opacity-[0.87]" v-html="$t('tcpp')" />
+            <p class="text-gray-600" v-html="$t('tcpp')" />
           </div>
           <div
-            class="flex flex-col md:flex-row gap-y-4 md:gap-y-0 md:gap-x-2 w-[400px]"
+            class="flex flex-col sm:flex-row gap-y-4 md:gap-y-0 sm:gap-x-2 w-full md:w-[400px]"
           >
             <Button
               label="Back"
@@ -420,7 +413,7 @@ const reloadWindow = () => {
 }
 
 const currentDate = new Date()
-const chapter = ref(1)
+const chapter = ref(2)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
@@ -449,7 +442,6 @@ const selectedAddress = ref('')
 const pickupDate = ref(new Date())
 const pickupTime = ref(new Date())
 const checked = ref(false)
-const isAgreed = ref(false)
 
 const categories = [
   { key: 'cash', name: 'BY CASH ON ARRIVAL' },

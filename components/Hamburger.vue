@@ -32,7 +32,7 @@ const items = [
 <template>
   <div class="">
     <div class="flex items-center gap-x-2">
-      <NavbarLanguage />
+      <NavbarLanguage class="z-0" />
       <button @click="toggleDropDown">
         <Icon name="zondicons:menu" size="25" color="5A5A5A" />
       </button>
@@ -42,10 +42,10 @@ const items = [
         class="fixed w-full left-0 top-0 bg-gray-100 flex flex-col items-center h-screen justify-center gap-y-2"
       >
         <button
-          class="absolute top-10 right-4 text-black"
+          class="absolute top-14 z-10 right-4 text-black"
           @click="isDropDown = false"
         >
-          <Icon name="mdi:close-circle" size="30" color="5A5A5A" />
+          <Icon name="mdi:close" size="40" color="5A5A5A" />
         </button>
         <div v-for="(item, index) in items" :key="index">
           <NuxtLink :to="item.link">

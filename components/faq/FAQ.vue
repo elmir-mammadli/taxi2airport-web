@@ -1,11 +1,11 @@
 <template>
   <div id="faq" class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto">
     <div class="flex flex-col items-center mb-[40px]">
-      <p class="uppercase text-[16px] text-custom-blue font-bold">
+      <p class="uppercase text-[14px] md:text-[16px] text-custom-blue font-bold">
         Frequently Asked Questions
       </p>
       <h1
-        class="text-[36px] max-w-xl text-gray-800 text-center font-semibold leading-[1.4]"
+        class="text-[26px] md:text-[36px] max-w-xl text-gray-800 text-center font-semibold leading-[1.4] px-5 sm:px-0"
       >
         Your most common questions answered here
       </h1>
@@ -17,17 +17,17 @@
     >
       <Disclosure v-slot="{ open }" as="div">
         <DisclosureButton
-          class="flex w-full justify-between rounded-full bg-gray-100 px-6 py-5 text-left text-[18px] transition .4s ease-all font-medium text-gray-800 hover:bg-gray-200"
+          class="flex w-full items-center justify-between rounded-full bg-gray-100 px-6 py-5 text-left text-sm md:text-[18px] transition .4s ease-all font-medium text-gray-800 hover:bg-gray-200"
         >
           <span>
             {{ q.question }}
           </span>
           <ChevronUpIcon
             :class="open ? 'rotate-180 transform' : ''"
-            class="h-6 w-6 text-gray-800"
+            class="size-6 text-gray-800"
           />
         </DisclosureButton>
-        <DisclosurePanel class="px-4 pt-4 pb-2 text-base text-gray-500">
+        <DisclosurePanel class="px-4 pt-4 pb-2 text-[14px] md:text-base text-gray-500">
           {{ q.answer }}
         </DisclosurePanel>
       </Disclosure>
@@ -62,4 +62,12 @@ const loadMore = () => {
   showButton.value = true
   showAssistance.value = true
 }
+
+const scrollToElement = () => {
+  const element = document.getElementById('faq')
+  element?.scrollIntoView({ behavior: 'smooth' })
+}
+onMounted(() => {
+  scrollToElement()
+})
 </script>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { details } from './data/formData';
-import ServiceCard from '~/components/ServiceCard.vue';
+import { details } from './data/formData'
+import ServiceCard from '~/components/AvailableCarsCard.vue'
 
-const cardItems = details;
+const cardItems = details
 </script>
 <template>
   <div

@@ -4,7 +4,7 @@
     :key="index"
     class="flex flex-row items-center"
   >
-    <div class="flex flex-col md:flex-row items-center justify-center">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-y-1">
       <div
         :class="[chapter > index ? 'bg-custom-blue' : 'bg-gray-200']"
         class="w-8 h-8 rounded-full flex items-center font-semibold justify-center text-white"
