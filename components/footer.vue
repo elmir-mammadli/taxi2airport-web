@@ -1,18 +1,25 @@
 <template>
   <footer class="max-w-[1600px] mx-auto">
-    <div class="mx-auto w-full shadow-lg">
+    <div class="w-full shadow-lg bg-gray-100">
       <div
-        class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between"
+        class="max-w-[1240px] mx-auto py-6 px-4 dark:bg-gray-700 md:flex md:items-center md:justify-between flex flex-col-reverse items-center md:flex-row gap-y-4 md:gap-y-0"
       >
-        <span
+        <div
           class="text-sm text-gray-900 font-medium dark:text-gray-300 sm:text-center"
-        >© 2023 <a href="/">Transfervan.</a> All Rights Reserved.
-        </span>
+        >
+          © 2023 <NuxtLink to="/">
+            Taxi2airport.cz
+          </NuxtLink> All Rights Reserved.
+        </div>
         <div class="flex mt-4 space-x-5 sm:justify-center items-center md:mt-0">
-          <NuxtLink to="/privacy-policy" class="underline">
+          <NuxtLink to="/terms-of-use">
+            Terms of Use
+          </NuxtLink>
+          <div> | </div>
+          <NuxtLink to="/privacy-policy">
             Privacy Policy
           </NuxtLink>
-          <a
+          <!-- <a
             href="#"
             class="text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
@@ -104,7 +111,7 @@
               />
             </svg>
             <span class="sr-only">Dribbble account</span>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
