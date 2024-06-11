@@ -33,8 +33,14 @@
       </Disclosure>
     </div>
     <p v-if="showAssistance" class="ms-3 mt-5">
-      Can't find an answer to your question? Start a chat with us for
-      <span class="font-semibold underline"><a href="">assistance!</a></span>
+      Can't find an answer to your question? Start a chat with us for assistance via
+      <NuxtLink to="https://wa.me/420773150831" target="_blank" class="font-semibold hover:underline">
+        whatsapp
+      </NuxtLink>
+      or
+      <NuxtLink to="https://t.me/+420773150831" class="font-semibold hover:underline">
+        telegram
+      </NuxtLink>
     </p>
     <div class="mx-auto">
       <button
