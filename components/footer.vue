@@ -1,6 +1,6 @@
 <template>
-  <footer class="max-w-[1600px] mx-auto">
-    <div class="w-full shadow-lg bg-gray-100">
+  <footer class="mx-auto">
+    <div class="w-full bg-gray-100">
       <div
         class="max-w-[1240px] mx-auto py-6 px-4 dark:bg-gray-700 md:flex md:items-center md:justify-between flex flex-col-reverse items-center md:flex-row gap-y-4 md:gap-y-0"
       >
@@ -9,9 +9,9 @@
         >
           © 2023 <NuxtLink to="/">
             Taxi2airport.cz
-          </NuxtLink> All Rights Reserved.
+          </NuxtLink>
         </div>
-        <div class="flex mt-4 space-x-5 sm:justify-center items-center md:mt-0">
+        <div class="flex space-x-5 sm:justify-center items-center">
           <NuxtLink to="/terms-of-use">
             Terms of Use
           </NuxtLink>

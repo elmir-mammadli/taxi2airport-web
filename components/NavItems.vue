@@ -10,7 +10,7 @@
         <NuxtLink
           :to="item.link"
           aria-current="page"
-          class="py-3 px-5 text-gray-800 hover:bg-gray-50 hover:ring-gray-100 hover:rounded-full hover:drop-shadow-md"
+          class="py-3 px-5 text-gray-800 hover:underline"
         >
           {{ item.item }}
         </NuxtLink>
@@ -30,8 +30,8 @@ const items = computed(() => [
     link: '#available-cars'
   },
   {
-    item: $t('navbar.about'),
-    link: '#about'
+    item: $t('navbar.meeting-points'),
+    link: '#meeting-points'
   },
   {
     item: $t('navbar.faq'),

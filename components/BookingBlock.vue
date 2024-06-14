@@ -7,7 +7,7 @@
     class="flex flex-col items-center max-w-screen-xl mx-auto mt-32 -z-10"
   >
     <div class="flex flex-col items-center">
-      <p class="uppercase text-[14px] md:text-[16px] text-custom-blue font-bold">
+      <p class="uppercase text-[14px] md:text-[16px] text-light-blue font-bold">
         {{ $t('reservation.title') }}
       </p>
       <h1

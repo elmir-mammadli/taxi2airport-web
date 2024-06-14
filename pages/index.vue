@@ -3,6 +3,7 @@
     <HeroSection />
     <BookingBlock />
     <AvailableCars />
+    <MeetingPoints />
     <Disclosure />
   </main>
 </template>

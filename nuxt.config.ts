@@ -43,6 +43,9 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false
     }
   },
+
+  ssr: true,
+
   app: {
     head: {
       link: [
@@ -79,4 +82,4 @@ export default defineNuxtConfig({
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-});
+})

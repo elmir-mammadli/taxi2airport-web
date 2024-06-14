@@ -1,7 +1,7 @@
 <template>
   <div id="faq" class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto">
     <div class="flex flex-col items-center mb-[40px]">
-      <p class="uppercase text-[14px] md:text-[16px] text-custom-blue font-bold">
+      <p class="uppercase text-[14px] md:text-[16px] text-light-blue font-bold">
         Frequently Asked Questions
       </p>
       <h1
@@ -17,7 +17,7 @@
     >
       <Disclosure v-slot="{ open }" as="div">
         <DisclosureButton
-          class="flex w-full items-center justify-between rounded-full bg-gray-100 px-6 py-5 text-left text-sm md:text-[18px] transition .4s ease-all font-medium text-gray-800 hover:bg-gray-200"
+          class="flex w-full items-center justify-between rounded-full bg-gray-100 px-6 py-5 text-left text-base md:text-[18px] transition .4s ease-all font-medium text-gray-800 hover:bg-gray-200"
         >
           <span>
             {{ q.question }}
@@ -27,12 +27,12 @@
             class="size-6 text-gray-800"
           />
         </DisclosureButton>
-        <DisclosurePanel class="px-4 pt-4 pb-2 text-[14px] md:text-base text-gray-500">
+        <DisclosurePanel class="px-4 pt-4 pb-2 text-base md:text-[18px] text-gray-500">
           {{ q.answer }}
         </DisclosurePanel>
       </Disclosure>
     </div>
-    <p v-if="showAssistance" class="ms-3 mt-5">
+    <p v-if="showAssistance" class="md:ms-3 mt-10 px-5">
       Can't find an answer to your question? Start a chat with us for assistance via
       <NuxtLink to="https://wa.me/420773150831" target="_blank" class="font-semibold hover:underline">
         whatsapp

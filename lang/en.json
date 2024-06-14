@@ -9,6 +9,26 @@
 		"header": "Your Ride, Your Way: Explore Our Car Options! ",
 		"title": "Our available cars"
 	},
+  "meeting-points": {
+    "title": "Meeting Points",
+    "header": "Convenient Spots to&nbsp;Meet Your Driver",
+
+    "work-principle-1": {
+      "title": "How it works:",
+      "text-1": "<b>Meet and Greet Service:</b> Our professional driver will park the vehicle and meet you inside the Airport Arrivals hall. Look for the driver holding a <b>name board</b> with your name on it, ensuring a swift and easy rendezvous. </br></br>",
+      "text-2": "<b>After Landing:</b> As soon as you land, please turn your phone back on for easy communication with our driver. In case of any issues or delays with customs or luggage, promptly call or WhatsApp the contact number provided below."
+    },
+    "work-principle-2": {
+      "title": "Important Details:",
+      "text-1": "<b>Waiting Time:</b> Our driver will wait for you for up to <b>45 minutes</b> after your scheduled flight arrival time. We understand that delays can happen, so our driver will make every effort to contact you before having to leave. </br></br>",
+      "text-2": "<b>Contact Information:</b> If you experience any problems or delays, please reach out to us as soon as possible to keep the driver informed."
+    },
+    "work-principle-3": {
+      "title": "Terminal Specifics:",
+      "text-1": "<b>Terminal 1:</b> Our driver will meet you just after the luggage collection area in the Arrivals hall. </br></br>",
+      "text-2": "<b>Terminal 2:</b> Similarly, the driver will be waiting for you inside the Arrivals hall after you have collected your luggage."
+    }
+  },
 	"form": {
 		"address-placeholder": "Airport, address, station",
 		"booking-details": "YOUR BOOKING DETAILS",
@@ -33,7 +53,7 @@
 		"title": "Have your <span class=\"text-custom-blue\">best&nbsp;transfer</span>"
 	},
 	"navbar": {
-		"about": "About",
+		"meeting-points": "Meeting Points",
 		"button": "Book a Ride",
 		"contact": "Contact",
 		"faq": "FAQ",

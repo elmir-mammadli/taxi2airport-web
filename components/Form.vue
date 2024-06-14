@@ -415,7 +415,7 @@ const reloadWindow = () => {
 }
 
 const currentDate = new Date()
-const chapter = ref(2)
+const chapter = ref(1)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)

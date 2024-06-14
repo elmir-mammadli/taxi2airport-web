@@ -14,9 +14,9 @@
               {{ detail.name }}
             </h1>
             <div class="text-[14px] md:text-base">
-              <div class="flex justify-center lg:justify-start gap-x-4 mt-3 font-medium">
-                <span>🚹 Max {{ detail.person }}</span>
-                <span>🛄 Max {{ detail.luggage }}</span>
+              <div class="flex justify-center lg:justify-start gap-x-4 mt-3 font-normal">
+                <span>🚹 Max: <span class="font-medium">{{ detail.person }}</span></span>
+                <span>🛄 Max: <span class="font-medium">{{ detail.luggage }}</span></span>
               </div>
               <p class="font-normal mt-1">
                 ⌛️ Free waiting time: <span class="font-semibold">45 min</span>
