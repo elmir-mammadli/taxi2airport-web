@@ -11,7 +11,7 @@
       >
         {{ index + 1 }}
       </div>
-      <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[12px] mx-2" />
+      <div class="flex-grow hidden md:block h-1 bg-gray-400 text-[14px] mx-2" />
       <div class="text-[12px] md:text-[16px]">
         {{ step.step }}
       </div>

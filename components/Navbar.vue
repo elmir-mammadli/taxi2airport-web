@@ -5,11 +5,7 @@
         class="max-w-screen-xl mx-auto bg-gray-600 bg-transparent transition-all .3s ease-in"
       >
         <div class="flex items-center mx-auto mt-4 md:pt-8 justify-between px-5">
-          <NuxtLink to="/" class="flex items-center z-10">
-            <span class="text-[28px] tracking-[-0px] text-gray-800">
-              <span class="font-semibold text-gray-800">taxi</span><span class="font-semibold text-light-blue">2</span><span class="lowercase font-semibold">airport</span>
-            </span>
-          </NuxtLink>
+          <NavbarLogo />
           <Hamburger class="block lg:hidden z-[9999]" />
           <NavItems />
           <div class="lg:flex relative z-10 items-center gap-x-4 hidden">
@@ -31,6 +27,7 @@ import { useShakeStore } from '../stores/useShakeStore'
 import NavItems from './NavItems.vue'
 import Hamburger from './Hamburger.vue'
 import NavbarLanguage from './NavbarLanguage.vue'
+import NavbarLogo from './NavbarLogo.vue'
 
 const shakeStore = useShakeStore()
 

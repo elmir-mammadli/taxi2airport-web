@@ -21,7 +21,7 @@ module.exports = {
       colors: {
         primary: '#F5D21B',
         'light-blue': '#007BFF',
-        'custom-blue': '#00396B',
+        'custom-blue': '#002B5B',
         green: {
           50: '#EFFDF5',
           100: '#D9FBE8',
@@ -53,4 +53,4 @@ module.exports = {
     }
   },
   plugins: [require('flowbite/plugin')]
-};
+}
