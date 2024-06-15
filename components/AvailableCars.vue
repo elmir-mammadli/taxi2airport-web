@@ -3,12 +3,9 @@
     id="available-cars"
     class="flex flex-col items-center mt-[120px] scroll-mt-20"
   >
-    <p class="uppercase text-[14px] md:text-[16px] text-light-blue font-bold">
-      {{ $t('cars.title') }}
-    </p>
-    <h1
-      class="text-[26px] md:text-[36px] max-w-xl text-gray-800 text-center font-semibold leading-[1.4] px-5 sm:px-0"
-      v-html="$t('cars.header')"
+    <SectionHeading
+      title="cars.title"
+      subtitle="cars.header"
     />
   </div>
   <div

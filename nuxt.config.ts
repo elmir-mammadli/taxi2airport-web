@@ -38,6 +38,22 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify']
   },
+  image: {
+    screens: {
+      sm: 639,
+      md: 867,
+      lg: 1023,
+      xl: 1279,
+      rD: 1359,
+      '2rD': 1439,
+      xxl: 1599,
+      '3xl': 1919
+    },
+    densities: [1, 2],
+    format: ['webp'],
+    quality: 80,
+    provider: 'ipx'
+  },
   vite: {
     define: {
       'process.env.DEBUG': false
@@ -82,4 +98,4 @@ export default defineNuxtConfig({
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
     }
   }
-})
+});

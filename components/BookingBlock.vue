@@ -6,15 +6,10 @@
     data-aos-duration="600"
     class="flex flex-col items-center max-w-screen-xl mx-auto mt-32 -z-10"
   >
-    <div class="flex flex-col items-center">
-      <p class="uppercase text-[14px] md:text-[16px] text-light-blue font-bold">
-        {{ $t('reservation.title') }}
-      </p>
-      <h1
-        class="text-[26px] md:text-[36px] max-w-xl text-gray-800 text-center font-semibold leading-[1.4] px-5 sm:px-0"
-        v-html="$t('reservation.header')"
-      />
-    </div>
+    <SectionHeading
+      title="reservation.title"
+      subtitle="reservation.header"
+    />
     <div class="flex flex-col md:flex-row gap-x-14 mt-6 md:mt-10 px-5 md:px-0">
       <div
         v-for="(item, index) in items"

@@ -3,15 +3,10 @@
     id="meeting-points"
     class="flex flex-col mt-[120px] scroll-mt-20 max-w-[880px] mx-auto"
   >
-    <div class="flex flex-col items-center">
-      <p class="uppercase text-[14px] md:text-[16px] text-light-blue font-bold">
-        {{ $t('meeting-points.title') }}
-      </p>
-      <h1
-        class="text-[26px] md:text-[36px] max-w-xl text-center text-gray-700 font-semibold leading-[1.4] px-5 sm:px-0"
-        v-html="$t('meeting-points.header')"
-      />
-    </div>
+    <SectionHeading
+      title="meeting-points.title"
+      subtitle="meeting-points.header"
+    />
     <div class="flex flex-col items-start mt-10 px-5">
       <h2
         class="text-[24px] md:text-[28px] max-w-xl text-gray-800 font-semibold leading-[1.4]  sm:px-0"

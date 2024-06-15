@@ -61,6 +61,10 @@
 		"price": "Pricing",
 		"services": "Available Cars"
 	},
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Your most common questions answered here"
+  },
 	"reservation": {
 		"button": "Book Now!",
 		"card-1": "Plan your ride ahead",

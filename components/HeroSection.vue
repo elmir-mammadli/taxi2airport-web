@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-xl mx-auto mt-10 md:mt-16">
-    <div class="relative flex flex-row md:justify-between items-center px-5">
+    <div class="relative flex flex-row justify-center md:justify-between items-center px-5">
       <div
         class="flex flex-col items-start sm:items-center md:items-start justify-center"
       >
@@ -30,12 +30,8 @@
       </div>
       <div>
         <span class="relative">
-          <img
-            class="hidden md:block relative"
-            src="/images/hero_vector1.svg"
-            width="540"
-            alt="hero-img"
-          >
+
+          <NuxtImg src="/images/hero_vector.png" class="hidden md:block" width="540" densities="x1 x2" alt="hero image" />
         </span>
       </div>
     </div>
