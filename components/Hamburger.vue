@@ -3,6 +3,7 @@ import { useNavbarItems } from '../types/NavBar'
 
 const isMenu = ref(false)
 const { $t } = useLanguage()
+const route = useRoute()
 
 const toggleMenu = () => {
   emit('closeMenu')
@@ -10,6 +11,16 @@ const toggleMenu = () => {
 }
 
 const emit = defineEmits(['closeMenu'])
+
+const handleItemLink = (link: string) => {
+  if (link.includes('/')) {
+    return link
+  } else if (route.fullPath.includes('/about')) {
+    return `/#${link}`
+  } else {
+    return 'javascript:void(0)'
+  }
+}
 const { items: navItems } = useNavbarItems()
 </script>
 
@@ -32,7 +43,7 @@ const { items: navItems } = useNavbarItems()
           <Icon name="mdi:close" size="40" color="5A5A5A" />
         </button>
         <div v-for="(item, index) in navItems" :key="index">
-          <NuxtLink :to="`#${item.link}`" @click="toggleMenu">
+          <NuxtLink :to="handleItemLink(item.link)" @click="toggleMenu">
             {{ item.item }}
           </NuxtLink>
         </div>

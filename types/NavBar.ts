@@ -19,8 +19,8 @@ export const useNavbarItems = () => {
       link: 'faq'
     },
     {
-      item: $t('navbar.contact'),
-      link: '/contact'
+      item: $t('navbar.about'),
+      link: '/about'
     }
   ]
   return { items }
