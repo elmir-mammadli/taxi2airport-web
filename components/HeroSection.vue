@@ -9,10 +9,10 @@
           v-html="$t('hero.title')"
         />
         <p
-          class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[20px]"
+          class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[18px] md:text-[20px]"
           v-html="$t('hero.subtitle')"
         />
-        <div class="flex gap-x-5 items-center mt-9">
+        <div class="hidden md:flex gap-x-5 items-center mt-9">
           <button
             class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-[13px] rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
             @click="triggerShake"

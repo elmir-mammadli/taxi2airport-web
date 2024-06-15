@@ -8,7 +8,7 @@
     >
       <li v-for="(item, index) in navItems" :key="index">
         <NuxtLink
-          to="javascript:void(0)"
+          :to="handleItemLink(item.link)"
           aria-current="page"
           class="py-3 px-5 text-gray-800 hover:underline"
           @click="handleCustomScroll(item.link)"
@@ -24,9 +24,23 @@
 import { useNavbarItems } from '../types/NavBar'
 
 const { items: navItems } = useNavbarItems()
+const route = useRoute()
+const router = useRouter()
+console.log('Laman:', route.fullPath)
 
 const handleCustomScroll = (sectionId: string) => {
   scroll(sectionId)
 }
+
+const handleItemLink = (link: string) => {
+  if (link.includes('/')) {
+    return link
+  } else if (route.fullPath.includes('/about')) {
+    return `/#${link}`
+  } else {
+    return 'javascript:void(0)'
+  }
+}
+
 const { scroll } = useScroll()
 </script>
