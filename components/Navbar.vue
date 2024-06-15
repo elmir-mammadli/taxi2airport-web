@@ -6,7 +6,7 @@
       >
         <div class="flex items-center mx-auto mt-4 md:pt-8 justify-between px-5">
           <NavbarLogo />
-          <Hamburger class="block lg:hidden z-[9999]" />
+          <Hamburger class="block lg:hidden z-[9999]" @close-menu="closeNavbarMenu" />
           <NavItems />
           <div class="lg:flex relative z-10 items-center gap-x-4 hidden">
             <Button
@@ -30,9 +30,14 @@ import NavbarLanguage from './NavbarLanguage.vue'
 import NavbarLogo from './NavbarLogo.vue'
 
 const shakeStore = useShakeStore()
+const isOpen = ref(false)
 
-function triggerShake () {
+const triggerShake = () => {
   shakeStore.triggerShake()
+}
+
+const closeNavbarMenu = () => {
+  isOpen.value = !isOpen.value
 }
 
 const resize = ref(false)

@@ -15,7 +15,7 @@
         <div class="flex items-center gap-x-2">
           <div v-for="(item, index) in slicedAsideData" :key="index">
             <div class="flex items-center gap-x-1">
-              <NuxtLink :to="item.link">
+              <NuxtLink class="hover:underline" :to="item.link">
                 <Icon :name="item.icon" size="18" />
               </NuxtLink>
               <p
@@ -36,6 +36,11 @@
 import { useI18n } from 'vue-i18n'
 
 const { t: $t } = useI18n()
+const person = {
+  name: 'John',
+  age: 30
+}
+console.log(Object.values(person))
 
 type AsideVariables = 'icon' | 'text'
 
@@ -57,7 +62,8 @@ const asideData: ComputedRef<AsideData[]> = computed(() => [
     text: $t('aside.item-3')
   },
   {
-    icon: 'twemoji:envelope-with-arrow',
+    icon: 'material-symbols:support-agent',
+    link: 'mailto:support@taxi2airport.cz',
     text: 'support@taxi2airport.cz'
   },
   {

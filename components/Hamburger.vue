@@ -1,55 +1,39 @@
 <script setup lang="ts">
-const isDropDown = ref(false)
+import { useNavbarItems } from '../types/NavBar'
+
+const isMenu = ref(false)
 const { $t } = useLanguage()
 
-const toggleDropDown = () => {
-  isDropDown.value = !isDropDown.value
+const toggleMenu = () => {
+  emit('closeMenu')
+  isMenu.value = !isMenu.value
 }
-const items = [
-  {
-    name: $t('navbar.services'),
-    link: '/services'
-  },
-  {
-    name: $t('navbar.price'),
-    link: '/about'
-  },
-  {
-    name: $t('navbar.about'),
-    link: '/about'
-  },
-  {
-    name: $t('navbar.faq'),
-    link: '#faq'
-  },
-  {
-    name: $t('navbar.contact'),
-    link: '/contact'
-  }
-]
+
+const emit = defineEmits(['closeMenu'])
+const { items: navItems } = useNavbarItems()
 </script>
 
 <template>
   <div class="">
     <div class="flex items-center gap-x-2">
       <NavbarLanguage class="z-0" />
-      <button @click="toggleDropDown">
+      <button @click="toggleMenu">
         <Icon name="zondicons:menu" size="25" color="5A5A5A" />
       </button>
     </div>
-    <TransitionGroup v-if="isDropDown" class="">
+    <TransitionGroup v-if="isMenu" class="">
       <div
         class="fixed w-full left-0 top-0 bg-gray-100 flex flex-col items-center h-screen justify-center gap-y-2"
       >
         <button
           class="absolute top-14 z-10 right-4 text-black"
-          @click="isDropDown = false"
+          @click="isMenu = false"
         >
           <Icon name="mdi:close" size="40" color="5A5A5A" />
         </button>
-        <div v-for="(item, index) in items" :key="index">
-          <NuxtLink :to="item.link">
-            {{ item.name }}
+        <div v-for="(item, index) in navItems" :key="index">
+          <NuxtLink :to="`#${item.link}`" @click="toggleMenu">
+            {{ item.item }}
           </NuxtLink>
         </div>
       </div>

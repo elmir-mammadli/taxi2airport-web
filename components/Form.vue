@@ -1,7 +1,7 @@
 <template>
   <div
     id="bookForm"
-    class="max-w-[1024px] mx-auto flex justify-center scroll-mt-20 mb-6 mt-20 px-5"
+    class="max-w-[1024px] mx-auto flex justify-center scroll-mt-20 mb-6 mt-10 md:mt-20 px-5"
   >
     <ReservationData :chapter="chapter" />
   </div>
