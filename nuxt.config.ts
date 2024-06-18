@@ -93,6 +93,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+      SENDGRID_CLIENT_TEMPLATE_ID: process.env.SENDGRID_CLIENT_TEMPLATE_ID,
       MAPBOX_API_KEY: process.env.MAPBOX_TOKEN,
       RAPID_API_KEY: process.env.RAPID_API_KEY,
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN

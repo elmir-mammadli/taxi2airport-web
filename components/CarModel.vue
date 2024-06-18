@@ -38,7 +38,7 @@
       <h1
         class="font-bold text-green-custom-green text-[32px] text-center leading-none"
       >
-        {{ `€${detail.extraPrice}.00` }}
+        {{ `€${detail.extraPrice}` }}
       </h1>
       <Button
         :loading="loading"

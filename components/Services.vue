@@ -5,10 +5,7 @@ import ServiceCard from '~/components/AvailableCarsCard.vue'
 const cardItems = details
 </script>
 <template>
-  <SectionHeading
-    title="cars.title"
-    subtitle="cars.header"
-  />
+  <SectionHeading section-title="cars.title" section-subtitle="cars.header" />
   <div
     class="max-w-[720px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-y-12 mt-[64px]"
   >
