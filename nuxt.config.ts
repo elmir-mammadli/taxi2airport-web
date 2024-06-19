@@ -17,10 +17,16 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-bugsnag',
     '@pinia/nuxt',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
   i18n: {
     vueI18n: './plugins/i18n.config.ts'
+  },
+  site: {
+    url: 'https://taxi2airport.cz',
+    name: 'Taxi2Airport',
+    description: 'Reliable and stress-free airport transfers with Taxi2Airport. Enjoy punctual, safe, and comfortable rides available 24/7 with competitive pricing.'
   },
   formkit: {
     autoImport: true
@@ -92,7 +98,7 @@ export default defineNuxtConfig({
       RAPID_API_KEY: process.env.RAPID_API_KEY,
       TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
       RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
-      RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
+      RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY
     }
   }
 })
