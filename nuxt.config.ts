@@ -26,7 +26,8 @@ export default defineNuxtConfig({
   site: {
     url: 'https://taxi2airport.cz',
     name: 'Taxi2Airport',
-    description: 'Reliable and stress-free airport transfers with Taxi2Airport. Enjoy punctual, safe, and comfortable rides available 24/7 with competitive pricing.'
+    description:
+      'Reliable and stress-free airport transfers with Taxi2Airport. Enjoy punctual, safe, and comfortable rides available 24/7 with competitive pricing.'
   },
   formkit: {
     autoImport: true
@@ -65,6 +66,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/images/favicon.png'
+        },
+
         // Inter font
         {
           href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
@@ -101,4 +109,4 @@ export default defineNuxtConfig({
       RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY
     }
   }
-})
+});
