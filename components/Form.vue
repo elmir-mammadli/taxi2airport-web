@@ -326,10 +326,15 @@
           </div>
         </div>
         <div
-          class="flex md:flex-row flex-col-reverse items-center sm:items-start md:items-center justify-between mt-4 md:mt-8 gap-y-4 md:gap-y-0"
+          class="flex md:flex-row flex-col-reverse max-w-[915px] mx-auto items-center sm:items-start md:items-center justify-between mt-4 md:mt-8 gap-y-4 md:gap-y-0"
         >
-          <div class="flex items-start">
-            <p class="text-gray-600" v-html="$t('tcpp')" />
+          <div>
+            <Recaptcha
+              :disabled="disabled"
+              :error-callback="handleErrorCallback"
+              :handle-load-callback="handleLoadCallback as () => void"
+            />
+            <small v-if="disabled" class="text-red-500">Please complete the reCAPTCHA</small>
           </div>
           <div
             class="flex flex-col sm:flex-row gap-y-4 md:gap-y-0 sm:gap-x-2 w-full md:w-[400px]"
@@ -373,18 +378,27 @@
           </Button>
         </div>
       </section>
+      <div v-if="chapter === 4" class="flex sm:hidden items-start mt-2">
+        <p class="text-gray-600 text-sm md:text-base" v-html="$t('tcpp')" />
+      </div>
     </form>
     <div
-      class="flex items-center text-sm md:text-base justify-end gap-x-2 mt-2"
+      class="flex flex-col md:flex-row items-end text-sm md:text-base mt-2 gap-y-2"
       :class="[
-        chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]'
+        chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]',
+        chapter === 4 ? 'md:justify-between' : 'justify-end'
       ]"
     >
-      <p>We are using WhatsApp!</p>
-      <Icon name="logos:whatsapp-icon" size="1.5em" />
-      <NuxtLink to="https://wa.me/420773150831" class="font-semibold hover:underline">
-        +420 773 150 831
-      </NuxtLink>
+      <div v-if="chapter === 4" class="hidden md:flex items-start">
+        <p class="text-gray-600" v-html="$t('tcpp')" />
+      </div>
+      <div class="flex gap-x-2">
+        <p>We are using WhatsApp!</p>
+        <Icon name="logos:whatsapp-icon" size="1.5em" />
+        <NuxtLink to="https://wa.me/420773150831" class="font-semibold hover:underline">
+          +420 773 150 831
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -398,7 +412,7 @@ import AddressComplete from './AddressComplete.vue'
 import TravelBundle from './form/TravelBundle.vue'
 import { type FormDataVariables } from './data/formData'
 import ReservationData from './ReservationData.vue'
-
+import Recaptcha from './Recaptcha.vue'
 import { useShakeStore } from '~/stores/useShakeStore'
 
 const shakeStore = useShakeStore()
@@ -414,15 +428,29 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const currentDate = new Date()
 const chapter = ref(1)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
 const todaysDateForAPI = new Date().toISOString().split('T')[0]
+
 const isFlightNumber = ref(true)
 const flightInfo = ref('')
 const isLoading = ref(false)
+const recaptchaVerified = ref(false)
+const recaptchaToken = ref('')
+
+const handleErrorCallback = () => {
+  console.error('Error with ReCaptcha')
+}
+
+const handleLoadCallback = (response: unknown) => {
+  // eslint-disable-next-line no-console
+  console.log('ReCaptcha loaded', response)
+  recaptchaVerified.value = true
+  recaptchaToken.value = response as string
+  disabled.value = false
+}
 
 const updateSelectedCar = (carName: string, isBlur: boolean) => {
   formData.selectedCar = carName
@@ -431,14 +459,6 @@ const updateSelectedCar = (carName: string, isBlur: boolean) => {
     chapter.value += 1
   }
 }
-
-const formattedCountDate = computed(() => {
-  return (
-    currentDate.getFullYear().toString() +
-    (currentDate.getMonth() + 1).toString().padStart(2, '0') +
-    currentDate.getDate().toString().padStart(2, '0')
-  )
-})
 
 const selectedAddress = ref('')
 const pickupDate = ref(new Date())
@@ -457,6 +477,7 @@ const formattedDate = computed(() => {
 
   return `${day}.${month}.${year}`
 })
+
 // new Date().toISOString().split('T')[0]
 
 const formatTime = computed(() => {
@@ -691,36 +712,6 @@ const chapterBack = () => {
   chapter.value--
 }
 
-//   const botToken = config.public.TELEGRAM_BOT_TOKEN
-//   const chatId = '+ntPwnPCz5P0xNzli' // Replace with your actual channel chat ID
-
-//   const url = `https://api.telegram.org/bot${botToken}/sendMessage`
-
-//   try {
-//     await axios.post(url, {
-//       chat_id: chatId,
-//       text: message
-//     })
-//     console.log('Message sent successfully')
-//   } catch (error) {
-//     console.error('Error sending message', error)
-//   }
-// }
-
-// Example usage
-// const trimmedMessage = `
-//   New booking request:
-//   From: ${formData.from}
-//   To: ${formData.to}
-//   Date: ${formattedDate.value}
-//   Time: ${formatTime.value}
-//   Passengers: ${formData.passengers}
-//   Luggage: ${formData.luggage}
-// `
-
-// sendMessageToTelegram(trimmedMessage)
-// End of code TG
-
 const submitFormHeaders = {
   'Content-Type': 'application/json',
   Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
@@ -759,6 +750,11 @@ const submitFormClientPersonalizations = [
   ]
 ]
 const submitForm = async () => {
+  if (!recaptchaVerified.value) {
+    disabled.value = true
+    return
+  }
+
   loading.value = true
   try {
     const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
@@ -767,7 +763,8 @@ const submitForm = async () => {
       body: JSON.stringify({
         personalizations: submitFormClientPersonalizations,
         template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-        from: { email: 'booking@taxi2airport.cz' }
+        from: { email: 'booking@taxi2airport.cz' },
+        recaptcha_token: recaptchaToken.value
       })
     })
 

@@ -47,9 +47,6 @@ importers:
       '@sendgrid/mail':
         specifier: ^8.1.3
         version: 8.1.3
-      '@storyblok/nuxt':
-        specifier: ^6.0.0
-        version: 6.0.10
       '@vee-validate/nuxt':
         specifier: ^4.11.8
         version: 4.12.6(rollup@4.16.4)(vue@3.4.25(typescript@5.4.5))
@@ -98,6 +95,9 @@ importers:
       vue-i18n:
         specifier: ^9.4.1
         version: 9.13.1(vue@3.4.25(typescript@5.4.5))
+      vue3-recaptcha-v2:
+        specifier: ^2.0.2
+        version: 2.0.2(vue@3.4.25(typescript@5.4.5))
       vuetify:
         specifier: ^3.4.7
         version: 3.5.17(typescript@5.4.5)(vue-i18n@9.13.1(vue@3.4.25(typescript@5.4.5)))(vue@3.4.25(typescript@5.4.5))
@@ -1330,15 +1330,6 @@ packages:
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
-
-  '@storyblok/js@3.0.8':
-    resolution: {integrity: sha512-JY+abbswBId84Ubr0yRwNpq5Klf9546Ia2Qs1pn6en5Trz8o6EcBJIwxvR6evjJ0Vp2cLKT7MV1yfGLAtnzycA==}
-
-  '@storyblok/nuxt@6.0.10':
-    resolution: {integrity: sha512-vwlQBzNRZxHl4QxE3MYj13MAVeBp/BZc2dM9dbs0OxIwK3nMKU4XWaDOQ6XdQzmCKRGjH+5EZ2uwbmShD5e/Ug==}
-
-  '@storyblok/vue@8.0.8':
-    resolution: {integrity: sha512-ReYbMVeekQpj6wNE4V/ac2u59YYxsENrtWGmyMwWiqohTOm4106tznMbzWmVJgEwO8N2eXhIkg1MZ7FlADqAlw==}
 
   '@swc/wasm@1.5.5':
     resolution: {integrity: sha512-1qOHxOKtii5CP6PWg36FyZhR9jMUIdNNWbTFSCdG2QYHLS/iLNftrqXHRp8nROn1lHU7n7WIWIk1+GJC41S5nQ==}
@@ -5624,9 +5615,6 @@ packages:
   std-env@3.7.0:
     resolution: {integrity: sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==}
 
-  storyblok-js-client@6.7.3:
-    resolution: {integrity: sha512-fBBxtyju6xtFYgAgoWBaU7WagB8M6wN+N+A3UAhZtAPW8yZmlbr3nZu26ErYIbSLaeueyFlcNrI4Kag+Kszsdw==}
-
   streamx@2.16.1:
     resolution: {integrity: sha512-m9QYj6WygWyWa3H1YY69amr4nVgy61xfjys7xO7kviL5rfIEc2naf+ewFiOA+aEJD7y0JO3h2GoiUv4TDwEGzQ==}
 
@@ -6354,6 +6342,11 @@ packages:
     resolution: {integrity: sha512-b8/f5NQ5nIEBRTNi6GcPItE4s7kxNHw2AIHLtDp+2QvqdTjVN0FgONwX9cr53jWRgnu+HRLPaWDOR2JPI5MTfQ==}
     peerDependencies:
       vue: ^3.2.0
+
+  vue3-recaptcha-v2@2.0.2:
+    resolution: {integrity: sha512-uIxJG4+BVquSVJxCLdkJV3Y0IgXPG+sWqAG34qwHt9MungDFshuKprtrN48oJHcLXePLey/FEo2B5pbfMB5cjQ==}
+    peerDependencies:
+      vue: ^3
 
   vue@3.4.25:
     resolution: {integrity: sha512-HWyDqoBHMgav/OKiYA2ZQg+kjfMgLt/T0vg4cbIF7JbXAjDexRf5JRg+PWAfrAkSmTd2I8aPSXtooBFWHB98cg==}
@@ -8223,18 +8216,6 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@socket.io/component-emitter@3.1.2': {}
-
-  '@storyblok/js@3.0.8':
-    dependencies:
-      storyblok-js-client: 6.7.3
-
-  '@storyblok/nuxt@6.0.10':
-    dependencies:
-      '@storyblok/vue': 8.0.8
-
-  '@storyblok/vue@8.0.8':
-    dependencies:
-      '@storyblok/js': 3.0.8
 
   '@swc/wasm@1.5.5': {}
 
@@ -13718,8 +13699,6 @@ snapshots:
 
   std-env@3.7.0: {}
 
-  storyblok-js-client@6.7.3: {}
-
   streamx@2.16.1:
     dependencies:
       fast-fifo: 1.3.2
@@ -14599,6 +14578,10 @@ snapshots:
       vue: 3.4.25(typescript@5.4.5)
       vue-observe-visibility: 2.0.0-alpha.1(vue@3.4.25(typescript@5.4.5))
       vue-resize: 2.0.0-alpha.1(vue@3.4.25(typescript@5.4.5))
+
+  vue3-recaptcha-v2@2.0.2(vue@3.4.25(typescript@5.4.5)):
+    dependencies:
+      vue: 3.4.25(typescript@5.4.5)
 
   vue@3.4.25(typescript@5.4.5):
     dependencies:

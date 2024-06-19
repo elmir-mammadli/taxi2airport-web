@@ -17,12 +17,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-bugsnag',
     '@pinia/nuxt',
-    [
-      '@storyblok/nuxt',
-      {
-        accessToken: '7uGbKtUY7gZBqUSkvoACzwtt'
-      }
-    ],
     '@nuxt/content'
   ],
   i18n: {
@@ -96,7 +90,9 @@ export default defineNuxtConfig({
       SENDGRID_CLIENT_TEMPLATE_ID: process.env.SENDGRID_CLIENT_TEMPLATE_ID,
       MAPBOX_API_KEY: process.env.MAPBOX_TOKEN,
       RAPID_API_KEY: process.env.RAPID_API_KEY,
-      TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN
+      TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
+      RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
+      RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
     }
   }
-});
+})
