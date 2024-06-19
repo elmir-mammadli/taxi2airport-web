@@ -25,8 +25,6 @@ import { useNavbarItems } from '../types/NavBar'
 
 const { items: navItems } = useNavbarItems()
 const route = useRoute()
-const router = useRouter()
-console.log('Laman:', route.fullPath)
 
 const handleCustomScroll = (sectionId: string) => {
   scroll(sectionId)

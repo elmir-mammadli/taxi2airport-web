@@ -36,11 +36,6 @@
 import { useI18n } from 'vue-i18n'
 
 const { t: $t } = useI18n()
-const person = {
-  name: 'John',
-  age: 30
-}
-console.log(Object.values(person))
 
 type AsideVariables = 'icon' | 'text'
 
