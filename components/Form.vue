@@ -763,8 +763,7 @@ const submitForm = async () => {
       body: JSON.stringify({
         personalizations: submitFormClientPersonalizations,
         template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-        from: { email: 'booking@taxi2airport.cz' },
-        recaptcha_token: recaptchaToken.value
+        from: { email: 'booking@taxi2airport.cz' }
       })
     })
 
