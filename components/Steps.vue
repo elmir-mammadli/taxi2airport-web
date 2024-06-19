@@ -39,10 +39,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const router = useRouter();
-const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
 const items = ref([
   {
@@ -61,9 +61,9 @@ const items = ref([
     label: 'Confirmation',
     route: '/confirmation'
   }
-]);
+])
 
 const isActive = (item) => {
-  return item.route ? router.resolve(item.route).path === route.path : false;
-};
+  return item.route ? router.resolve(item.route).path === route.path : false
+}
 </script>

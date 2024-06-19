@@ -14,7 +14,11 @@ useSeoMeta({
 </script>
 <template>
   <div class="my-20 px-5">
-    <SectionHeading title="ABOUT US" subtitle="Your Journey, Our Commitment" />
+    <SectionHeading
+      section-title="ABOUT US"
+      section-subtitle="Your Journey, Our Commitment"
+      wide
+    />
     <div class="max-w-[868px] text-justify mx-auto text-base md:text-[18px] leading-[28px]">
       <LazyContentDoc path="/about-us" />
     </div>

@@ -1,4 +1,5 @@
 import { useBreakpoints } from '@vueuse/core'
+const router = useRouter()
 
 export const useScroll = () => {
   const breakpoints = useBreakpoints({
@@ -16,6 +17,9 @@ export const useScroll = () => {
     if (targetEl) {
       const yAxis = targetEl.getBoundingClientRect().top + window.scrollY + yOffset
       window.scrollTo({ top: yAxis, behavior: 'smooth' })
+      router.push({
+        query: { section }
+      })
     }
   }
 

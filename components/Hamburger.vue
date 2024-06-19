@@ -2,7 +2,6 @@
 import { useNavbarItems } from '../types/NavBar'
 
 const isMenu = ref(false)
-const { $t } = useLanguage()
 const route = useRoute()
 
 const toggleMenu = () => {

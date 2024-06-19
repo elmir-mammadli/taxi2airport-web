@@ -90,7 +90,7 @@
               :loading="loading"
               :disabled="disabled"
               icon="pi pi-check"
-              class="w-full h-12 text-[16px] bg-custom-blue hover:bg-opacity-85 p-2 text-white mt-8 lg:mt-0"
+              class="w-full h-12 text-[16px] bg-[#009BD7] hover:bg-custom-blue  p-2 text-white mt-8 lg:mt-0"
               @click="chapterChange"
             />
           </div>
@@ -720,48 +720,53 @@ const chapterBack = () => {
 
 // sendMessageToTelegram(trimmedMessage)
 // End of code TG
+
+const submitFormHeaders = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
+}
+
+const submitFormClientPersonalizations = [
+  [
+    {
+      to: [
+        {
+          email: formData.email,
+          name: 'Learn to edit dynamic templates'
+        }
+      ],
+      cc: [
+        {
+          email: 'hackrecaz@gmail.com'
+        }
+      ],
+      dynamic_template_data: {
+        name: formData.firstName,
+        surname: formData.lastName,
+        from: formData.from,
+        to: formData.to,
+        date: formattedDate.value,
+        time: formatTime.value,
+        luggage: formData.luggage,
+        selectedCar: formData.selectedCar,
+        flightNumber: formData.flightNumber,
+        number: formData.phoneNumber,
+        email: formData.email,
+        passengers: formData.passengers,
+        childSeat: isChildSeat.value
+      }
+    }
+  ]
+]
 const submitForm = async () => {
   loading.value = true
   try {
     const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
-      },
+      headers: submitFormHeaders,
       body: JSON.stringify({
-        personalizations: [
-          {
-            to: [
-              {
-                email: formData.email,
-                name: 'Learn to edit dynamic templates'
-              }
-            ],
-            cc: [
-              {
-                email: 'hackrecaz@gmail.com'
-              }
-            ],
-            dynamic_template_data: {
-              name: formData.firstName,
-              surname: formData.lastName,
-              from: formData.from,
-              to: formData.to,
-              date: formattedDate.value,
-              time: formatTime.value,
-              luggage: formData.luggage,
-              selectedCar: formData.selectedCar,
-              flightNumber: formData.flightNumber,
-              number: formData.phoneNumber,
-              email: formData.email,
-              passengers: formData.passengers,
-              childSeat: isChildSeat.value,
-              orderCount: formattedCountDate.value // Ensure this is .value if it's a computed property
-            }
-          }
-        ],
-        template_id: 'd-f825ae80a73f4c988e0a289fdf6bef92',
+        personalizations: submitFormClientPersonalizations,
+        template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
         from: { email: 'booking@taxi2airport.cz' }
       })
     })

@@ -33,12 +33,13 @@ const handleCustomScroll = (sectionId: string) => {
 }
 
 const handleItemLink = (link: string) => {
-  if (link.includes('/')) {
-    return link
-  } else if (route.fullPath.includes('/about')) {
-    return `/#${link}`
-  } else {
-    return 'javascript:void(0)'
+  switch (true) {
+    case link.includes('/'):
+      return link
+    case route.fullPath.includes('/about'):
+      return `/#${link}`
+    default:
+      return 'javascript:void(0)'
   }
 }
 

@@ -1,8 +1,8 @@
 <template>
   <div id="faq" class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto">
     <SectionHeading
-      title="faq.title"
-      subtitle="faq.subtitle"
+      section-title="faq.title"
+      section-subtitle="faq.subtitle"
     />
     <div
       v-for="(q, index) in displayedQuestions"

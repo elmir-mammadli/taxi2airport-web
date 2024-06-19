@@ -1,14 +1,14 @@
 {
-	"aside": {
-		"item-1": "No hidden costs",
-		"item-2": "Customer Support",
-		"item-3": "<span class=\"font-semibold\">Free</span> cancellation up to 24 hours before departure"
-	},
-	"button-2": "Let's Go!",
-	"cars": {
-		"header": "Your Ride, Your Way: Explore Our Car Options! ",
-		"title": "Our available cars"
-	},
+  "aside": {
+    "item-1": "No hidden costs",
+    "item-2": "Customer Support",
+    "item-3": "<span class=\"font-semibold\">Free</span> cancellation up to 24 hours before departure"
+  },
+  "button-2": "Let's Go!",
+  "cars": {
+    "header": "Your Ride, Your Way: Explore Our Car Options! ",
+    "title": "Our available cars"
+  },
   "meeting-points": {
     "title": "Meeting Points",
     "header": "Convenient Spots to&nbsp;Meet Your Driver",
@@ -29,56 +29,56 @@
       "text-2": "<b>Terminal 2:</b> Similarly, the driver will be waiting for you inside the Arrivals hall after you have collected your luggage."
     }
   },
-	"form": {
-		"address-placeholder": "Airport, address, station",
-		"booking-details": "YOUR BOOKING DETAILS",
-		"child-seat": "Child seat",
-		"child-seat-p": "I need to add child seat",
-		"date": "Date",
-		"email": "Email",
-		"flight-number": "Flight number",
-		"from": "From",
-		"luggage": "Luggage",
-		"name": "First name",
-		"number": "Phone number",
-		"passengers": "Passengers",
-		"search-button": "Search",
-		"selected-car": "Selected car",
-		"surname": "Last name",
-		"time": "Time",
-		"to": "To"
-	},
-	"hero": {
-		"subtitle": "Fast, safe and easiest transfer services",
-		"title": "Have your <span class=\"text-custom-blue\">best&nbsp;transfer</span>"
-	},
-	"navbar": {
-		"meeting-points": "Meeting Points",
-		"button": "Book a Ride",
-		"about": "About Us",
-		"faq": "FAQ",
-		"home": "Home",
-		"price": "Pricing",
-		"services": "Available Cars"
-	},
+  "form": {
+    "address-placeholder": "Airport, address, station",
+    "booking-details": "YOUR BOOKING DETAILS",
+    "child-seat": "Child seat",
+    "child-seat-p": "I need to add child seat",
+    "date": "Date",
+    "email": "Email",
+    "flight-number": "Flight number",
+    "from": "From",
+    "luggage": "Luggage",
+    "name": "First name",
+    "number": "Phone number",
+    "passengers": "Passengers",
+    "search-button": "Search",
+    "selected-car": "Selected car",
+    "surname": "Last name",
+    "time": "Time",
+    "to": "To"
+  },
+  "hero": {
+    "subtitle": "Fast, safe and easiest transfer services",
+    "title": "Have your <span class=\"text-light-blue\">best&nbsp;transfer</span>"
+  },
+  "navbar": {
+    "meeting-points": "Meeting Points",
+    "button": "Book a Ride",
+    "about": "About Us",
+    "faq": "FAQ",
+    "home": "Home",
+    "price": "Pricing",
+    "services": "Available Cars"
+  },
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Your most common questions answered here"
   },
-	"reservation": {
-		"button": "Book Now!",
-		"card-1": "Plan your ride ahead",
-		"card-2": "Choose the transport",
-		"card-3": "Pay and enjoy!",
-		"card-desc-1": "Fix a time and choose a meeting place for your ride.",
-		"card-desc-2": "Pick a car type and customize options for a more pleasant journey.",
-		"card-desc-3": "No hidden costs. Reasonable pricing, accepting all payment methods.",
-		"header": "Arrange your airport transfer in&nbsp;few easy steps",
-		"step-1": "Journey",
-		"step-2": "Vehicle",
-		"step-3": "Details",
-		"step-4": "Booking",
-		"title": "Reserve within a minute"
-	},
-	"tcpp": "By clicking, you agree to the <span class=\"text-custom-blue underline\"><a href=\"/terms-of-use\">Terms of Service</a></span> and <span class=\"text-custom-blue underline\"><a href=\"/privacy-policy\">Privacy Policy</a></span>"
+  "reservation": {
+    "button": "Book Now!",
+    "card-1": "Plan your ride ahead",
+    "card-2": "Choose the transport",
+    "card-3": "Pay and enjoy!",
+    "card-desc-1": "Fix a time and choose a meeting place for your ride.",
+    "card-desc-2": "Pick a car type and customize options for a more pleasant journey.",
+    "card-desc-3": "No hidden costs. Reasonable pricing, accepting all payment methods.",
+    "header": "Arrange your airport transfer in&nbsp;few easy steps",
+    "step-1": "Journey",
+    "step-2": "Vehicle",
+    "step-3": "Details",
+    "step-4": "Booking",
+    "title": "Reserve within a minute"
+  },
+  "tcpp": "By clicking, you agree to the <span class=\"text-light-blue underline\"><a href=\"/terms-of-use\">Terms of Service</a></span> and <span class=\"text-light-blue underline\"><a href=\"/privacy-policy\">Privacy Policy</a></span>"
 }
