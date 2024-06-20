@@ -40,6 +40,9 @@ export default defineNuxtConfig({
     transpile: ['vuetify']
   },
   image: {
+    domains: [
+      'avatars0.githubusercontent.com'
+    ],
     screens: {
       sm: 639,
       md: 867,
