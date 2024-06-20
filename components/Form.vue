@@ -752,11 +752,18 @@ const submitForm = async () => {
                 email: 'hackrecaz@gmail.com'
               }
             ],
-            dynamic_template_data: dynamicTemplateData
+            dynamic_template_data: dynamicTemplateData,
+            subject: 'Your Booking Confirmation'
           }
         ],
         template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-        from: { email: 'booking@taxi2airport.cz' }
+        from: { email: 'booking@taxi2airport.cz' },
+        content: [
+          {
+            type: 'text/plain',
+            value: 'This is a fallback message in case the template cannot be used.'
+          }
+        ]
       })
     })
 
