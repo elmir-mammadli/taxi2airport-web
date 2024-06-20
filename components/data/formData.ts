@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+
 export type FormDataAttributes =
   | 'from'
   | 'to'
@@ -87,7 +88,7 @@ export const formData: FormDataVariables = {
   phoneNumber: '',
   flightNumber: '',
   paymentMethod: '',
-  checked: '',
+  checked: false,
   coordinates: {
     fromCoordinates: [],
     toCoordinates: []

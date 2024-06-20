@@ -90,7 +90,7 @@
               :loading="loading"
               :disabled="disabled"
               icon="pi pi-check"
-              class="w-full h-12 text-[16px] bg-[#009BD7] hover:bg-custom-blue  p-2 text-white mt-8 lg:mt-0"
+              class="w-full h-12 text-[16px] bg-custom-blue hover:bg-lig  p-2 text-white mt-8 lg:mt-0"
               @click="chapterChange"
             />
           </div>
@@ -471,11 +471,7 @@ const categories = [
 ]
 
 const formattedDate = computed(() => {
-  const day = String(pickupDate.value.getDate()).padStart(2, '0')
-  const month = String(pickupDate.value.getMonth() + 1).padStart(2, '0')
-  const year = pickupDate.value.getFullYear()
-
-  return `${day}.${month}.${year}`
+  return new Date(pickupDate.value).toISOString().split('T')[0]
 })
 
 // new Date().toISOString().split('T')[0]
@@ -717,51 +713,48 @@ const submitFormHeaders = {
   Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
 }
 
-const submitFormClientPersonalizations = [
-  [
-    {
-      to: [
-        {
-          email: formData.email,
-          name: 'Learn to edit dynamic templates'
-        }
-      ],
-      cc: [
-        {
-          email: 'hackrecaz@gmail.com'
-        }
-      ],
-      dynamic_template_data: {
-        name: formData.firstName,
-        surname: formData.lastName,
-        from: formData.from,
-        to: formData.to,
-        date: formattedDate.value,
-        time: formatTime.value,
-        luggage: formData.luggage,
-        selectedCar: formData.selectedCar,
-        flightNumber: formData.flightNumber,
-        number: formData.phoneNumber,
-        email: formData.email,
-        passengers: formData.passengers,
-        childSeat: isChildSeat.value
-      }
-    }
-  ]
-]
+const dynamicTemplateData = {
+  name: formData.firstName,
+  surname: formData.lastName,
+  from: formData.from,
+  to: formData.to,
+  date: formattedDate.value,
+  time: formatTime.value,
+  luggage: formData.luggage,
+  selectedCar: formData.selectedCar,
+  flightNumber: formData.flightNumber,
+  number: formData.phoneNumber,
+  email: formData.email,
+  passengers: formData.passengers,
+  childSeat: isChildSeat.value
+}
+
 const submitForm = async () => {
   if (!recaptchaVerified.value) {
     disabled.value = true
     return
   }
-
   loading.value = true
   try {
     const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: submitFormHeaders,
       body: JSON.stringify({
-        personalizations: submitFormClientPersonalizations,
+        personalizations: [
+          {
+            to: [
+              {
+                email: formData.email
+              }
+            ],
+            cc: [
+              {
+                email: 'hackrecaz@gmail.com'
+              }
+            ],
+            dynamic_template_data: dynamicTemplateData
+          }
+        ],
         template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
         from: { email: 'booking@taxi2airport.cz' }
       })
@@ -770,6 +763,7 @@ const submitForm = async () => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)
     }
+
     setTimeout(() => {
       chapter.value++
     }, 1500)
