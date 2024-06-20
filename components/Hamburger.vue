@@ -3,30 +3,38 @@ import { useNavbarItems } from '../types/NavBar'
 
 const isMenu = ref(false)
 const route = useRoute()
+const { items: navItems } = useNavbarItems()
 
 const toggleMenu = () => {
-  emit('closeMenu')
   isMenu.value = !isMenu.value
 }
 
 const emit = defineEmits(['closeMenu'])
 
+const handleCustomScroll = (sectionId: string) => {
+  emit('closeMenu')
+  isMenu.value = !isMenu.value
+  scroll(sectionId)
+}
+
 const handleItemLink = (link: string) => {
-  if (link.includes('/')) {
-    return link
-  } else if (route.fullPath.includes('/about')) {
-    return `/#${link}`
-  } else {
-    return 'javascript:void(0)'
+  switch (true) {
+    case link.includes('/'):
+      return link
+    case route.fullPath.includes('/about'):
+      return `/#${link}`
+    default:
+      return 'javascript:void(0)'
   }
 }
-const { items: navItems } = useNavbarItems()
+
+const { scroll } = useScroll()
 </script>
 
 <template>
   <div class="">
     <div class="flex items-center gap-x-2">
-      <NavbarLanguage class="z-0" />
+      <!-- <NavbarLanguage class="z-0" /> -->
       <button @click="toggleMenu">
         <Icon name="zondicons:menu" size="25" color="5A5A5A" />
       </button>
@@ -42,7 +50,7 @@ const { items: navItems } = useNavbarItems()
           <Icon name="mdi:close" size="40" color="5A5A5A" />
         </button>
         <div v-for="(item, index) in navItems" :key="index">
-          <NuxtLink :to="handleItemLink(item.link)" @click="toggleMenu">
+          <NuxtLink :to="handleItemLink(item.link)" @click="handleCustomScroll(item.link)">
             {{ item.item }}
           </NuxtLink>
         </div>

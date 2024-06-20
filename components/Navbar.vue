@@ -26,7 +26,7 @@
 import { useShakeStore } from '../stores/useShakeStore'
 import NavItems from './NavItems.vue'
 import Hamburger from './Hamburger.vue'
-import NavbarLanguage from './NavbarLanguage.vue'
+// import NavbarLanguage from './NavbarLanguage.vue'
 import NavbarLogo from './NavbarLogo.vue'
 
 const shakeStore = useShakeStore()
