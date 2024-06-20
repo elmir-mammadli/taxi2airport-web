@@ -428,7 +428,7 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const chapter = ref(1)
+const chapter = ref(3)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
@@ -759,9 +759,7 @@ const chapterBack = () => {
 //       throw new Error(`HTTP error! Status: ${response.status}`)
 //     }
 
-//     setTimeout(() => {
-//       chapter.value++
-//     }, 1500)
+//     
 //   } catch (error) {
 //     console.error('Error submitting form', error)
 //   } finally {
@@ -769,49 +767,65 @@ const chapterBack = () => {
 //   }
 // }
 const submitForm = async () => {
-  const msg = {
-    personalizations: [
-      {
-        to: [
-          {
-            email: formData.email
-          }
-        ],
-        dynamic_template_data: {
-          name: formData.firstName,
-          surname: formData.lastName,
-          from: formData.from,
-          to: formData.to,
-          date: formattedDate.value,
-          time: formatTime.value,
-          luggage: formData.luggage,
-          selectedCar: formData.selectedCar,
-          flightNumber: formData.flightNumber,
-          number: formData.phoneNumber,
-          email: formData.email,
-          passengers: formData.passengers,
-          childSeat: isChildSeat.value
-        },
-        subject: 'Your Booking Confirmation'
-      }
-    ],
-    from: {
-      email: 'booking@taxi2airport.cz',
-      name: 'Taxi2Airport'
-    },
-    template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-    content: [
-      {
-        type: 'text/plain',
-        value: 'This is a fallback message in case the template cannot be used.'
-      }
-    ]
+  if (!recaptchaVerified.value) {
+    disabled.value = true
+    return
   }
 
-  await useFetch('/api/sendgrid', {
-    method: 'POST',
-    body: msg
-  })
+  loading.value = true
+
+  try {
+    const msg = {
+      personalizations: [
+        {
+          to: [
+            {
+              email: formData.email
+            }
+          ],
+          dynamic_template_data: {
+            name: formData.firstName,
+            surname: formData.lastName,
+            from: formData.from,
+            to: formData.to,
+            date: formattedDate.value,
+            time: formatTime.value,
+            luggage: formData.luggage,
+            selectedCar: formData.selectedCar,
+            flightNumber: formData.flightNumber,
+            number: formData.phoneNumber,
+            email: formData.email,
+            passengers: formData.passengers,
+            childSeat: isChildSeat.value
+          },
+          subject: 'Your Booking Confirmation'
+        }
+      ],
+      from: {
+        email: 'booking@taxi2airport.cz',
+        name: 'Taxi2Airport'
+      },
+      template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
+      content: [
+        {
+          type: 'text/plain',
+          value: 'This is a fallback message in case the template cannot be used.'
+        }
+      ]
+    }
+    await useFetch('/api/sendgrid', {
+      method: 'POST',
+      body: msg
+    })
+
+    setTimeout(() => {
+      chapter.value++
+    }, 1500)
+  } catch (error) {
+    console.error('Error submitting form', error)
+  } finally {
+    loading.value = false
+  }
 }
 
 function haversineDistance (
