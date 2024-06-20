@@ -1,60 +1,84 @@
 {
-  "aside": {
-    "item-1": "Gizli maliyet yok",
-    "item-2": "Müşteri Desteği",
-    "item-3": " Kalkıştan 24 saat öncesine kadar<span class=\"font-semibold\">ücretsiz</span> iptali"
-  },
-  "button-2": "Hadi gidelim!",
-  "cars": {
-    "header": "Sizin Sürüşünüz, Sizin Yolunuz: Araç Seçeneklerimizi Keşfedin! ",
-    "title": "Mevcut araçlarımız"
-  },
-  "form": {
-    "address-placeholder": "Havaalanı, adres, istasyon",
-    "booking-details": "REZERVASYON DETAYLARINIZ",
-    "child-seat": "Çocuk koltuğu",
-    "child-seat-p": "Çocuk koltuğu eklemem gerekiyor",
-    "date": "Tarih",
-    "email": "E-posta",
-    "flight-number": "Uçuş numarası",
-    "from": "Nereden",
-    "luggage": "Bagaj",
-    "name": "İlk adı",
-    "number": "Telefon numarası",
-    "passengers": "Yolcular",
-    "search-button": "Ara",
-    "selected-car": "Araba",
-    "surname": "Soy isim",
-    "time": "Zaman",
-    "to": "Nereye"
-  },
-  "hero": {
-    "subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri",
-    "title": " <span class=\"text-light-blue\">En iyi&nbsp;transferinizi</span>yapın "
-  },
-  "navbar": {
-    "about": "Buluşma Noktaları",
-    "button": "Yolculuk rezervasyonu yapın",
-    "contact": "Temas etmek",
-    "faq": "SSS",
-    "home": "Ev",
-    "price": "Fiyatlandırma",
-    "services": "Mevcut Arabalar"
-  },
-  "reservation": {
-    "button": "Şimdi Rezervasyon Yapın!",
-    "card-1": "Sürüşünüzü önceden planlayın",
-    "card-2": "Taşımayı seçin",
-    "card-3": "Ödeme yapın ve keyfini çıkarın!",
-    "card-desc-1": "Bir zaman belirleyin ve yolculuğunuz için bir buluşma yeri seçin.",
-    "card-desc-2": "Daha keyifli bir yolculuk için bir araba türü seçin ve seçenekleri özelleştirin.",
-    "card-desc-3": "Gizli maliyet yok. Uygun fiyatlandırma, tüm ödeme yöntemlerini kabul etme.",
-    "header": "&nbsp;birkaç kolay adımda havaalanı transferinizi ayarlayın",
-    "step-1": "Seyahat",
-    "step-2": "Araç",
-    "step-3": "Detaylar",
-    "step-4": "Rezervasyon",
-    "title": "Bir dakika içinde rezervasyon yapın"
-  },
-  "tcpp": " <span class=\"text-light-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-light-blue underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
+	"aside": {
+		"item-1": "Gizli maliyet yok",
+		"item-2": "Müşteri Desteği",
+		"item-3": " Kalkıştan 24 saat öncesine kadar<span class=\"font-semibold\">ücretsiz</span> iptali"
+	},
+	"button-2": "Hadi gidelim!",
+	"cars": {
+		"header": "Sizin Sürüşünüz, Sizin Yolunuz: Araç Seçeneklerimizi Keşfedin! ",
+		"title": "Mevcut araçlarımız"
+	},
+	"faq": {
+		"subtitle": "En sık sorulan sorularınızın yanıtları burada",
+		"title": "Sıkça sorulan sorular"
+	},
+	"form": {
+		"address-placeholder": "Havaalanı, adres, istasyon",
+		"booking-details": "REZERVASYON DETAYLARINIZ",
+		"child-seat": "Çocuk koltuğu",
+		"child-seat-p": "Çocuk koltuğu eklemem gerekiyor",
+		"date": "Tarih",
+		"email": "E-posta",
+		"flight-number": "Uçuş numarası",
+		"from": "Nereden",
+		"luggage": "Bagaj",
+		"name": "İlk adı",
+		"number": "Telefon numarası",
+		"passengers": "Yolcular",
+		"search-button": "Ara",
+		"selected-car": "Araba",
+		"surname": "Soy isim",
+		"time": "Zaman",
+		"to": "Nereye"
+	},
+	"hero": {
+		"subtitle": "Prag'da hızlı, güvenli ve en kolay transfer hizmetleri",
+		"title": " <span class=\"text-light-blue\">En iyi&nbsp;transferinizi</span>yapın "
+	},
+	"meeting-points": {
+		"header": "&nbsp;Sürücünüzle Buluşmak İçin Uygun Noktalar",
+		"title": "Buluşma Noktaları",
+		"work-principle-1": {
+			"text-1": "<b>Meet and Greet Service:</b> Profesyonel sürücümüz aracınızı park edecek ve sizi Havaalanı Geliş salonunda karşılayacak. Hızlı ve kolay bir randevu sağlamak için, üzerinde adınızın yazılı olduğu bir <b>isim levhasını</b> tutan sürücüyü arayın. </br></br>",
+			"text-2": "<b>İnişten Sonra:</b> İner inmez şoförümüzle kolay iletişim kurabilmek için lütfen telefonunuzu tekrar açın. Gümrük veya bagajla ilgili herhangi bir sorun veya gecikme olması durumunda derhal aşağıdaki iletişim numarasını arayın veya WhatsApp'tan iletişime geçin.",
+			"title": "Nasıl çalışır:"
+		},
+		"work-principle-2": {
+			"text-1": "<b>Bekleme Süresi:</b> Şoförümüz, planlanan uçuş varış saatinizden sonra en fazla <b>45 dakikaya</b> kadar sizi bekleyecektir. Gecikmelerin olabileceğini biliyoruz, dolayısıyla şoförümüz yola çıkmadan önce sizinle iletişime geçmek için her türlü çabayı gösterecektir. </br></br>",
+			"text-2": "<b>İletişim Bilgileri:</b> Herhangi bir sorun veya gecikme yaşarsanız lütfen sürücüyü bilgilendirmek için en kısa sürede bizimle iletişime geçin.",
+			"title": "Önemli Detaylar:"
+		},
+		"work-principle-3": {
+			"text-1": "<b>Terminal 1:</b> Şoförümüz, Geliş salonundaki bagaj toplama alanının hemen ardından sizinle buluşacak. </br></br>",
+			"text-2": "<b>Terminal 2:</b> Benzer şekilde, bagajınızı aldıktan sonra sürücünüz sizi Geliş salonunda bekliyor olacaktır.",
+			"title": "Terminal Özellikleri:"
+		}
+	},
+	"navbar": {
+		"about": "Buluşma Noktaları",
+		"button": "Yolculuk rezervasyonu yapın",
+		"contact": "Temas etmek",
+		"faq": "SSS",
+		"home": "Ev",
+		"meeting-points": "",
+		"price": "Fiyatlandırma",
+		"services": "Mevcut Arabalar"
+	},
+	"reservation": {
+		"button": "Şimdi Rezervasyon Yapın!",
+		"card-1": "Sürüşünüzü önceden planlayın",
+		"card-2": "Taşımayı seçin",
+		"card-3": "Ödeme yapın ve keyfini çıkarın!",
+		"card-desc-1": "Bir zaman belirleyin ve yolculuğunuz için bir buluşma yeri seçin.",
+		"card-desc-2": "Daha keyifli bir yolculuk için bir araba türü seçin ve seçenekleri özelleştirin.",
+		"card-desc-3": "Gizli maliyet yok. Uygun fiyatlandırma, tüm ödeme yöntemlerini kabul etme.",
+		"header": "&nbsp;birkaç kolay adımda havaalanı transferinizi ayarlayın",
+		"step-1": "Seyahat",
+		"step-2": "Araç",
+		"step-3": "Detaylar",
+		"step-4": "Rezervasyon",
+		"title": "Bir dakika içinde rezervasyon yapın"
+	},
+	"tcpp": " <span class=\"text-light-blue underline\"><a href=\"/terms-and-conditions\">Şartlar ve Koşullar</a></span> ile <span class=\"text-light-blue underline\"><a href=\"/privacy-policy\">Gizlilik politikasını</a></span>kabul edin "
 }

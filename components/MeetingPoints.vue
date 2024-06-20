@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLanguage } from '../composables/useLanguage'
 const { $t } = useLanguage()
 const meetingPointDesc = [
   {
