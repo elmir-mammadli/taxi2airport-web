@@ -7,7 +7,7 @@ export const questions: Questions[] = [
   {
     question: 'When do I pay?',
     answer:
-      'For most booking, you can either choose to pay in advance for your airport transport service or when you’re dropped at your hotel. If you’re paying in advance online, our driver will be informed by our system, and there’s nothing more you need to do. If you’re paying on arrival by cash or credit card, you’ll pay the full amount when you arrive at your destination.'
+      'For most bookings, you can choose to pay for your airport transport service when you’re dropped off at your hotel. If you’re paying on arrival by cash or credit card, you’ll pay the full amount when you arrive at your destination. Our system will inform the driver, so there’s nothing more you need to do.'
   },
   {
     question: 'Do I need to pay only in the local Czech Koruna currency (CZK)?',

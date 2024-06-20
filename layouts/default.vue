@@ -1,9 +1,10 @@
 <template>
   <div class="bg-white page__wrap">
-    <Aside />
+    <!-- <Aside />
     <Header />
     <slot />
-    <Footer />
+    <Footer /> -->
+    <H1>DISABLED</H1>
   </div>
 </template>
 
