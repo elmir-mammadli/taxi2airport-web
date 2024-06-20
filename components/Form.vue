@@ -713,22 +713,6 @@ const submitFormHeaders = {
   Authorization: `Bearer ${config.public.SENDGRID_API_KEY}`
 }
 
-const dynamicTemplateData = {
-  name: formData.firstName,
-  surname: formData.lastName,
-  from: formData.from,
-  to: formData.to,
-  date: formattedDate.value,
-  time: formatTime.value,
-  luggage: formData.luggage,
-  selectedCar: formData.selectedCar,
-  flightNumber: formData.flightNumber,
-  number: formData.phoneNumber,
-  email: formData.email,
-  passengers: formData.passengers,
-  childSeat: isChildSeat.value
-}
-
 const submitForm = async () => {
   if (!recaptchaVerified.value) {
     disabled.value = true
@@ -747,12 +731,21 @@ const submitForm = async () => {
                 email: formData.email
               }
             ],
-            cc: [
-              {
-                email: 'hackrecaz@gmail.com'
-              }
-            ],
-            dynamic_template_data: dynamicTemplateData,
+            dynamic_template_data: {
+              name: formData.firstName,
+              surname: formData.lastName,
+              from: formData.from,
+              to: formData.to,
+              date: formattedDate.value,
+              time: formatTime.value,
+              luggage: formData.luggage,
+              selectedCar: formData.selectedCar,
+              flightNumber: formData.flightNumber,
+              number: formData.phoneNumber,
+              email: formData.email,
+              passengers: formData.passengers,
+              childSeat: isChildSeat.value
+            },
             subject: 'Your Booking Confirmation'
           }
         ],
