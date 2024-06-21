@@ -406,7 +406,7 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import RadioButton from 'primevue/radiobutton'
-import Checkbox from 'primevue/checkbox/Checkbox.vue'
+// ignore the error below
 import { changeLocale } from '@formkit/vue'
 import AddressComplete from './AddressComplete.vue'
 import TravelBundle from './form/TravelBundle.vue'
