@@ -760,11 +760,13 @@ const submitForm = async () => {
       body: msg
     })
 
-    setTimeout(() => {
-      chapter.value++
-    }, 1500)
-
-
+    if (res.status.value === 'success') {
+      setTimeout(() => {
+        chapter.value++
+      }, 1500)
+    } else {
+      console.error('Error submitting form', res)
+    }
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {
