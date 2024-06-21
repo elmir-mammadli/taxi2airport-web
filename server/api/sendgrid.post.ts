@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   }).catch((error) => {
     return error
   })

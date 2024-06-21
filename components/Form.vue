@@ -428,7 +428,7 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const chapter = ref(3)
+const chapter = ref(1)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
@@ -708,64 +708,6 @@ const chapterBack = () => {
   chapter.value--
 }
 
-// const submitForm = async () => {
-//   if (!recaptchaVerified.value) {
-//     disabled.value = true
-//     return
-//   }
-//   loading.value = true
-//   try {
-//     const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-//       method: 'POST',
-//       headers: submitFormHeaders,
-//       body: JSON.stringify({
-//         personalizations: [
-//           {
-//             to: [
-//               {
-//                 email: formData.email
-//               }
-//             ],
-//             dynamic_template_data: {
-//               name: formData.firstName,
-//               surname: formData.lastName,
-//               from: formData.from,
-//               to: formData.to,
-//               date: formattedDate.value,
-//               time: formatTime.value,
-//               luggage: formData.luggage,
-//               selectedCar: formData.selectedCar,
-//               flightNumber: formData.flightNumber,
-//               number: formData.phoneNumber,
-//               email: formData.email,
-//               passengers: formData.passengers,
-//               childSeat: isChildSeat.value
-//             },
-//             subject: 'Your Booking Confirmation'
-//           }
-//         ],
-//         template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-//         from: { email: 'booking@taxi2airport.cz' },
-//         content: [
-//           {
-//             type: 'text/plain',
-//             value: 'This is a fallback message in case the template cannot be used.'
-//           }
-//         ]
-//       })
-//     })
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`)
-//     }
-
-//     
-//   } catch (error) {
-//     console.error('Error submitting form', error)
-//   } finally {
-//     loading.value = false
-//   }
-// }
 const submitForm = async () => {
   if (!recaptchaVerified.value) {
     disabled.value = true
@@ -813,7 +755,7 @@ const submitForm = async () => {
         }
       ]
     }
-    await useFetch('/api/sendgrid', {
+    const res = await useFetch('/api/sendgrid', {
       method: 'POST',
       body: msg
     })
@@ -821,6 +763,8 @@ const submitForm = async () => {
     setTimeout(() => {
       chapter.value++
     }, 1500)
+
+
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {
