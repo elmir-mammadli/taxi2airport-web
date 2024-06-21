@@ -14,7 +14,7 @@
               class="bg-custom-blue text-white font-semibold text-[15px] px-7 py-2.5 rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
               @click="triggerShake"
             />
-            <!-- <NavbarLanguage class="z-30" /> -->
+            <NavbarLanguage class="z-30" />
             <!-- <NavbarCurrency class="z-30" /> -->
           </div>
         </div>
@@ -26,7 +26,7 @@
 import { useShakeStore } from '../stores/useShakeStore'
 import NavItems from './NavItems.vue'
 import Hamburger from './Hamburger.vue'
-// import NavbarLanguage from './NavbarLanguage.vue'
+import NavbarLanguage from './NavbarLanguage.vue'
 import NavbarLogo from './NavbarLogo.vue'
 
 const shakeStore = useShakeStore()

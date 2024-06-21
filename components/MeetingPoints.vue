@@ -24,11 +24,15 @@
       <ul v-for="(item, index) in meetingPointDesc" :key="index">
         <li
           class="text-[24px] md:text-[28px] max-w-xl text-gray-800 font-semibold leading-[1.4] mt-10 sm:px-0"
-          v-html="item.head"
+          v-html="$t(item.head)"
         />
         <li
           class="text-[16px] md:text-[18px] text-gray-800 mt-4 font-normal"
-          v-html="item.desc"
+          v-html="$t(item.desc[0])"
+        />
+        <li
+          class="text-[16px] md:text-[18px] text-gray-800 font-normal"
+          v-html="$t(item.desc[1])"
         />
       </ul>
     </div>
@@ -36,29 +40,28 @@
 </template>
 
 <script setup lang="ts">
-import { useLanguage } from '../composables/useLanguage'
 const { $t } = useLanguage()
 const meetingPointDesc = [
   {
-    head: $t('meeting-points.work-principle-1.title'),
+    head: 'meeting-points.work-principle-1.title',
     desc: [
-      $t('meeting-points.work-principle-1.text-1'),
-      $t('meeting-points.work-principle-1.text-2')
-    ].join(' ')
+      'meeting-points.work-principle-1.text-1',
+      'meeting-points.work-principle-1.text-2'
+    ]
   },
   {
-    head: $t('meeting-points.work-principle-2.title'),
+    head: 'meeting-points.work-principle-2.title',
     desc: [
-      $t('meeting-points.work-principle-2.text-1'),
-      $t('meeting-points.work-principle-2.text-2')
-    ].join(' ')
+      'meeting-points.work-principle-2.text-1',
+      'meeting-points.work-principle-2.text-2'
+    ]
   },
   {
-    head: $t('meeting-points.work-principle-3.title'),
+    head: 'meeting-points.work-principle-3.title',
     desc: [
-      $t('meeting-points.work-principle-3.text-1'),
-      $t('meeting-points.work-principle-3.text-2')
-    ].join(' ')
+      'meeting-points.work-principle-3.text-1',
+      'meeting-points.work-principle-3.text-2'
+    ]
   }
 ]
 </script>

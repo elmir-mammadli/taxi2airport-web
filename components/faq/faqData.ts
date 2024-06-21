@@ -81,4 +81,4 @@ export const questions: Questions[] = [
     answer:
       'Yes, we value our loyal customers. We offer discounts and special deals for frequent travelers. Please sign up on our website to get notified about ongoing promotions and loyalty benefits.'
   }
-];
+]

@@ -37,23 +37,22 @@ export type Details = {
   extraPrice: number;
 };
 
-export const useReservationData = () => {
-  const { $t } = useLanguage()
-  return [
-    {
-      step: $t('reservation.step-1')
-    },
-    {
-      step: $t('reservation.step-2')
-    },
-    {
-      step: $t('reservation.step-3')
-    },
-    {
-      step: $t('reservation.step-4')
-    }
-  ]
-}
+export const reservationData: {
+  step: string;
+}[] = [
+  {
+    step: 'reservation.step-1'
+  },
+  {
+    step: 'reservation.step-2'
+  },
+  {
+    step: 'reservation.step-3'
+  },
+  {
+    step: 'reservation.step-4'
+  }
+]
 
 export const details: Details[] = [
   {

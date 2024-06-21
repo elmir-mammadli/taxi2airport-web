@@ -30,12 +30,11 @@
 </template>
 
 <script lang="ts" setup>
+
+import { type Languages } from '~/types/Languages'
+
 const { locale } = useLanguage()
 const showDropdown = ref(false)
-
-type Languages = {
-  name: string;
-};
 
 const langSwitch = (lang: string) => {
   locale.value = lang
@@ -61,27 +60,13 @@ const selectedFlag = computed(() => {
 
 locale.value = 'en'
 const languages: Languages[] = [
-  {
-    name: 'EN'
-  },
-  {
-    name: 'CS'
-  },
-  {
-    name: 'DE'
-  },
-  {
-    name: 'ES'
-  },
-  {
-    name: 'UA'
-  },
-  {
-    name: 'TR'
-  },
-  {
-    name: 'RU'
-  }
+  { name: 'EN' },
+  { name: 'CS' },
+  { name: 'DE' },
+  { name: 'ES' },
+  { name: 'UA' },
+  { name: 'TR' },
+  { name: 'RU' }
 ]
 
 watch(locale, () => {
