@@ -37,7 +37,7 @@ export type Details = {
   extraPrice: number;
 };
 
-export const reservationData: {
+export const reservationsData: {
   step: string;
 }[] = [
   {

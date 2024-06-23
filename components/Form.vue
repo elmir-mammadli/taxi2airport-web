@@ -715,58 +715,50 @@ const submitForm = async () => {
   }
 
   loading.value = true
+  const message = {
+    personalizations: [
+      {
+        to: [
+          {
+            email: formData.email,
+            name: 'Learn to edit dynamic templates'
+          }
+        ],
+        dynamic_template_data: {
+          name: formData.firstName,
+          surname: formData.lastName,
+          from: formData.from,
+          to: formData.to,
+          date: formattedDate.value,
+          time: formatTime.value,
+          luggage: formData.luggage,
+          selectedCar: formData.selectedCar,
+          flightNumber: formData.flightNumber,
+          number: formData.phoneNumber,
+          email: formData.email,
+          passengers: formData.passengers,
+          childSeat: isChildSeat.value
+        }
+      }
+    ],
+    template_id: 'd-f825ae80a73f4c988e0a289fdf6bef92',
+    from: { email: 'booking@taxi2airport.cz' }
+  }
 
   try {
-    const msg = {
-      personalizations: [
-        {
-          to: [
-            {
-              email: formData.email
-            }
-          ],
-          dynamic_template_data: {
-            name: formData.firstName,
-            surname: formData.lastName,
-            from: formData.from,
-            to: formData.to,
-            date: formattedDate.value,
-            time: formatTime.value,
-            luggage: formData.luggage,
-            selectedCar: formData.selectedCar,
-            flightNumber: formData.flightNumber,
-            number: formData.phoneNumber,
-            email: formData.email,
-            passengers: formData.passengers,
-            childSeat: isChildSeat.value
-          },
-          subject: 'Your Booking Confirmation'
-        }
-      ],
-      from: {
-        email: 'booking@taxi2airport.cz',
-        name: 'Taxi2Airport'
-      },
-      template_id: config.public.SENDGRID_CLIENT_TEMPLATE_ID,
-      content: [
-        {
-          type: 'text/plain',
-          value: 'This is a fallback message in case the template cannot be used.'
-        }
-      ]
-    }
     const res = await useFetch('/api/sendgrid', {
       method: 'POST',
-      body: msg
+      body: JSON.stringify(message)
     })
+    console.log(res)
 
-    if (res.status.value === 'success') {
-      setTimeout(() => {
-        chapter.value++
-      }, 1500)
-    } else {
-      console.error('Error submitting form', res)
-    }
+    // if (res.ok) {
+    //   setTimeout(() => {
+    //     chapter.value++
+    //   }, 1500)
+    // } else {
+    //   console.error('Error submitting form', res)
+    // }
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {
