@@ -708,14 +708,8 @@ const chapterBack = () => {
   chapter.value--
 }
 
-const submitForm = async () => {
-  if (!recaptchaVerified.value) {
-    disabled.value = true
-    return
-  }
-
-  loading.value = true
-  const message = {
+const submitToClient = async () => {
+  const messageToClient = {
     personalizations: [
       {
         to: [
@@ -744,21 +738,65 @@ const submitForm = async () => {
     template_id: 'd-f825ae80a73f4c988e0a289fdf6bef92',
     from: { email: 'booking@taxi2airport.cz' }
   }
+  const response = await useFetch('/api/sendgrid', {
+    method: 'POST',
+    body: JSON.stringify(messageToClient)
+  })
+
+  if (response.status.value === 'success') {
+    chapter.value++
+  }
+}
+
+const submitToDriver = async () => {
+  const messageToDriver = {
+    personalizations: [
+      {
+        to: [
+          {
+            email: 'hackrecaz@gmail.com'
+          }
+        ],
+        dynamic_template_data: {
+          name: formData.firstName,
+          surname: formData.lastName,
+          from: formData.from,
+          to: formData.to,
+          distance: haversineResult.value,
+          date: formattedDate.value,
+          time: formatTime.value,
+          luggage: formData.luggage,
+          selectedCar: formData.selectedCar,
+          flightNumber: formData.flightNumber,
+          number: formData.phoneNumber,
+          email: formData.email,
+          passengers: formData.passengers,
+          childSeat: isChildSeat.value,
+          paymentMethod: formData.paymentMethod,
+          price: calculatePrice.value
+        }
+      }
+    ],
+    template_id: 'd-3e1185fe161847d988cb8ea9cff3a7b3',
+    from: { email: 'booking@taxi2airport.cz' }
+  }
+  await useFetch('/api/sendgrid', {
+    method: 'POST',
+    body: JSON.stringify(messageToDriver)
+  })
+}
+
+const submitForm = async () => {
+  if (!recaptchaVerified.value) {
+    disabled.value = true
+    return
+  }
+
+  loading.value = true
 
   try {
-    const res = await useFetch('/api/sendgrid', {
-      method: 'POST',
-      body: JSON.stringify(message)
-    })
-    console.log(res)
-
-    // if (res.ok) {
-    //   setTimeout(() => {
-    //     chapter.value++
-    //   }, 1500)
-    // } else {
-    //   console.error('Error submitting form', res)
-    // }
+    await submitToClient()
+    await submitToDriver()
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {
