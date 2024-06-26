@@ -474,8 +474,6 @@ const formattedDate = computed(() => {
   return new Date(pickupDate.value).toISOString().split('T')[0]
 })
 
-// new Date().toISOString().split('T')[0]
-
 const formatTime = computed(() => {
   const hours = String(pickupTime.value.getHours()).padStart(2, '0')
   const minutes = String(pickupTime.value.getMinutes()).padStart(2, '0')
@@ -777,7 +775,7 @@ const submitToDriver = async () => {
         }
       }
     ],
-    template_id: 'd-3e1185fe161847d988cb8ea9cff3a7b3',
+    // template_id: 'd-3e1185fe161847d988cb8ea9cff3a7b3',
     from: { email: 'booking@taxi2airport.cz' }
   }
   await useFetch('/api/sendgrid', {

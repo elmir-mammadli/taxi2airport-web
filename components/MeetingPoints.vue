@@ -1,6 +1,10 @@
 <template>
   <div
     id="meeting-points"
+    loading="lazy"
+    data-aos="fade-up"
+    data-aos-once="true"
+    data-aos-duration="600"
     class="flex flex-col mt-[120px] scroll-mt-20 max-w-[880px] mx-auto"
   >
     <SectionHeading

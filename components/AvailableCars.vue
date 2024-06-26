@@ -1,6 +1,10 @@
 <template>
   <div
     id="available-cars"
+    loading="lazy"
+    data-aos="fade-up"
+    data-aos-once="true"
+    data-aos-duration="600"
     class="flex flex-col items-center mt-[120px] scroll-mt-20"
   >
     <SectionHeading section-title="cars.title" section-subtitle="cars.header" />

@@ -52,7 +52,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import Button from 'primevue/button/Button.vue'
 import { details } from './data/formData'
 
 type PropTypes = {

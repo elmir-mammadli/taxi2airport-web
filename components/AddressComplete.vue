@@ -130,7 +130,6 @@ const selectedAddress = (address: PartialLocations) => {
   addresses.value = []
   if (address.coordinates) {
     coordinates.value.push({ coordinates: address.coordinates })
-    console.log('asdsad', coordinates.value)
   }
 
   emit('address-selected', address)

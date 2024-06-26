@@ -1,5 +1,12 @@
 <template>
-  <div id="faq" class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto">
+  <div
+    id="faq"
+    loading="lazy"
+    data-aos="fade-up"
+    data-aos-once="true"
+    data-aos-duration="600"
+    class="w-full py-[120px] flex flex-col max-w-[880px] mx-auto"
+  >
     <SectionHeading
       section-title="faq.title"
       section-subtitle="faq.subtitle"

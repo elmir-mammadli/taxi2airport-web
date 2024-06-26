@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-xl mx-auto mt-10 md:mt-16">
+  <div loading="lazy" class="max-w-screen-xl mx-auto mt-10 md:mt-16">
     <div class="relative flex flex-row justify-center md:justify-between items-center px-5">
       <div
         class="flex flex-col items-start sm:items-center md:items-start justify-center"

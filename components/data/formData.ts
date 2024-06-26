@@ -12,29 +12,29 @@ export type FormDataAttributes =
   | 'firstName'
   | 'lastName'
   | 'phoneNumber'
-  | 'flightNumber';
-export type ReservationDataTypes = {};
+  | 'flightNumber'
+export type ReservationDataTypes = {}
 
 export type FormDataVariables = {
-  [Key in FormDataAttributes]: string;
+  [Key in FormDataAttributes]: string
 } & {
   checked: boolean
   paymentMethod: string
-  step?: string;
-  coordinates: Coordinates;
+  step?: string
+  coordinates: Coordinates
 };
 export type Coordinates = {
-  fromCoordinates: Array<number> | null;
-  toCoordinates: Array<number> | null;
+  fromCoordinates: Array<number> | null
+  toCoordinates: Array<number> | null
 };
 
 export type Details = {
-  img: string;
-  name: string;
-  person: number;
-  luggage: number;
-  initialPrice: number;
-  extraPrice: number;
+  img: string
+  name: string
+  person: number
+  luggage: number
+  initialPrice: number
+  extraPrice: number
 };
 
 export const reservationsData: {
