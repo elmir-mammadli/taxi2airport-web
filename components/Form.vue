@@ -775,7 +775,7 @@ const submitToDriver = async () => {
         }
       }
     ],
-    // template_id: 'd-3e1185fe161847d988cb8ea9cff3a7b3',
+    template_id: 'd-3e1185fe161847d988cb8ea9cff3a7b3',
     from: { email: 'booking@taxi2airport.cz' }
   }
   await useFetch('/api/sendgrid', {
