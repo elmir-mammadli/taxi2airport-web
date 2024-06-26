@@ -50,7 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import axios from 'axios'
 
 const config = useRuntimeConfig()
@@ -102,7 +101,7 @@ const autopredict = async () => {
       {
         params: {
           access_token: config.public.MAPBOX_API_KEY,
-          countries: ['CZ'],
+          countries: 'CZ',
           limit: 3,
           autocomplete: true,
           language: 'en'
