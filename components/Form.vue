@@ -420,7 +420,7 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const chapter = ref(3)
+const chapter = ref(1)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
