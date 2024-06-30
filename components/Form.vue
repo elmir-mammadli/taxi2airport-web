@@ -214,10 +214,6 @@
                 label="Flight number"
                 name="flightNumber"
                 validation="required"
-                :validation-messages="{
-                  // FlightAPI checker is temporarily disabled.
-                  // isFlightNumber: 'Entered flight number does not exist',
-                }"
                 placeholder="BA1594"
                 label-class="font-semibold text-black opacity-[0.87] text-sm"
                 inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
@@ -424,7 +420,7 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const chapter = ref(1)
+const chapter = ref(3)
 const config = useRuntimeConfig()
 const disabled = ref(false)
 const loading = ref(false)
@@ -660,9 +656,11 @@ const fetchFlightsData = async () => {
   }
 }
 
-const flightInputSmall = computed(() => {
-  return !isFlightNumber.value ? 'Entered flight number does not exist' : (isApiSubscriptionEnded.value ? 'API subscription ended' : flightInfo.value)
-})
+// Temporary solution for displaying flight info is disabled, will be enabled after resolving API payment issues with site owner
+
+// const flightInputSmall = computed(() => {
+//   return !isFlightNumber.value ? 'Entered flight number does not exist' : (isApiSubscriptionEnded.value ? 'API subscription ended' : flightInfo.value)
+// })
 
 watch(
   () => formData.flightNumber,
