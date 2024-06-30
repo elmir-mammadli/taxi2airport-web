@@ -3,25 +3,60 @@ export interface NavBar {
     link: string;
 }
 
-export const useNavbarItems = () => {
-  const { $t } = useLanguage()
-  const items: NavBar[] = [
-    {
-      item: $t('navbar.services'),
-      link: 'available-cars'
-    },
-    {
-      item: $t('navbar.meeting-points'),
-      link: 'meeting-points'
-    },
-    {
-      item: $t('navbar.faq'),
-      link: 'faq'
-    },
-    {
-      item: $t('navbar.about'),
-      link: '/about'
-    }
-  ]
-  return { items }
-}
+// export const reservationsData: {
+//   step: string;
+// }[] = [
+//   {
+//     step: 'reservation.step-1'
+//   },
+//   {
+//     step: 'reservation.step-2'
+//   },
+//   {
+//     step: 'reservation.step-3'
+//   },
+//   {
+//     step: 'reservation.step-4'
+//   }
+// ];
+
+// export const navbarItems: {
+//  [
+//     {
+//       item: $t('navbar.services'),
+//       link: 'available-cars'
+//     },
+//     {
+//       item: $t('navbar.meeting-points'),
+//       link: 'meeting-points'
+//     },
+//     {
+//       item: $t('navbar.faq'),
+//       link: 'faq'
+//     },
+//     {
+//       item: $t('navbar.about'),
+//       link: '/about'
+//     }
+//   ]
+//   return { items }
+// }
+
+export const navbarItems: NavBar[] = [
+  {
+    item: 'navbar.services',
+    link: 'available-cars'
+  },
+  {
+    item: 'navbar.meeting-points',
+    link: 'meeting-points'
+  },
+  {
+    item: 'navbar.faq',
+    link: 'faq'
+  },
+  {
+    item: 'navbar.about',
+    link: '/about'
+  }
+]

@@ -2,7 +2,7 @@
   <div class="relative">
     <input
       v-model="query"
-      class="w-full"
+      class="w-full border rounded-lg !border-black h-[55px] mt-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-2"
       type="text"
       :placeholder="$t('form.address-placeholder')"
       :required="true"

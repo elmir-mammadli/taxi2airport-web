@@ -56,12 +56,12 @@
 		}
 	},
 	"navbar": {
-		"about": "Treffpunkte",
+		"about": "Über uns",
 		"button": "Buchen Sie eine Fahrt",
 		"contact": "Kontakt",
 		"faq": "FAQ",
 		"home": "Zuhause",
-		"meeting-points": "",
+		"meeting-points": "Treffpunkte",
 		"price": "Preisgestaltung",
 		"services": "Dienste"
 	},

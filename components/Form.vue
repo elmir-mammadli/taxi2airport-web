@@ -19,7 +19,7 @@
       ]"
     />
     <form
-      class="border-[1px] mx-auto border-[#000000] border-opacity-90 mt-10 p-6 rounded-lg"
+      class="border-[1px] mx-auto border-custom-blue shadow-md border-opacity-60 mt-10 p-6 rounded-lg"
       :class="[
         shakerState ? 'shake outline outline-blue-100' : '',
         chapter === 1 ? 'max-w-[1124px]' : 'max-w-[1024px]',
@@ -34,13 +34,11 @@
           <div class="mb-4">
             <label
               for="from"
-              class="mb-2 text-sm font-medium text-black opacity-[0.87]"
+              class="mb-3 text-sm font-medium text-black opacity-[0.87]"
             >{{ $t('form.from') }}</label>
             <AddressComplete
               v-model="formData.from"
-              type="text"
               name="from"
-              class="w-full p-2 mt-1 rounded-[8px]"
               @address-selected="
                 returnSelectedAddressFrom(
                   $event.display_name,
@@ -57,12 +55,10 @@
             <label
               label
               for="to"
-              class="mb-2 text-sm font-medium text-black opacity-[0.87]"
+              class="mb-3 text-sm font-medium text-black opacity-[0.87]"
             >{{ $t('form.to') }}</label>
             <AddressComplete
               v-model="formData.to"
-              class="w-full p-2 mt-1 rounded-[8px]"
-              type="text"
               name="to"
               @address-selected="
                 returnSelectedAddressTo($event.display_name, $event.coordinates)
@@ -140,7 +136,6 @@
                 :eta="eta"
                 :loading-state="loading"
                 :price="calculatePrice"
-                :distance="haversineResult"
                 @car-selected="updateSelectedCar"
               />
             </div>
@@ -157,7 +152,7 @@
         v-if="chapter === 3"
       >
         <div
-          class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full"
+          class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-x-8 w-full text-sm"
         >
           <div class="relative mb-4">
             <FormKit
@@ -167,9 +162,9 @@
               name="firstName"
               validation="required|alpha"
               placeholder="John"
-              label-class=" font-semibold text-black opacity-[0.87] text-sm"
-              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
-              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
+              label-class="font-semibold text-black opacity-[0.87] text-sm"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
+              input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
             />
           </div>
           <div class="relative mb-4">
@@ -181,7 +176,7 @@
               validation="required|alpha"
               placeholder="Doe"
               label-class=" font-semibold text-black opacity-[0.87] text-sm"
-              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
               input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
@@ -195,7 +190,7 @@
               placeholder="john.doe@mail.com"
               class="w-full p-2 rounded-[8px] border"
               label-class=" font-semibold text-black opacity-[0.87] text-sm"
-              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px]"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
               input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
@@ -207,7 +202,7 @@
               validation="required|number"
               class="w-full p-2 rounded-[8px] border"
               label-class=" font-semibold text-black opacity-[0.87] text-sm"
-              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1"
+              inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
               input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
             />
           </div>
@@ -220,11 +215,12 @@
                 name="flightNumber"
                 validation="required"
                 :validation-messages="{
-                  isFlightNumber: 'Entered flight number does not exist'
+                  // FlightAPI checker is temporarily disabled.
+                  // isFlightNumber: 'Entered flight number does not exist',
                 }"
                 placeholder="BA1594"
                 label-class="font-semibold text-black opacity-[0.87] text-sm"
-                inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1"
+                inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
                 input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
                 :help="flightInputSmall"
                 class="relative"
@@ -452,8 +448,9 @@ const handleLoadCallback = (response: unknown) => {
   disabled.value = false
 }
 
-const updateSelectedCar = (carName: string, isBlur: boolean) => {
+const updateSelectedCar = (carName: string, extraPrice: number, isBlur: boolean) => {
   formData.selectedCar = carName
+  formData.finalPrice = extraPrice
   loading.value = isBlur
   if (!isBlur) {
     chapter.value += 1
@@ -500,6 +497,9 @@ const calculatePrice = computed(() => {
   }
 })
 
+const reactiveFromCoordinates = ref<number[]>([])
+const reactiveToCoordinates = ref<number[]>([])
+
 const formData: FormDataVariables = reactive({
   from: '',
   to: '',
@@ -514,6 +514,7 @@ const formData: FormDataVariables = reactive({
   phoneNumber: '',
   flightNumber: '',
   paymentMethod: '',
+  finalPrice: 0,
   checked: false,
   coordinates: {
     fromCoordinates: [],
@@ -605,8 +606,6 @@ const itemsSchedule = computed(() => [
   ...bookingItems.value.slice(6, bookingItems.value.length - 3)
 ])
 
-const reactiveFromCoordinates = ref<number[]>([])
-const reactiveToCoordinates = ref<number[]>([])
 const returnSelectedAddressFrom = (
   displayName: string,
   coordinates: number[]
@@ -624,6 +623,8 @@ const returnSelectedAddressTo = (
   formData.coordinates.toCoordinates = coordinates
   reactiveToCoordinates.value = coordinates
 }
+
+const isApiSubscriptionEnded = ref(false)
 
 const fetchFlightsData = async () => {
   const dynamicFlightNumber = formData.flightNumber
@@ -646,6 +647,9 @@ const fetchFlightsData = async () => {
         isFlightNumber.value = true
         isLoading.value = false
         flightInfo.value = `${data.airline.icao}, ${data.airline.name}, ${data.departure.airport.name}`
+        if (res.status === 403) {
+          isApiSubscriptionEnded.value = true
+        }
       }, 1000)
     } else {
       isFlightNumber.value = false
@@ -657,9 +661,7 @@ const fetchFlightsData = async () => {
 }
 
 const flightInputSmall = computed(() => {
-  return !isFlightNumber.value
-    ? 'Entered flight number does not exist'
-    : flightInfo.value
+  return !isFlightNumber.value ? 'Entered flight number does not exist' : (isApiSubscriptionEnded.value ? 'API subscription ended' : flightInfo.value)
 })
 
 watch(
@@ -771,7 +773,7 @@ const submitToDriver = async () => {
           passengers: formData.passengers,
           childSeat: isChildSeat.value,
           paymentMethod: formData.paymentMethod,
-          price: calculatePrice.value
+          price: formData.finalPrice
         }
       }
     ],

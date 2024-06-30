@@ -92,6 +92,10 @@ export default defineNuxtConfig({
           rel: 'stylesheet'
         }
       ]
+    },
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
     }
   },
   postcss: {

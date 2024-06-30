@@ -56,12 +56,12 @@
 		}
 	},
 	"navbar": {
-		"about": "Puntos de encuentro",
+		"about": "Sobre nosotros",
 		"button": "Reservar un viaje",
 		"contact": "Contacto",
 		"faq": "Preguntas más frecuentes",
 		"home": "Hogar",
-		"meeting-points": "",
+		"meeting-points": "Puntos de encuentro",
 		"price": "Precios",
 		"services": "Coches disponibles"
 	},

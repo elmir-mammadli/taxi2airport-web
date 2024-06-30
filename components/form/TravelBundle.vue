@@ -13,7 +13,7 @@
         required
         wrapper-class="$reset"
         label-class="block font-semibold text-black opacity-[0.87] text-sm"
-        inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+        inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-2"
         input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400"
         messages-class="absolute bottom-[5px] text-red-500 text-[10px]"
       />
@@ -28,7 +28,7 @@
         wrapper-class="$reset"
         outer-class="$reset"
         label-class="block font-semibold text-black opacity-[0.87] text-sm"
-        inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+        inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-2"
         input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
       />
     </div>
@@ -44,7 +44,7 @@
           wrapper-class="$reset"
           outer-class="$reset"
           label-class="block font-semibold text-black opacity-[0.87] text-sm"
-          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+          inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-2"
           input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
         />
       </div>
@@ -61,7 +61,7 @@
               wrapper-class="$reset"
               outer-class="$reset"
               label-class="block font-semibold text-black opacity-[0.87] text-sm"
-              inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md"
+              inner-class="$reset border-[#000000] border-opacity-[0.87] border-[1px] rounded-md group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-2"
               input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 border-[#000000]"
             />
           </div>

@@ -5,11 +5,11 @@ export const useShakeStore = defineStore('shake', {
     shouldShakeForm: false
   }),
   actions: {
-    triggerShake() {
-      this.shouldShakeForm = true;
+    triggerShake () {
+      this.shouldShakeForm = true
       setTimeout(() => {
-        this.shouldShakeForm = false;
-      }, 1000);
+        this.shouldShakeForm = false
+      }, 1000)
     }
   }
-});
+})

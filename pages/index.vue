@@ -18,5 +18,8 @@ useSeoMeta({
     <AvailableCars />
     <MeetingPoints />
     <Disclosure />
+    <NuxtLink to="/about">
+      About page
+    </NuxtLink>
   </main>
 </template>

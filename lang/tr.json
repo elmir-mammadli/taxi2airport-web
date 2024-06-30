@@ -56,12 +56,12 @@
 		}
 	},
 	"navbar": {
-		"about": "Buluşma Noktaları",
+		"about": "Hakkımızda",
 		"button": "Yolculuk rezervasyonu yapın",
 		"contact": "Temas etmek",
 		"faq": "SSS",
 		"home": "Ev",
-		"meeting-points": "",
+		"meeting-points": "Buluşma Noktaları",
 		"price": "Fiyatlandırma",
 		"services": "Mevcut Arabalar"
 	},

@@ -13,7 +13,7 @@
           class="py-3 px-5 text-gray-800 hover:underline"
           @click="handleCustomScroll(item.link)"
         >
-          {{ item.item }}
+          {{ $t(item.item) }}
         </NuxtLink>
       </li>
     </ul>
@@ -21,9 +21,10 @@
 </template>
 
 <script setup lang="ts">
-import { useNavbarItems } from '../types/NavBar'
+import { navbarItems } from '../types/NavBar'
+const { $t } = useLanguage()
 
-const { items: navItems } = useNavbarItems()
+const navItems = navbarItems
 const route = useRoute()
 
 const handleCustomScroll = (sectionId: string) => {

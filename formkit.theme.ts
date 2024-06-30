@@ -3311,7 +3311,7 @@ const globals: Record<string, Record<string, boolean>> = {
     'dark:text-neutral-400': true
   },
   message: {
-    'text-[#FF0000]': true,
+    'text-red-500': true,
     'pt-2': true,
     'text-xs': true,
     'dark:text-red-400': true

@@ -20,6 +20,7 @@ export type FormDataVariables = {
 } & {
   checked: boolean
   paymentMethod: string
+  finalPrice: number
   step?: string
   coordinates: Coordinates
 };
@@ -36,6 +37,23 @@ export type Details = {
   initialPrice: number
   extraPrice: number
 };
+
+export const logos: {
+  logo: string;
+}[] = [
+  {
+    logo: 'ri:visa-line'
+  },
+  {
+    logo: 'ri:mastercard-fill'
+  },
+  {
+    logo: 'simple-icons:applepay'
+  },
+  {
+    logo: 'cib:google-pay'
+  }
+]
 
 export const reservationsData: {
   step: string;
@@ -87,6 +105,7 @@ export const formData: FormDataVariables = {
   phoneNumber: '',
   flightNumber: '',
   paymentMethod: '',
+  finalPrice: 0,
   checked: false,
   coordinates: {
     fromCoordinates: [],

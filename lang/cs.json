@@ -56,14 +56,14 @@
 		}
 	},
 	"navbar": {
-		"about": "Místa setkání",
+		"about": "O nás",
 		"button": "Objednat jízdu",
 		"contact": "Kontakty",
 		"faq": "FAQ",
 		"home": "Home",
-		"meeting-points": "",
+		"meeting-points": "Místa setkání",
 		"price": "Ceník",
-		"services": "Služby"
+		"services": "Dostupné vozy"
 	},
 	"reservation": {
 		"button": "Rezervujte nyní!",
