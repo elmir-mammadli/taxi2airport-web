@@ -33,7 +33,7 @@ const sectionClassesAttributes: SectionClassAttributes = {
 <template>
   <div
     v-bind="$attrs"
-    class="flex flex-col mb-[40px] mx-auto"
+    class="flex flex-col mb-[40px] mx-auto px-5 md:px-0"
     :class="wide ? sectionClassesAttributes.wider : sectionClassesAttributes.tighter"
   >
     <p
