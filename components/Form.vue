@@ -384,13 +384,6 @@
       <div v-if="chapter === 4" class="hidden md:flex items-start">
         <p class="text-gray-600" v-html="$t('tcpp')" />
       </div>
-      <div class="flex gap-x-2">
-        <p>We are using WhatsApp!</p>
-        <Icon name="logos:whatsapp-icon" size="1.5em" />
-        <NuxtLink to="https://wa.me/420773150831" class="font-semibold hover:underline">
-          +420 773 150 831
-        </NuxtLink>
-      </div>
     </div>
   </div>
 </template>

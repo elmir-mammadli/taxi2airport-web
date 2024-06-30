@@ -18,5 +18,6 @@ useSeoMeta({
     <AvailableCars />
     <MeetingPoints />
     <Disclosure />
+    <ChatIcons class="fixed bottom-0 right-7" />
   </main>
 </template>
