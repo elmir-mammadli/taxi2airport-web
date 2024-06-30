@@ -16,7 +16,7 @@
           <div v-for="(item, index) in slicedAsideData" :key="index">
             <div class="flex items-center gap-x-1">
               <NuxtLink class="hover:underline" :to="item.link">
-                <Icon :name="item.icon" size="18" />
+                <Icon :name="item.icon" size="18" color="#808080" />
               </NuxtLink>
               <p
                 class="text-xs"
@@ -45,16 +45,16 @@ type AsideData = {
 
 const asideData: ComputedRef<AsideData[]> = computed(() => [
   {
-    icon: 'twemoji:check-mark-button',
+    icon: 'pepicons-pop:dollar-circle-off',
     text: $t('aside.item-1')
   },
   {
-    icon: 'twemoji:technologist-medium-skin-tone',
+    icon: 'ph:money-wavy',
     text: $t('aside.item-2')
   },
   {
-    icon: 'twemoji:oncoming-taxi',
-    text: $t('aside.item-3')
+    icon: '',
+    text: ''
   },
   {
     icon: 'material-symbols:support-agent',
