@@ -7,7 +7,7 @@
         <div class="hidden md:flex items-center gap-x-5 me-auto">
           <div v-for="(item, index) in asideData.slice(0, 3)" :key="index">
             <div class="flex gap-x-2 items-center">
-              <Icon :name="item.icon" size="15" />
+              <Icon :name="item.icon" size="15" color="green" />
               <p class="text-xs" v-html="item.text" />
             </div>
           </div>
@@ -16,7 +16,7 @@
           <div v-for="(item, index) in slicedAsideData" :key="index">
             <div class="flex items-center gap-x-1">
               <NuxtLink class="hover:underline" :to="item.link">
-                <Icon :name="item.icon" size="18" color="#808080" />
+                <Icon :name="item.icon" size="18" />
               </NuxtLink>
               <p
                 class="text-xs"
