@@ -3,23 +3,6 @@ export interface NavBar {
     link: string;
 }
 
-// export const reservationsData: {
-//   step: string;
-// }[] = [
-//   {
-//     step: 'reservation.step-1'
-//   },
-//   {
-//     step: 'reservation.step-2'
-//   },
-//   {
-//     step: 'reservation.step-3'
-//   },
-//   {
-//     step: 'reservation.step-4'
-//   }
-// ];
-
 // export const navbarItems: {
 //  [
 //     {
