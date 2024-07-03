@@ -35,6 +35,10 @@
 		"subtitle": "Fast, safe and easiest transfer services",
 		"title": "Have your <span class=\"text-light-blue\">best&nbsp;transfer</span>"
 	},
+  "popular-locations": {
+    "header": "Popular Destinations",
+    "title": "Explore the most popular destinations"
+  },
 	"meeting-points": {
 		"header": "Convenient Spots to&nbsp;Meet Your Driver",
 		"title": "Meeting Points",
