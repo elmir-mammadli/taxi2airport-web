@@ -25,7 +25,7 @@ defineOptions({
 const sectionClassesAttributes: SectionClassAttributes = {
   title: 'uppercase text-[14px] md:text-[16px] text-light-blue font-bold',
   subtitle: 'text-[26px] md:text-[36px] text-gray-800  font-semibold leading-[1.4]',
-  tighter: 'max-w-xl items-center text-center',
+  tighter: 'max-w-xl items-center text-center px-5 md:px-0',
   wider: 'max-w-[868px] items-start text-left'
 }
 </script>
@@ -33,7 +33,7 @@ const sectionClassesAttributes: SectionClassAttributes = {
 <template>
   <div
     v-bind="$attrs"
-    class="flex flex-col mb-[40px] mx-auto px-5 md:px-0"
+    class="flex flex-col mb-[40px] mx-auto"
     :class="wide ? sectionClassesAttributes.wider : sectionClassesAttributes.tighter"
   >
     <p

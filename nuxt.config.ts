@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: {
+    enabled: true
+  },
   css: [
     'vuetify/lib/styles/main.sass',
     '~/assets/css/main.css',
@@ -21,13 +24,22 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap'
   ],
   i18n: {
-    vueI18n: './plugins/i18n.config.ts'
+    locales: [
+      { code: 'en', iso: 'en', file: './lang/en.json' },
+      { code: 'cs', iso: 'cs', file: './lang/cs.json' },
+      { code: 'de', iso: 'de', file: './lang/de.json' },
+      { code: 'es', iso: 'es', file: './lang/es.json' },
+      { code: 'ru', iso: 'ru', file: './lang/ru.json' },
+      { code: 'tr', iso: 'tr', file: './lang/tr.json' },
+      { code: 'ua', iso: 'ua', file: './lang/ua.json' }
+    ],
+    defaultLocale: 'en'
   },
   site: {
-    url: 'https://taxi2airport.cz',
-    name: 'Taxi2Airport',
-    description:
-      'Reliable and stress-free airport transfers with Taxi2Airport. Enjoy punctual, safe, and comfortable rides available 24/7 with competitive pricing.'
+    url: 'https://taxi2airport.cz'
+  },
+  sitemap: {
+    autoI18n: true
   },
   formkit: {
     autoImport: true
