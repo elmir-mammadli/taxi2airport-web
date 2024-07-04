@@ -25,13 +25,13 @@ export default defineNuxtConfig({
   ],
   i18n: {
     locales: [
-      { code: 'en', iso: 'en', file: './lang/en.json' },
-      { code: 'cs', iso: 'cs', file: './lang/cs.json' },
-      { code: 'de', iso: 'de', file: './lang/de.json' },
-      { code: 'es', iso: 'es', file: './lang/es.json' },
-      { code: 'ru', iso: 'ru', file: './lang/ru.json' },
-      { code: 'tr', iso: 'tr', file: './lang/tr.json' },
-      { code: 'ua', iso: 'ua', file: './lang/ua.json' }
+      { code: 'en', iso: 'en', file: './lang/en.json' }
+      // { code: 'cs', iso: 'cs', file: './lang/cs.json' },
+      // { code: 'de', iso: 'de', file: './lang/de.json' },
+      // { code: 'es', iso: 'es', file: './lang/es.json' },
+      // { code: 'ru', iso: 'ru', file: './lang/ru.json' },
+      // { code: 'tr', iso: 'tr', file: './lang/tr.json' },
+      // { code: 'ua', iso: 'ua', file: './lang/ua.json' }
     ],
     defaultLocale: 'en'
   },
@@ -51,25 +51,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify']
   },
-  // image: {
-  //   domains: [
-  //     'avatars0.githubusercontent.com'
-  //   ],
-  //   screens: {
-  //     sm: 639,
-  //     md: 867,
-  //     lg: 1023,
-  //     xl: 1279,
-  //     rD: 1359,
-  //     '2rD': 1439,
-  //     xxl: 1599,
-  //     '3xl': 1919
-  //   },
-  //   densities: [1, 2],
-  //   format: ['webp'],
-  //   quality: 80,
-  //   provider: 'ipx'
-  // },
   vite: {
     define: {
       'process.env.DEBUG': false
