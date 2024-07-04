@@ -48,15 +48,15 @@ export const navbarItems: NavBar[] = [
     link: 'available-cars'
   },
   {
-    item: 'navbar.meeting-points',
-    link: 'meeting-points'
+    item: 'navbar.popular-locations',
+    link: 'popular-locations'
   },
   {
-    item: 'navbar.faq',
-    link: 'faq'
+    item: 'navbar.meeting-points',
+    link: 'meeting-points'
   },
   {
     item: 'navbar.about',
     link: '/about'
   }
-]
+];

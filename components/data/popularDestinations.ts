@@ -1,3 +1,4 @@
+export type Currency = 'czk' | 'usd'
 export interface DataPopularDestinationsTypes {
     id: number;
     name: string;

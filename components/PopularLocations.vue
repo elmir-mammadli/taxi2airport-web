@@ -1,10 +1,15 @@
+<script setup lang="ts">
+import SectionHeading from './SectionHeading.vue'
+import { popularDestinations } from './data/popularDestinations'
+</script>
 <template>
   <div
+    id="popular-locations"
     loading="lazy"
     data-aos="fade-up"
     data-aos-once="true"
     data-aos-duration="600"
-    class="flex flex-col items-center max-w-[1124px] mx-auto mt-32 -z-10 px-5 lg:px-0"
+    class="flex flex-col items-center max-w-[1124px] mx-auto mt-24 -z-10 px-5 lg:px-0"
   >
     <SectionHeading
       section-title="popular-locations.header"
@@ -40,7 +45,3 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import SectionHeading from './SectionHeading.vue'
-import { popularDestinations } from './data/popularDestinations'
-</script>

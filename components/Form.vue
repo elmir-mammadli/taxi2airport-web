@@ -301,14 +301,14 @@
             {{ $t('form.booking-details') }}
           </h1>
           <div>
-            <div class="grid grid-cols-1 md:grid-cols-3 md:gap-[2px]">
+            <div class="grid grid-cols-1 md:grid-cols-3">
               <div
                 v-for="booking in bookingItems"
                 :key="booking.key"
-                class="border-[1px] md:border-gray-600 md:bg-gray-100 p-2 md:p-4 md:rounded-sm"
+                class="border-[0.5px] md:border-gray-300 p-2 md:p-2"
               >
                 <div>
-                  <p class="font-semibold">
+                  <p class="font-medium">
                     {{ booking.key }}
                   </p>
                   <p v-html="booking.value" />
@@ -554,11 +554,11 @@ const bookingItems = computed(() => [
     value: formData.flightNumber
   },
   {
-    key: $t('form.from').toUpperCase(),
+    key: $t('form.from'),
     value: formData.from
   },
   {
-    key: $t('form.to').toUpperCase(),
+    key: $t('form.to'),
     value: formData.to
   },
   {
@@ -566,27 +566,27 @@ const bookingItems = computed(() => [
     value: `${haversineResult.value} km`
   },
   {
-    key: $t('form.date').toUpperCase(),
+    key: $t('form.date'),
     value: formData.formattedDate
   },
   {
-    key: $t('form.time').toUpperCase(),
+    key: $t('form.time'),
     value: formData.formatTime
   },
   {
-    key: $t('form.passengers').toUpperCase(),
+    key: $t('form.passengers'),
     value: formData.passengers
   },
   {
-    key: $t('form.luggage').toUpperCase(),
+    key: $t('form.luggage'),
     value: formData.luggage
   },
   {
-    key: $t('form.child-seat').toUpperCase(),
+    key: $t('form.child-seat'),
     value: isChildSeat.value
   },
   {
-    key: $t('form.selected-car').toUpperCase(),
+    key: $t('form.selected-car'),
     value: formData.selectedCar
   }
 ])
