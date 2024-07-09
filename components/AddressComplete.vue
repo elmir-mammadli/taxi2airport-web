@@ -61,7 +61,9 @@ type PopularLocations = {
   icon: string;
   display_name: string;
   coordinates: Array<number>;
-};
+}
+
+type PartialLocations = Partial<PopularLocations>
 
 const coordinates = ref<Pick<PopularLocations, 'coordinates'>[]>([])
 const addresses = ref<Pick<PopularLocations, 'display_name'>[]>([])
@@ -121,8 +123,6 @@ const autopredict = async () => {
     console.error('Fetch error:', error)
   }
 }
-
-type PartialLocations = Partial<PopularLocations>;
 
 const selectedAddress = (address: PartialLocations) => {
   query.value = address.display_name ?? ''

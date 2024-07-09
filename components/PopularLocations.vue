@@ -1,6 +1,17 @@
 <script setup lang="ts">
+import { Switch } from '@headlessui/vue'
 import SectionHeading from './SectionHeading.vue'
 import { popularDestinations } from './data/popularDestinations'
+import { type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
+
+const isCzechCrowns = ref(false)
+
+const sendSeletedLocationToWhatsapp = (item: Pick<DataPopularDestinationsTypes, 'name' | 'finalPrice'>) => {
+  const message: string = `Hi, I would like to book the ride from Prague to ${item.name} (${item.finalPrice} CZK). Is it possible?`
+  const phoneNumber: string = '420773897434'
+  const url: string = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  window.open(url, '_blank')
+}
 </script>
 <template>
   <div
@@ -16,32 +27,44 @@ import { popularDestinations } from './data/popularDestinations'
       section-subtitle="popular-locations.title"
     />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-x-10 gap-y-5">
-      <div
+    <div class="md:ms-auto flex items-center gap-x-2 md:mr-2">
+      <p
+        class="font-normal"
+        :class="[
+          !isCzechCrowns ? 'text-gray-900': 'text-gray-400'
+        ]"
+      >
+        Kč
+      </p>
+      <Switch
+        v-model="isCzechCrowns"
+        :class="isCzechCrowns ? 'bg-light-blue' : 'bg-light-blue'"
+        class="relative inline-flex h-6 w-11 items-center rounded-full"
+      >
+        <span class="sr-only">Enable notifications</span>
+        <span
+          :class="isCzechCrowns ? 'translate-x-6' : 'translate-x-1'"
+          class="inline-block h-4 w-4 transform rounded-full bg-white transition"
+        />
+      </Switch>
+      <p
+        class="font-normal"
+        :class="[
+          isCzechCrowns ? 'text-gray-900': 'text-gray-400'
+        ]"
+      >
+        EUR
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-x-10 gap-y-5 mt-4">
+      <PopularLocationsBlock
         v-for="item in popularDestinations"
         :key="item.id"
-      >
-        <div class="flex items-center justify-between bg-gray-100 text-gray-700 hover:text-white hover:bg-custom-blue cursor-pointer ease duration-200 rounded-lg p-5 h-[72px]">
-          <div class="flex flex-col lg:flex-row items-start lg:items-center gap-x-2 font-normal text-[14px] md:text-base">
-            <p>Prague Airport</p>
-            <span class="hidden lg:block">
-              <Icon name="ic:sharp-arrow-forward" size="20" />
-            </span>
-            <p>{{ item.name }}</p>
-          </div>
-          <div class="flex items-center gap-x-4 font-medium">
-            <div class="flex flex-col justify-start">
-              <p class="text-[16px]">
-                {{ `${item.finalPrice} Kč` }}
-              </p>
-              <p class="text-[10px]">
-                Starting from
-              </p>
-            </div>
-            <Icon name="material-symbols:arrow-forward-ios" size="14" />
-          </div>
-        </div>
-      </div>
+        :item="item"
+        :change-currency="isCzechCrowns"
+        @click="sendSeletedLocationToWhatsapp(item)"
+      />
     </div>
   </div>
 </template>

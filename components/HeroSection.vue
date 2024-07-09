@@ -13,18 +13,16 @@
           v-html="$t('hero.subtitle')"
         />
         <div class="hidden md:flex gap-x-5 items-center mt-9">
-          <button
-            class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-[13px] rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
-            @click="triggerShake"
-          >
-            {{ $t('button-2') }}
-          </button>
+          <AtomicButton
+            type="primary"
+            text="button-2"
+            :on-click="triggerShake"
+          />
           <NuxtLink to="#faq">
-            <button
-              class="bg-[#fff] text-custom-blue outline outline-custom-blue font-medium text-[18px] px-9 py-3 rounded-[6px] transition .4s ease-all"
-            >
-              FAQ
-            </button>
+            <AtomicButton
+              type="secondary"
+              text="FAQ"
+            />
           </NuxtLink>
         </div>
       </div>
