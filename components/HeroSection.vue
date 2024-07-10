@@ -28,7 +28,7 @@
       </div>
       <div>
         <span class="relative">
-          <NuxtImg src="/images/hero_vector.png" class="hidden md:block" width="540" alt="hero image" />
+          <NuxtImg src="/images/hero_vector.webp" class="hidden md:block" width="540" alt="hero image" />
         </span>
       </div>
     </div>
