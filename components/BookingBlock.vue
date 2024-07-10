@@ -4,7 +4,7 @@
     data-aos="fade-up"
     data-aos-once="true"
     data-aos-duration="600"
-    class="flex flex-col items-center max-w-screen-xl mx-auto mt-32 -z-10"
+    class="flex flex-col items-center max-w-screen-xl mx-auto mt-24 lg:mt-32 -z-10"
   >
     <SectionHeading
       section-title="reservation.title"

@@ -1,21 +1,5 @@
 <script setup lang="ts">
-type ChatIcon = {
-  icon: string;
-  link: string;
-  text: string;
-}
-const chatIcons: ChatIcon[] = [
-  {
-    icon: 'logos:whatsapp-icon',
-    link: 'https://wa.me/420773150831',
-    text: 'Whatsapp'
-  },
-  {
-    icon: 'logos:telegram',
-    link: 'https://t.me/+420773150831',
-    text: ''
-  }
-]
+import { chatIcons } from '../types/ChatIcons'
 
 const areChatIconsHidden = ref(false)
 

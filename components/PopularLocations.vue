@@ -2,16 +2,26 @@
 import { Switch } from '@headlessui/vue'
 import SectionHeading from './SectionHeading.vue'
 import { popularDestinations } from './data/popularDestinations'
-import { type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
+import { type Currency, type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
 
 const isCzechCrowns = ref(false)
 
-const sendSeletedLocationToWhatsapp = (item: Pick<DataPopularDestinationsTypes, 'name' | 'finalPrice'>) => {
-  const message: string = `Hi, I would like to book the ride from Prague to ${item.name} (${item.finalPrice} CZK). Is it possible?`
-  const phoneNumber: string = '420773897434'
-  const url: string = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
-  window.open(url, '_blank')
+const returnPriceInSelectedCurrency = (price: Record<Currency, number>) => {
+  if (!isCzechCrowns.value) {
+    return price.czk + ' Kč'
+  } else {
+    return price.eur + ' €'
+  }
 }
+
+const handleSelectedIcon = (selectedSender: string, item: Pick<DataPopularDestinationsTypes, 'name' | 'finalPrice'>) => {
+  const message: string = `Hi, I would like to book the ride from Prague to ${item.name} (Price: ${returnPriceInSelectedCurrency(item.finalPrice)}). Is it possible?`
+  const phoneNumber: string = `${selectedSender !== 'Whatsapp' ? '+' : ''}420773150831`
+  const url: string = selectedSender === 'Whatsapp' ? 'https://wa.me' : 'https://t.me'
+  const fullPath: string = `${url}/${phoneNumber}?text=${encodeURIComponent(message)}`
+  window.open(fullPath, '_blank')
+}
+
 </script>
 <template>
   <div
@@ -63,7 +73,7 @@ const sendSeletedLocationToWhatsapp = (item: Pick<DataPopularDestinationsTypes, 
         :key="item.id"
         :item="item"
         :change-currency="isCzechCrowns"
-        @click="sendSeletedLocationToWhatsapp(item)"
+        @selected-icon="handleSelectedIcon($event, item)"
       />
     </div>
   </div>
