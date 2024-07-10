@@ -76,7 +76,6 @@ const handleFinalPrice = (price: number) => {
 }
 
 const emit = defineEmits(['car-selected'])
-
 const loading = ref(false)
 
 const selectCar = (index: number) => {
@@ -87,4 +86,5 @@ const selectCar = (index: number) => {
     emit('car-selected', details[index].name, details[index].extraPrice, loading.value)
   }, 1000)
 }
+
 </script>

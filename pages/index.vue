@@ -14,6 +14,7 @@ useSeoMeta({
 <template>
   <main>
     <HeroSection />
+    <PopularLocations />
     <BookingBlock />
     <AvailableCars />
     <MeetingPoints />

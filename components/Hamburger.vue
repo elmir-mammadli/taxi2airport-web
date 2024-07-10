@@ -49,7 +49,7 @@ const { scroll } = useScroll()
         >
           <Icon name="mdi:close" size="40" color="5A5A5A" />
         </button>
-        <div v-for="(item, index) in navItems" :key="index">
+        <div v-for="(item, index) in navItems" :key="index" class="text-[20px]">
           <NuxtLink :to="handleItemLink(item.link)" @click="handleCustomScroll(item.link)">
             {{ $t(item.item) }}
           </NuxtLink>

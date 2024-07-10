@@ -5,26 +5,24 @@
         class="flex flex-col items-start sm:items-center md:items-start justify-center"
       >
         <h1
-          class="text-[42px] md:text-[54px] lg:text-[72px] font-bold max-w-xl text-black opacity-[0.87] leading-[48px] md:leading-[64px] lg:leading-[80px]"
+          class="text-[36px] md:text-[54px] lg:text-[72px] font-bold max-w-xl text-black opacity-[0.87] leading-[40px] md:leading-[64px] lg:leading-[80px]"
           v-html="$t('hero.title')"
         />
         <p
-          class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[18px] md:text-[20px]"
+          class="mt-4 max-w-xl text-black opacity-[0.87] font-normal text-[16px] md:text-[20px]"
           v-html="$t('hero.subtitle')"
         />
         <div class="hidden md:flex gap-x-5 items-center mt-9">
-          <button
-            class="bg-custom-blue text-white font-semibold text-[18px] px-9 py-[13px] rounded-[6px] hover:bg-opacity-80 transition .4s ease-all"
-            @click="triggerShake"
-          >
-            {{ $t('button-2') }}
-          </button>
+          <AtomicButton
+            type="primary"
+            text="button-2"
+            :on-click="triggerShake"
+          />
           <NuxtLink to="#faq">
-            <button
-              class="bg-[#fff] text-custom-blue outline outline-custom-blue font-medium text-[18px] px-9 py-3 rounded-[6px] transition .4s ease-all"
-            >
-              FAQ
-            </button>
+            <AtomicButton
+              type="secondary"
+              text="FAQ"
+            />
           </NuxtLink>
         </div>
       </div>

@@ -4,7 +4,7 @@
       <nav
         class="max-w-screen-xl mx-auto bg-gray-600 bg-transparent transition-all .3s ease-in"
       >
-        <div class="flex items-center mx-auto mt-4 md:pt-8 justify-between px-5">
+        <div class="flex items-center mx-auto mt-4 md:pt-4 justify-between px-5">
           <NavbarLogo />
           <Hamburger class="block lg:hidden z-[9999]" @close-menu="closeNavbarMenu" />
           <NavItems />

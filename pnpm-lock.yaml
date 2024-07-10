@@ -33,8 +33,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(magicast@0.3.4)(primevue@3.53.0(vue@3.4.31(typescript@5.5.3)))(rollup@4.18.0)
       '@nuxt/ui':
-        specifier: ^2.13.0
-        version: 2.17.0(axios@1.7.2)(focus-trap@7.5.4)(magicast@0.3.4)(rollup@4.18.0)(vite@5.3.3(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.4.31(typescript@5.5.3))
+        specifier: ^2.15.2
+        version: 2.15.2(axios@1.6.8)(focus-trap@7.5.4)(nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@20.12.7)(@unocss/reset@0.60.4)(axios@1.6.8)(encoding@0.1.13)(eslint@8.56.0)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.4))(vue@3.4.25(typescript@5.4.5)))(fuse.js@6.6.2)(ioredis@5.4.1)(optionator@0.9.4)(rollup@4.16.4)(sass@1.75.0)(terser@5.30.4)(typescript@5.4.5)(unocss@0.60.4(@unocss/webpack@0.60.4(rollup@4.16.4)(webpack@5.92.0))(postcss@8.4.38)(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4))(vue@3.4.25(typescript@5.4.5))
       '@nuxtjs/eslint-config-typescript':
         specifier: ^12.1.0
         version: 12.1.0(eslint@8.56.0)(typescript@5.5.3)
@@ -6389,7 +6389,6 @@ packages:
 
   unplugin-remove@1.0.2:
     resolution: {integrity: sha512-mZrgNpd5WcMDYW2LI81aUPVr49Qn0ii1+DI3Tg8oYRPApyf35IqlwbdQYdE1p1wdWKSyzoSRUFZecJUMF6goIw==}
-
   unplugin-vue-router@0.10.0:
     resolution: {integrity: sha512-t9cwRvNONcrh7CZLUYrd4kGOH4xZRhsHeT+exaAuYFn7z87pkTHiHh3wBnGerfKGs22SnmJIIjcKyEa62CO+4w==}
     peerDependencies:
@@ -7568,7 +7567,6 @@ snapshots:
   '@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.4)':
     dependencies:
       tailwindcss: 3.4.4
-
   '@headlessui/vue@1.7.22(vue@3.4.31(typescript@5.5.3))':
     dependencies:
       '@tanstack/vue-virtual': 3.8.1(vue@3.4.31(typescript@5.5.3))
@@ -13604,8 +13602,8 @@ snapshots:
 
   primevue@3.53.0(vue@3.4.31(typescript@5.5.3)):
     dependencies:
+  proc-log@4.2.0: {}
       vue: 3.4.31(typescript@5.5.3)
-
   process-nextick-args@2.0.1: {}
 
   process@0.11.10: {}
