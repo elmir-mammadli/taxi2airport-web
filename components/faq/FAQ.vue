@@ -29,18 +29,18 @@
           />
         </DisclosureButton>
         <DisclosurePanel class="px-4 pt-4 pb-2 text-base md:text-[16px] leading-6 text-gray-500">
-          {{ q.answer }}
+          <p v-html="q.answer" />
         </DisclosurePanel>
       </Disclosure>
     </div>
-    <p v-if="showAssistance" class="md:ms-3 mt-10 px-5">
+    <p v-if="showAssistance" class="md:ms-3 mt-10 px-5 text-gray-600">
       Can't find an answer to your question? Start a chat with us for assistance via
-      <NuxtLink to="https://wa.me/420773150831" target="_blank" class="font-semibold hover:underline">
-        whatsapp
+      <NuxtLink to="https://wa.me/420773150831" target="_blank" class="font-semibold hover:underline text-gray-700">
+        Whatsapp
       </NuxtLink>
       or
-      <NuxtLink to="https://t.me/+420773150831" class="font-semibold hover:underline">
-        telegram
+      <NuxtLink to="https://t.me/+420773150831" class="font-semibold hover:underline text-gray-700">
+        Telegram
       </NuxtLink>
     </p>
     <div class="mx-auto">
