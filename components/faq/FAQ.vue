@@ -28,7 +28,7 @@
             class="size-5 text-gray-800"
           />
         </DisclosureButton>
-        <DisclosurePanel class="px-4 pt-4 pb-2 text-base md:text-[16px] leading-6 text-gray-500">
+        <DisclosurePanel class="px-4 pt-4 pb-2 text-base md:text-[16px] leading-6 text-gray-600">
           <p v-html="q.answer" />
         </DisclosurePanel>
       </Disclosure>
