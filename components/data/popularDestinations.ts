@@ -1,4 +1,4 @@
-import { type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
+import { type DataPopularDestinationsTypes } from '@/types/PopularLocationsSectionTypes'
 
 export const popularDestinations: DataPopularDestinationsTypes[] = [
   {

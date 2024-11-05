@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
+import { type DataPopularDestinationsTypes } from '@/types/popularLocationsSectionTypes'
 import { chatIcons } from '~/types/ChatIcons'
 
 const props = defineProps<{

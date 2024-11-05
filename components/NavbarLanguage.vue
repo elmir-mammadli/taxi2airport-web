@@ -31,7 +31,7 @@
 
 <script lang="ts" setup>
 
-import { type Languages } from '~/types/Languages'
+import { type Languages } from '~/types/languages'
 
 const { locale } = useLanguage()
 const showDropdown = ref(false)

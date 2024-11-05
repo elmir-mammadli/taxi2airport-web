@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { navbarItems } from '../types/NavBar'
+import { navbarItems } from '../types/navbar'
 const { $t } = useLanguage()
 
 const navItems = navbarItems

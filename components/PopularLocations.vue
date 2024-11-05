@@ -2,7 +2,7 @@
 import { Switch } from '@headlessui/vue'
 import SectionHeading from './SectionHeading.vue'
 import { popularDestinations } from './data/popularDestinations'
-import { type Currency, type DataPopularDestinationsTypes } from '~/types/PopularLocationsSectionTypes'
+import { type Currency, type DataPopularDestinationsTypes } from '~/types/popularLocationsSectionTypes'
 
 const isCzechCrowns = ref(false)
 

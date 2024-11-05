@@ -60,7 +60,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { details, logos } from './data/formData'
+import { details, logos } from '../components/data/formData'
 
 type PropTypes = {
   price: number

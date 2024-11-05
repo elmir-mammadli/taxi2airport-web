@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import { type FormDataVariables } from '../data/formData'
+import { type FormDataVariables } from '@/types/form'
 type ModelValue = Pick<
   FormDataVariables,
   'formattedDate' | 'formatTime' | 'passengers' | 'luggage'

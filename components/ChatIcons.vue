@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { chatIcons } from '../types/ChatIcons'
+import { chatIcons } from '@/types/ChatIcons'
 
 const areChatIconsHidden = ref(false)
 
