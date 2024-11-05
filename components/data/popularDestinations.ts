@@ -1,4 +1,4 @@
-import { type DataPopularDestinationsTypes } from '@/types/PopularLocationsSectionTypes'
+import { type DataPopularDestinationsTypes } from '@/types/popularLocationsSectionTypes'
 
 export const popularDestinations: DataPopularDestinationsTypes[] = [
   {
@@ -82,4 +82,4 @@ export const popularDestinations: DataPopularDestinationsTypes[] = [
       eur: 155
     }
   }
-];
+]
