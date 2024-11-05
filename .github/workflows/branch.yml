@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - name: Enable Corepack and Install Dependencies
+        run: |
+          nvm use 20 && node --version
+          corepack enable && npx --yes pnpm install
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Lint and Build
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: |
+          pnpm lint
+          pnpm build

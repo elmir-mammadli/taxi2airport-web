@@ -1,7 +1,6 @@
-import sgMail from '@sendgrid/mail';
-const apiKey = process.env.SENDGRID_API_KEY;
-console.log('aa', apiKey);
-sgMail.setApiKey(apiKey);
+import sgMail from '@sendgrid/mail'
+const apiKey = process.env.SENDGRID_API_KEY
+sgMail.setApiKey(apiKey)
 const sendMessage = () => {
   const msg = {
     to: 'elmirmammadli18@gmail.com', // Change to your recipient
@@ -9,15 +8,17 @@ const sendMessage = () => {
     subject: 'Sending with SendGrid is Fun',
     text: 'Salam ee bicbala gotbala',
     html: '<strong>salam bici gotbala gurcustan yek</strong>'
-  };
+  }
   sgMail
     .send(msg)
     .then(() => {
-      console.log('Email sent');
+      // eslint-disable-next-line no-console
+      console.log('Sent')
     })
     .catch((error) => {
-      console.error(error);
-    });
-};
+      // eslint-disable-next-line no-console
+      console.error(error)
+    })
+}
 
-export default sendMessage;
+export default sendMessage
