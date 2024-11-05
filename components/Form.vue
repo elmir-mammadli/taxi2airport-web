@@ -218,7 +218,6 @@
                 label-class="font-semibold text-black opacity-[0.87] text-sm"
                 inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
                 input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
-                :help="flightInputSmall"
                 class="relative"
                 :class="{
                   'focus:ring-1 focus:ring-red-500 ring-1 ring-red-500':
