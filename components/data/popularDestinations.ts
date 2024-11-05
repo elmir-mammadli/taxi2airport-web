@@ -82,4 +82,4 @@ export const popularDestinations: DataPopularDestinationsTypes[] = [
       eur: 155
     }
   }
-];
+]

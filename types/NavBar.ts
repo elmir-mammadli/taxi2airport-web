@@ -42,4 +42,4 @@ export const navbarItems: NavBar[] = [
     item: 'navbar.about',
     link: '/about'
   }
-];
+]
