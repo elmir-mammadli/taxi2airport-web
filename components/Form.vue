@@ -36,7 +36,7 @@
               for="from"
               class="mb-3 text-sm font-medium text-black opacity-[0.87]"
             >{{ $t('form.from') }}</label>
-            <AddressComplete
+            <AddressAutoCompletion
               v-model="formData.from"
               name="from"
               @address-selected="
@@ -57,7 +57,7 @@
               for="to"
               class="mb-3 text-sm font-medium text-black opacity-[0.87]"
             >{{ $t('form.to') }}</label>
-            <AddressComplete
+            <AddressAutoCompletion
               v-model="formData.to"
               name="to"
               @address-selected="
@@ -218,7 +218,6 @@
                 label-class="font-semibold text-black opacity-[0.87] text-sm"
                 inner-class="$reset w-full border-[#CCCCCC] border-opacity-[0.87] border-[1px] rounded-lg mt-[4px] mb-1 group-data-[invalid]:ring-2 group-data-[invalid]:ring-red-500 group-data-[invalid]:border-none focus-within:!border-light-blue focus-within:!ring-light-blue focus-within:ring-1"
                 input-class="w-full h-10 px-3 border-none text-[14px] text-gray-700 placeholder-gray-400 focus:rounded-md focus:border-custom-blue"
-                :help="flightInputSmall"
                 class="relative"
                 :class="{
                   'focus:ring-1 focus:ring-red-500 ring-1 ring-red-500':
@@ -347,6 +346,11 @@
         </div>
       </section>
       <section v-if="chapter === 5">
+        <Icon
+          v-if="isLoading"
+          class="absolute text-[16px] top-10 right-2"
+          name="svg-spinners:90-ring-with-bg"
+        />
         <div class="flex flex-col items-center justify-center">
           <Icon
             name="material-symbols:check-circle-rounded"
@@ -391,13 +395,12 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import RadioButton from 'primevue/radiobutton'
-// ignore the error below
 import { changeLocale } from '@formkit/vue'
-import AddressComplete from './AddressComplete.vue'
+import AddressAutoCompletion from './AddressAutoCompletion.vue'
 import TravelBundle from './form/TravelBundle.vue'
-import { type FormDataVariables } from './data/formData'
 import ReservationData from './ReservationData.vue'
 import Recaptcha from './Recaptcha.vue'
+import { type FormDataVariables } from '@/types/form'
 import { useShakeStore } from '~/stores/useShakeStore'
 
 const shakeStore = useShakeStore()
@@ -409,8 +412,18 @@ const shakerState = computed(() => {
 const { $t, locale } = useLanguage()
 
 const reloadWindow = () => {
-  chapter.value = 1
-  window.location.reload()
+  isLoading.value = true
+  try {
+    setTimeout(() => {
+      chapter.value = 1
+      window.location.reload()
+      isLoading.value = true
+    }, 1000)
+  } catch (error) {
+    console.error('Error reloading window', error)
+  } finally {
+    isLoading.value = false
+  }
 }
 
 const chapter = ref(1)
@@ -426,10 +439,10 @@ const recaptchaVerified = ref(false)
 const recaptchaToken = ref('')
 
 const handleErrorCallback = () => {
-  console.error('Error with ReCaptcha')
+  throw new Error('ReCaptcha error')
 }
 
-const handleLoadCallback = (response: unknown) => {
+const handleLoadCallback = (response: string) => {
   // eslint-disable-next-line no-console
   console.log('ReCaptcha loaded', response)
   recaptchaVerified.value = true
@@ -786,8 +799,11 @@ const submitForm = async () => {
   loading.value = true
 
   try {
-    await submitToClient()
-    await submitToDriver()
+    const handleAllSubmitExecutions = Promise.all([
+      submitToClient(),
+      submitToDriver()
+    ])
+    await handleAllSubmitExecutions
   } catch (error) {
     console.error('Error submitting form', error)
   } finally {

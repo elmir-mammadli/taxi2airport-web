@@ -3,28 +3,6 @@ export interface NavBar {
     link: string;
 }
 
-// export const navbarItems: {
-//  [
-//     {
-//       item: $t('navbar.services'),
-//       link: 'available-cars'
-//     },
-//     {
-//       item: $t('navbar.meeting-points'),
-//       link: 'meeting-points'
-//     },
-//     {
-//       item: $t('navbar.faq'),
-//       link: 'faq'
-//     },
-//     {
-//       item: $t('navbar.about'),
-//       link: '/about'
-//     }
-//   ]
-//   return { items }
-// }
-
 export const navbarItems: NavBar[] = [
   {
     item: 'navbar.services',

@@ -6,7 +6,7 @@
         aria-label="Form Steps"
         :readonly="false"
         :pt="{
-          menuitem: ({ context }) => ({
+          menuitem: (context: any) => ({
             class: isActive(context.item) && 'p-highlight p-steps-current'
           })
         }"
@@ -38,13 +38,16 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
 
 const router = useRouter()
 const route = useRoute()
 
-const items = ref([
+interface Steps {
+  label: string
+  route: string
+}
+const items = ref<Steps[]>([
   {
     label: 'Personal',
     route: '/'
@@ -63,7 +66,7 @@ const items = ref([
   }
 ])
 
-const isActive = (item) => {
+const isActive = (item: Steps) => {
   return item.route ? router.resolve(item.route).path === route.path : false
 }
 </script>

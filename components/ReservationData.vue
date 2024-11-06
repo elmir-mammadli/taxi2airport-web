@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { reservationsData } from './data/formData'
+import { reservationsData } from '../components/data/formData'
 
 defineProps<{
   chapter: number;

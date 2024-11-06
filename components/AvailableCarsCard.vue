@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Details } from './data/formData'
+import type { Details } from '@/types/form'
 
 defineProps<{
   item: Details;

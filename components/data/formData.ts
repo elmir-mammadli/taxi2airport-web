@@ -1,42 +1,4 @@
-/* eslint-disable no-use-before-define */
-
-export type FormDataAttributes =
-  | 'from'
-  | 'to'
-  | 'formattedDate'
-  | 'formatTime'
-  | 'passengers'
-  | 'luggage'
-  | 'selectedCar'
-  | 'email'
-  | 'firstName'
-  | 'lastName'
-  | 'phoneNumber'
-  | 'flightNumber'
-export type ReservationDataTypes = {}
-
-export type FormDataVariables = {
-  [Key in FormDataAttributes]: string
-} & {
-  checked: boolean
-  paymentMethod: string
-  finalPrice: number
-  step?: string
-  coordinates: Coordinates
-};
-export type Coordinates = {
-  fromCoordinates: Array<number> | null
-  toCoordinates: Array<number> | null
-};
-
-export type Details = {
-  img: string
-  name: string
-  person: number
-  luggage: number
-  initialPrice: number
-  extraPrice: number
-};
+import type { FormDataVariables, Details } from '~/types/form'
 
 export const logos: {
   logo: string;

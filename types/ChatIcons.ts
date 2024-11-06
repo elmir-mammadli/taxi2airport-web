@@ -1,4 +1,4 @@
-export type ChatIcon = {
+export interface ChatIcon {
   icon: string;
   link: string;
   text: string;

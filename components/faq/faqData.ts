@@ -1,9 +1,6 @@
-export type Questions = {
-  question: string;
-  answer: string;
-};
+import type { Questions } from '@/types/faqData'
 
-export const questions: Questions[] = [
+export const questions: Array<Questions> = [
   {
     question: 'When do I pay?',
     answer:
