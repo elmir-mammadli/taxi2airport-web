@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navbarItems } from '@/types/navbar'
+import { navbarItems } from '@/types/NavBar'
 
 const isMenu = ref(false)
 const route = useRoute()
